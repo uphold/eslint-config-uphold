@@ -141,6 +141,18 @@ module.exports = {
     'padded-blocks': ['error', 'never'],
     'prefer-arrow-callback': 'error',
     'prefer-const': 'error',
+    'prefer-destructuring': ['error', {
+      "AssignmentExpression": {
+        array: false,
+        object: false
+      },
+      "VariableDeclarator": {
+        array: true,
+        object: true
+      }
+    }, {
+      enforceForRenamedProperties: true
+    }],
     'prefer-spread': 'error',
     'prefer-template': 'error',
     'quote-props': ['error', 'as-needed'],
