@@ -70,6 +70,7 @@ describe('eslint-config-uphold', () => {
       'one-var-declaration-per-line',
       'operator-linebreak',
       'padded-blocks',
+      'prefer-destructuring',
       'quote-props',
       'quotes',
       'semi',
