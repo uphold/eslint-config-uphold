@@ -1,0 +1,46 @@
+{
+  "name": "eslint-config-uphold",
+  "version": "0.0.0",
+  "description": "Uphold-flavored ESLint config",
+  "keywords": [
+    "config",
+    "eslint",
+    "lint",
+    "shared"
+  ],
+  "homepage": "https://github.com/uphold/eslint-config-uphold#readme",
+  "bugs": {
+    "url": "https://github.com/uphold/eslint-config-uphold/issues"
+  },
+  "license": "MIT",
+  "author": "Uphold",
+  "main": "src",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/uphold/eslint-config-uphold.git"
+  },
+  "scripts": {
+    "changelog": "github_changelog_generator --no-issues --header-label='# Changelog' --future-release=v$npm_config_future_release && sed -i '' -e :a -e '$d;N;2,4ba' -e 'P;D' CHANGELOG.md",
+    "lint": "eslint --config src/index.js src/index.js test/index.js",
+    "test": "mocha $npm_package_options_mocha",
+    "version": "npm run changelog --future-release=$npm_package_version && git add -A CHANGELOG.md"
+  },
+  "dependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint-plugin-mocha": "^4.0.0",
+    "eslint-plugin-sort-class-members": "^1.0.1",
+    "eslint-plugin-sort-imports-es6": "^0.0.3",
+    "eslint-plugin-sql-template": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.1",
+    "mocha": "^3.1.1",
+    "should": "^9.0.2"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "options": {
+    "mocha": "-t 10000 --require should test"
+  }
+}
