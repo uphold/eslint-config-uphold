@@ -1,3 +1,6 @@
+// env: jest and mocha.
+describe();
+
 // Avoid extra `no-unused-vars` violations.
 function noop() {
   // do nothing
