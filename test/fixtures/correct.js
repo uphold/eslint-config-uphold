@@ -1,3 +1,10 @@
+// env: jasmine.
+try {
+  fail();
+} catch (e) {
+  // eslint-disable-line no-empty
+}
+
 // env: jest and mocha.
 describe();
 
