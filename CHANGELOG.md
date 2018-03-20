@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.1.1](https://github.com/uphold/eslint-config-uphold/tree/v0.1.1) (2018-03-20)
+[Full Changelog](https://github.com/uphold/eslint-config-uphold/compare/v0.1.0...v0.1.1)
+
+**Merged pull requests:**
+
+- Allow computed properties in prefer destructuring [\#5](https://github.com/uphold/eslint-config-uphold/pull/5) ([nunofgs](https://github.com/nunofgs))
+
 ## [v0.1.0](https://github.com/uphold/eslint-config-uphold/tree/v0.1.0) (2017-12-26)
 [Full Changelog](https://github.com/uphold/eslint-config-uphold/compare/v0.0.1...v0.1.0)
 
