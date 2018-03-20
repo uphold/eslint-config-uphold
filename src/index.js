@@ -153,7 +153,7 @@ module.exports = {
         object: true
       }
     }, {
-      enforceForRenamedProperties: true
+      enforceForRenamedProperties: false
     }],
     'prefer-spread': 'error',
     'prefer-template': 'error',
