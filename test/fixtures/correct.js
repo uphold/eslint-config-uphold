@@ -205,10 +205,12 @@ if (paddedBlocks) {
 // `prefer-destructuring`.
 let { bar } = {};
 let [biz] = bar;
+let baz = bar[biz];
 
 bar.baz = bar.baz;
 bar = biz.bar;
-biz = bar[0];
+biz = baz[0];
+baz = bar;
 
 // `quote-props`.
 const quoteProps = {
