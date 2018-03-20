@@ -17,7 +17,7 @@ describe('eslint-config-uphold', () => {
   it('should not generate any violation for correct code', () => {
     const source = path.join(__dirname, 'fixtures', 'correct.js');
 
-    linter.executeOnFiles([source]).errorCount.should.equal(0);
+    linter.executeOnFiles([source]).results[0].messages.should.be.empty();
   });
 
   it('should generate violations for environment-specific rules', () => {
