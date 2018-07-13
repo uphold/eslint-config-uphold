@@ -75,6 +75,23 @@ describe.only('noExclusiveTests', () => {
   it('should not work');
 });
 
+// `mocha/no-identical-title`.
+describe('noIdenticalTitle', () => {
+  it('should not work');
+  it('should not work');
+});
+
+// `mocha/no-nested-tests`.
+it('noNestedTests', () => {
+  it('should not work');
+});
+
+// `mocha/no-sibling-hooks`.
+describe('noSiblingHooks', () => {
+  before(() => {});
+  before(() => {});
+});
+
 // `new-cap`.
 const cap = require('cap');
 
