@@ -20,7 +20,7 @@
     "url": "git+ssh://git@github.com/uphold/eslint-config-uphold.git"
   },
   "scripts": {
-    "changelog": "github_changelog_generator --no-issues --header-label='# Changelog' --future-release=v$npm_config_future_release && sed -i '' -e :a -e '$d;N;2,4ba' -e 'P;D' CHANGELOG.md",
+    "changelog": "github-changelog-generator --future-release=v$npm_config_future_release > CHANGELOG.md",
     "lint": "eslint --config src/index.js src/index.js test/index.js",
     "test": "mocha $npm_package_options_mocha",
     "version": "npm run changelog --future-release=$npm_package_version && git add -A CHANGELOG.md"
@@ -33,6 +33,7 @@
     "eslint-plugin-sql-template": "^2.0.0"
   },
   "devDependencies": {
+    "@uphold/github-changelog-generator": "^0.7.0",
     "eslint": "^4.19.0",
     "mocha": "^3.1.1",
     "pre-commit": "^1.2.2",
