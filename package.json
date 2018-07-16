@@ -35,8 +35,12 @@
   "devDependencies": {
     "eslint": "^4.19.0",
     "mocha": "^3.1.1",
+    "pre-commit": "^1.2.2",
     "should": "^9.0.2"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "engines": {
     "node": ">=6"
   },
