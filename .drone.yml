@@ -1,6 +1,0 @@
-pipeline:
-  test:
-    image: seegno/node:7-test
-    commands:
-      - yarn --no-emoji --no-progress
-      - yarn test
