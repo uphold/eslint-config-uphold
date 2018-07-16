@@ -144,11 +144,11 @@ module.exports = {
     'prefer-arrow-callback': 'error',
     'prefer-const': 'error',
     'prefer-destructuring': ['error', {
-      "AssignmentExpression": {
+      AssignmentExpression: {
         array: false,
         object: false
       },
-      "VariableDeclarator": {
+      VariableDeclarator: {
         array: true,
         object: true
       }
