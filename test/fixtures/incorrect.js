@@ -51,9 +51,9 @@ noop(function* foo() {});
 noop({ * foo() {} });
 
 // `id-match`.
-let id_match;
+let id_mátch;
 
-noop(id_match);
+noop(id_mátch);
 
 // `indent`.
 noop({
