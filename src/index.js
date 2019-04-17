@@ -59,6 +59,7 @@ module.exports = {
     'linebreak-style': 'error',
     'lines-around-comment': 'off',
     'max-depth': 'error',
+    'max-len': ['error', 120],
     'max-nested-callbacks': 'off',
     'max-params': ['error', 4],
     'mocha/no-exclusive-tests': 'error',

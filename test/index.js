@@ -23,10 +23,13 @@ describe('eslint-config-uphold', () => {
   it('should generate violations for environment-specific rules', () => {
     const source = path.join(__dirname, 'fixtures', 'environment.js');
 
-    Array.from(new Set(linter.executeOnFiles([source]).results[0].messages.map(violation => violation.ruleId))).should.eql([
-      'linebreak-style',
-      'eol-last'
-    ]);
+    Array
+      .from(new Set(linter.executeOnFiles([source]).results[0].messages.map(violation => violation.ruleId)))
+      .should
+      .eql([
+        'linebreak-style',
+        'eol-last'
+      ]);
   });
 
   it('should generate violations for incorrect code', () => {
@@ -51,6 +54,7 @@ describe('eslint-config-uphold', () => {
       'indent',
       'key-spacing',
       'keyword-spacing',
+      'max-len',
       'mocha/no-exclusive-tests',
       'mocha/no-identical-title',
       'mocha/no-nested-tests',

@@ -70,6 +70,9 @@ if(keywordSpacing) {
   keywordSpacing = false;
 }
 
+// `max-len`.
+noop({ bar: 'This is a bar.', bar2: 'This is a bar 2.', bar3: 'This is a bar 3.', bar4: 'This is a bar 4.', bar5: 'This is a bar 5.' });
+
 // `mocha/no-exclusive-tests`.
 describe.only('noExclusiveTests', () => {
   it('should not work');
