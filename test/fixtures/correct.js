@@ -230,6 +230,13 @@ const quotes2 = `foo`;
 noop(quotes1);
 noop(quotes2);
 
+// `require-atomic-updates`.
+(async (foo = {}) => {
+  await foo;
+
+  foo.bar = 'biz';
+})();
+
 // `require-await`.
 (async () => {
   await noop();
