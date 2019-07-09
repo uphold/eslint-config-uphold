@@ -207,7 +207,7 @@ let { bar } = {};
 let [biz] = bar;
 let baz = bar[biz];
 
-bar.baz = bar.baz;
+bar.baz = bar.biz;
 bar = biz.bar;
 biz = baz[0];
 baz = bar;

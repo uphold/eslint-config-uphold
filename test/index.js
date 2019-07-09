@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const Linter = require('eslint/lib/cli-engine');
+const { CLIEngine } = require('eslint');
 const path = require('path');
 
 /**
@@ -12,7 +12,7 @@ const path = require('path');
  */
 
 describe('eslint-config-uphold', () => {
-  const linter = new Linter({ configFile: path.join(__dirname, '..', 'src', 'index.js') });
+  const linter = new CLIEngine({ configFile: path.join(__dirname, '..', 'src', 'index.js') });
 
   it('should not generate any violation for correct code', () => {
     const source = path.join(__dirname, 'fixtures', 'correct.js');
