@@ -97,10 +97,6 @@ const cap = require('cap');
 
 new cap();
 
-// `newline-after-var`.
-const newLineAfterVar = 'foo';
-noop(newLineAfterVar);
-
 // `newline-before-return`.
 function funcThatReturns(bar) {
   if (!bar) {
@@ -226,6 +222,10 @@ if (paddedBlocks) {
   noop();
 
 }
+
+// `padding-line-between-statements`.
+const newLineAfterVar = 'foo';
+noop(newLineAfterVar);
 
 // `prefer-destructuring`.
 const bar = {};

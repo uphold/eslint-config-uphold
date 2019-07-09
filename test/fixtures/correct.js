@@ -90,11 +90,6 @@ const newCap = new Cap();
 
 noop(newCap);
 
-// `newline-after-var`.
-const newLineAfterVar = 'foo';
-
-noop(newLineAfterVar);
-
 // `newline-before-return`.
 function funcThatReturns(bar) {
   if (!bar) {
@@ -201,6 +196,11 @@ const paddedBlocks = true;
 if (paddedBlocks) {
   noop();
 }
+
+// `padding-line-between-statements`.
+const newLineAfterVar = 'foo';
+
+noop(newLineAfterVar);
 
 // `prefer-destructuring`.
 let { bar } = {};
