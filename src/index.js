@@ -13,7 +13,7 @@ module.exports = {
   },
   extends: ['eslint:recommended'],
   parser: 'babel-eslint',
-  plugins: ['mocha', 'sort-class-members', 'sort-imports-es6', 'sql-template'],
+  plugins: ['mocha', 'sort-imports-es6', 'sql-template'],
   root: true,
   rules: {
     'accessor-pairs': 'error',

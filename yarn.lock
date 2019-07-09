@@ -312,10 +312,6 @@ eslint-plugin-mocha@^5.3.0:
   dependencies:
     ramda "^0.26.1"
 
-eslint-plugin-sort-class-members@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-sort-class-members/-/eslint-plugin-sort-class-members-1.5.0.tgz#71c66d89f902ddd31b04acd4cff7c86141db3389"
-
 eslint-plugin-sort-imports-es6@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/eslint-plugin-sort-imports-es6/-/eslint-plugin-sort-imports-es6-0.0.3.tgz#959f391d459efbf971d3ebb696d79e1b567aeedc"
