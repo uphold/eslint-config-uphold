@@ -67,7 +67,6 @@ module.exports = {
     'mocha/no-sibling-hooks': 'error',
     'new-cap': 'error',
     'new-parens': 'error',
-    'newline-after-var': 'error',
     'newline-before-return': 'error',
     'no-alert': 'error',
     'no-array-constructor': 'error',
@@ -144,6 +143,10 @@ module.exports = {
     'operator-assignment': 'error',
     'operator-linebreak': ['error', 'none'],
     'padded-blocks': ['error', 'never'],
+    'padding-line-between-statements': ['error',
+      { blankLine: 'always', next: '*', prev: ['const', 'let', 'var'] },
+      { blankLine: 'any', next: ['const', 'let', 'var'], prev: ['const', 'let', 'var'] }
+    ],
     'prefer-arrow-callback': 'error',
     'prefer-const': 'error',
     'prefer-destructuring': ['error', {
