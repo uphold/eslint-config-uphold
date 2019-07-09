@@ -168,6 +168,7 @@ module.exports = {
       allowTemplateLiterals: true
     }],
     radix: 'error',
+    'require-atomic-updates': 'off',
     'require-await': 'error',
     'require-yield': 'error',
     semi: 'error',
