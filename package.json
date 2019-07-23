@@ -27,9 +27,12 @@
   },
   "dependencies": {
     "babel-eslint": "^10.0.2",
+    "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-mocha": "^5.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-sort-imports-es6": "^0.0.3",
-    "eslint-plugin-sql-template": "^2.0.0"
+    "eslint-plugin-sql-template": "^2.0.0",
+    "prettier": "^1.18.2"
   },
   "devDependencies": {
     "@uphold/github-changelog-generator": "^0.7.0",
