@@ -3,32 +3,6 @@ function noop() {
   // do nothing
 }
 
-// `array-bracket-spacing`.
-noop([ 'bar', 'foo']);
-
-// `arrow-parens`
-noop((foo) => noop(foo));
-
-// `brace-style`.
-try {
-  noop();
-}
-catch (e) {
-  noop();
-}
-
-// `comma-dangle`.
-noop({ bar: 'foo', foo: 'bar', });
-
-// `comma-spacing`.
-noop(['bar','foo']);
-
-// `comma-style`.
-noop({
-  bar: 'foo'
-  , foo: 'bar'
-});
-
 // `consistent-this`.
 const consistentThis = this;
 
@@ -37,38 +11,17 @@ noop(consistentThis);
 // `curly`.
 let curly = true;
 
-if (curly)
-  curly = false;
+if (curly) curly = false;
 
 // `dot-notation`.
 const dotNotation = {};
 
 dotNotation['foo'] = 'bar';
 
-// `generator-star-spacing`
-noop(function* () {});
-noop(function* foo() {});
-noop({ * foo() {} });
-
 // `id-match`.
 let id_mátch;
 
 noop(id_mátch);
-
-// `indent`.
-noop({
-    bar: 'foo'
-});
-
-// `key-spacing`.
-noop({ foo:'bar' });
-
-// `keyword-spacing`.
-let keywordSpacing = true;
-
-if(keywordSpacing) {
-  keywordSpacing = false;
-}
 
 // `mocha/no-exclusive-tests`.
 describe.only('noExclusiveTests', () => {
@@ -108,7 +61,7 @@ function funcThatReturns(bar) {
 funcThatReturns('foo');
 
 // `no-class-assign`.
-class NoClassAssign { }
+class NoClassAssign {}
 
 NoClassAssign = 'foobar';
 
@@ -149,23 +102,11 @@ noLabels: {
   break noLabels;
 }
 
-// `no-multi-spaces`.
-noop(['foo',  'bar']);
-
 // `no-multi-str`.
 const noMultiStr = 'Line 1 \
   Line 2';
 
 noop(noMultiStr);
-
-// `no-multiple-empty-lines`.
-const noMultipleEmptyLines = true;
-
-
-noop(noMultipleEmptyLines);
-
-// `no-spaced-func`.
-noop ();
 
 // `no-this-before-super`.
 const NoThisBeforeSuper = require('no-this-before-super');
@@ -191,38 +132,6 @@ noop(new NoUnderscoreDangle());
 // `no-unused-vars`
 const foobar = '';
 
-// `object-curly-spacing`.
-const objectCurlySpacing = {foo: 'bar'};
-
-noop(objectCurlySpacing);
-
-// `one-var`.
-const oneVar1 = 'foo', oneVar2 = 'bar';
-
-noop(oneVar1);
-noop(oneVar2);
-
-// `one-var-declaration-per-line`.
-const oneVarDeclarationPerLine1 = 'foo'; const oneVarDeclarationPerLine2 = 'bar';
-
-noop(oneVarDeclarationPerLine1);
-noop(oneVarDeclarationPerLine2);
-
-// `operator-linebreak`.
-const operatorLineBreak = 1 +
-  2;
-
-noop(operatorLineBreak);
-
-// `padded-blocks`.
-const paddedBlocks = true;
-
-if (paddedBlocks) {
-
-  noop();
-
-}
-
 // `padding-line-between-statements`.
 const newLineAfterVar = 'foo';
 noop(newLineAfterVar);
@@ -234,32 +143,17 @@ const baz = biz[0];
 
 noop(biz, baz);
 
-// `quote-props`.
-const quoteProps = {
-  '0': 0,
-  'foo': 0,
-  'foo-bar': 0,
-  'null': 0,
-  'true': 0
-};
+// `prettier/prettier`.
+const singleQuote = "true";
 
-noop(quoteProps);
+noop(singleQuote);
 
-// `quotes`.
-const quotes = "foo";
+const maximumLineLength = 'prettier dictates that lines of code must not exceed a length limit of 120 characters maximum';
 
-noop(quotes);
+noop(maximumLineLength);
 
 // `require-await`.
 (async () => {})();
-
-// `semi`.
-noop()
-
-// `semi-spacing`.
-for (let semiSpacing = 0;semiSpacing < 10;++semiSpacing) {
-  noop();
-}
 
 // `sort-imports`.
 import import1 from 'import-1';
@@ -277,34 +171,6 @@ const sortObjectProps = {
 
 noop(sortObjectProps);
 
-// `space-before-blocks`.
-let spaceBeforeBlocks = true;
-
-if (spaceBeforeBlocks){
-  spaceBeforeBlocks = false;
-} else {
-  spaceBeforeBlocks = true;
-}
-
-// `space-before-function-paren`.
-(function () {
-  noop();
-})();
-
-// `space-in-parens`.
-noop( 'foo' );
-
-// `space-infix-ops`.
-const spaceInfixOps = 1+2;
-
-noop(spaceInfixOps);
-
-// `space-unary-ops`.
-let spaceUnaryOps1 = 1;
-const spaceUnaryOps2 = ++ spaceUnaryOps1;
-
-noop(spaceUnaryOps2);
-
 // `spaced-comment`.
 //Comment missing space.
 
@@ -315,16 +181,6 @@ const db = {
 const foo = 'foo';
 
 db.query(`SELECT ${foo} FROM bar`);
-
-// `template-curly-spacing`.
-const templateCurlySpacing = 'foo';
-
-noop(`${ templateCurlySpacing }`);
-
-// `wrap-iife`.
-(function() {
-  noop();
-}());
 
 // `yoda`.
 let yoda = true;

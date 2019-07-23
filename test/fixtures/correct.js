@@ -13,32 +13,12 @@ function noop() {
   // do nothing
 }
 
-// `array-bracket-spacing`, `comma-spacing` and `no-multi-spaces`.
-noop(['bar', 'foo']);
-
-// `arrow-parens`
-noop(() => 'bar');
-noop(foo => foo);
-noop((foo, bar) => [foo, bar]);
-
-// `brace-style`.
-try {
-  noop();
-} catch (e) {
-  noop();
-}
-
-noop(function *() { return yield noop(); });
-
-// `comma-dangle`, `comma-style`.
-noop({ bar: 'foo', foo: 'bar' });
-
 // `consistent-this`.
 const self = this;
 
 noop(self);
 
-// `curly`, `keyword-spacing`, `no-empty` and `space-before-blocks`.
+// `curly` and `no-empty``.
 let mixedRules = true;
 
 if (mixedRules) {
@@ -51,11 +31,6 @@ if (mixedRules) {
 const dotNotation = {};
 
 dotNotation.foo = 'bar';
-
-// `generator-star-spacing`
-noop(function *() {});
-noop(function *foo() {});
-noop({ *foo() {} });
 
 // `id-match`.
 let idmatch;
@@ -75,9 +50,6 @@ noop(ID_MATCH);
 noop(ID_M_ATCH);
 noop(__dirname);
 noop(`${__dirname}`);
-
-// `key-spacing`.
-noop({ foo: 'bar' });
 
 // `mocha/no-exclusive-tests`.
 describe('noExclusiveTests', () => {
@@ -102,7 +74,7 @@ function funcThatReturns(bar) {
 funcThatReturns('foo');
 
 // `no-class-assign`.
-class NoClassAssign { }
+class NoClassAssign {}
 
 noop(NoClassAssign);
 
@@ -146,14 +118,6 @@ const noMultiStr = `Line 1
 
 noop(noMultiStr);
 
-// `no-multiple-empty-lines`.
-const noMultipleEmptyLines = true;
-
-noop(noMultipleEmptyLines);
-
-// `no-spaced-func`.
-noop();
-
 // `no-this-before-super`.
 const NoThisBeforeSuper = require('no-this-before-super');
 
@@ -171,32 +135,6 @@ noop(Child);
 // TODO: do something.
 // FIXME: this is not a good idea.
 
-// `object-curly-spacing`.
-const objectCurlySpacing1 = { foo: 'bar' };
-const objectCurlySpacing2 = {};
-
-noop(objectCurlySpacing1);
-noop(objectCurlySpacing2);
-
-// `one-var`, `one-var-declaration-per-line`.
-const oneVar1 = 'foo';
-const oneVar2 = 'bar';
-
-noop(oneVar1);
-noop(oneVar2);
-
-// `operator-linebreak`.
-const operatorLineBreak = 1 + 2;
-
-noop(operatorLineBreak);
-
-// `padded-blocks`.
-const paddedBlocks = true;
-
-if (paddedBlocks) {
-  noop();
-}
-
 // `padding-line-between-statements`.
 const newLineAfterVar = 'foo';
 
@@ -212,23 +150,14 @@ bar = biz.bar;
 biz = baz[0];
 baz = bar;
 
-// `quote-props`.
-const quoteProps = {
-  0: 0,
-  foo: 0,
-  'foo-bar': 0,
-  null: 0,
-  true: 0
-};
+// `prettier/prettier`.
+const singleQuote = 'true';
 
-noop(quoteProps);
+noop(singleQuote);
 
-// `quotes`.
-const quotes1 = 'foo';
-const quotes2 = `foo`;
+const maximumLineLength = '120';
 
-noop(quotes1);
-noop(quotes2);
+noop(maximumLineLength);
 
 // `require-atomic-updates`.
 (async (foo = {}) => {
@@ -241,14 +170,6 @@ noop(quotes2);
 (async () => {
   await noop();
 })();
-
-// `semi`.
-noop();
-
-// `semi-spacing`.
-for (let semiSpacing = 0; semiSpacing < 10; ++semiSpacing) {
-  noop();
-}
 
 // `sort-imports`.
 import 'import-1';
@@ -274,25 +195,6 @@ const sortObjectProps = {
 
 noop(sortObjectProps);
 
-// `space-before-function-paren`.
-(function() {
-  noop();
-})();
-
-// `space-in-parens`.
-noop('foo');
-
-// `space-infix-ops`.
-const spaceInfixOps = 1 + 2;
-
-noop(spaceInfixOps);
-
-// `space-unary-ops`.
-let spaceUnaryOps1 = 1;
-const spaceUnaryOps2 = ++spaceUnaryOps1;
-
-noop(spaceUnaryOps2);
-
 // `spaced-comment`.
 // spaced comment.
 
@@ -305,16 +207,6 @@ const sql = 'sql-tag';
 
 db.query(sql`SELECT ${foo} FROM bar`);
 db.query(`SELECT foo FROM bar`);
-
-// `template-curly-spacing`.
-const templateCurlySpacing = 'foo';
-
-noop(`${templateCurlySpacing}`);
-
-// `wrap-iife`.
-(function() {
-  noop();
-})();
 
 // `yoda`.
 let yoda = true;
