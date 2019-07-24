@@ -50,16 +50,6 @@ const cap = require('cap');
 
 new cap();
 
-// `newline-before-return`.
-function funcThatReturns(bar) {
-  if (!bar) {
-    return;
-  }
-  return bar;
-}
-
-funcThatReturns('foo');
-
 // `no-class-assign`.
 class NoClassAssign {}
 
@@ -130,6 +120,15 @@ const foobar = '';
 // `padding-line-between-statements`.
 const newLineAfterVar = 'foo';
 noop(newLineAfterVar);
+
+function funcThatReturns(bar) {
+  if (!bar) {
+    return;
+  }
+  return bar;
+}
+
+funcThatReturns('foo');
 
 // `prefer-destructuring`.
 const bar = {};

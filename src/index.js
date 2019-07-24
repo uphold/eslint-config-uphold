@@ -50,7 +50,6 @@ module.exports = {
     'mocha/no-nested-tests': 'error',
     'mocha/no-sibling-hooks': 'error',
     'new-cap': 'error',
-    'newline-before-return': 'error',
     'no-alert': 'error',
     'no-array-constructor': 'error',
     'no-bitwise': 'error',
@@ -72,7 +71,6 @@ module.exports = {
     'no-loop-func': 'error',
     'no-mixed-requires': 'error',
     'no-multi-str': 'error',
-    'no-native-reassign': 'error',
     'no-nested-ternary': 'error',
     'no-new': 'error',
     'no-new-func': 'error',
@@ -104,6 +102,7 @@ module.exports = {
     'operator-assignment': 'error',
     'padding-line-between-statements': [
       'error',
+      { blankLine: 'always', next: 'return', prev: '*' },
       { blankLine: 'always', next: '*', prev: ['const', 'let', 'var'] },
       { blankLine: 'any', next: ['const', 'let', 'var'], prev: ['const', 'let', 'var'] }
     ],
