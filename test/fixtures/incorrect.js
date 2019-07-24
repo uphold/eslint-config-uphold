@@ -92,11 +92,6 @@ class NoDupeClassMembers {
 
 noop(NoDupeClassMembers);
 
-// `no-empty`.
-try {
-  noop();
-} catch (e) {}
-
 // `no-labels`.
 noLabels: {
   break noLabels;

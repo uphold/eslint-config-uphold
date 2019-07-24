@@ -18,7 +18,7 @@ const self = this;
 
 noop(self);
 
-// `curly` and `no-empty``.
+// `curly`.
 let mixedRules = true;
 
 if (mixedRules) {
@@ -129,11 +129,6 @@ class Child extends NoThisBeforeSuper {
 }
 
 noop(Child);
-
-// `no-warning-comments`.
-
-// TODO: do something.
-// FIXME: this is not a good idea.
 
 // `padding-line-between-statements`.
 const newLineAfterVar = 'foo';
