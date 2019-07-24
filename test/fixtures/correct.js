@@ -62,17 +62,6 @@ const newCap = new Cap();
 
 noop(newCap);
 
-// `newline-before-return`.
-function funcThatReturns(bar) {
-  if (!bar) {
-    return;
-  }
-
-  return bar;
-}
-
-funcThatReturns('foo');
-
 // `no-class-assign`.
 class NoClassAssign {}
 
@@ -134,6 +123,16 @@ noop(Child);
 const newLineAfterVar = 'foo';
 
 noop(newLineAfterVar);
+
+function funcThatReturns(bar) {
+  if (!bar) {
+    return;
+  }
+
+  return bar;
+}
+
+funcThatReturns('foo');
 
 // `prefer-destructuring`.
 let { bar } = {};
