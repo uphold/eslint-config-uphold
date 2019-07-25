@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.0.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v1.0.0) (2019-07-25)
+- Remove redundant rules [\#19](https://github.com/uphold/eslint-config-uphold/pull/19) ([rplopes](https://github.com/rplopes))
+- Add peer dependencies [\#20](https://github.com/uphold/eslint-config-uphold/pull/20) ([rplopes](https://github.com/rplopes))
+- Add prettier and replace redundant rules [\#18](https://github.com/uphold/eslint-config-uphold/pull/18) ([rplopes](https://github.com/rplopes))
+- Update eslint@6.0.1 [\#16](https://github.com/uphold/eslint-config-uphold/pull/16) ([rplopes](https://github.com/rplopes))
+- Improve `id-match` [\#14](https://github.com/uphold/eslint-config-uphold/pull/14) ([rplopes](https://github.com/rplopes))
+
 ## [v0.2.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v0.2.0) (2018-07-16)
 - Add @uphold/github-changelog-generator [\#13](https://github.com/uphold/eslint-config-uphold/pull/13) ([Americas](https://github.com/Americas))
 - Replace drone with travis [\#10](https://github.com/uphold/eslint-config-uphold/pull/10) ([Americas](https://github.com/Americas))
