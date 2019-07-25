@@ -31,15 +31,19 @@
     "eslint-plugin-mocha": "^5.3.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-sort-imports-es6": "^0.0.3",
-    "eslint-plugin-sql-template": "^2.0.0",
-    "prettier": "^1.18.2"
+    "eslint-plugin-sql-template": "^2.0.0"
   },
   "devDependencies": {
     "@uphold/github-changelog-generator": "^0.7.0",
     "eslint": "^6.0.1",
     "mocha": "^3.1.1",
     "pre-commit": "^1.2.2",
+    "prettier": "^1.18.2",
     "should": "^9.0.2"
+  },
+  "peerDependencies": {
+    "eslint": "^6.0.1",
+    "prettier": "^1.18.2"
   },
   "pre-commit": [
     "lint"
