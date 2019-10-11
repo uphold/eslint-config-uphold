@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.0.1](https://github.com/uphold/eslint-config-uphold/releases/tag/v1.0.1) (2019-10-11)
+- Update @uphold/github-changelog-generator@1.0.1 [\#24](https://github.com/uphold/eslint-config-uphold/pull/24) ([rplopes](https://github.com/rplopes))
+- Update @uphold/github-changelog-generator@1.0.0 [\#23](https://github.com/uphold/eslint-config-uphold/pull/23) ([rplopes](https://github.com/rplopes))
+- Update eslint peer dependency [\#22](https://github.com/uphold/eslint-config-uphold/pull/22) ([rplopes](https://github.com/rplopes))
+- Expand README to add more context and links [\#21](https://github.com/uphold/eslint-config-uphold/pull/21) ([waldyrious](https://github.com/waldyrious))
+
 ## [v1.0.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v1.0.0) (2019-07-25)
 - Remove redundant rules [\#19](https://github.com/uphold/eslint-config-uphold/pull/19) ([rplopes](https://github.com/rplopes))
 - Add peer dependencies [\#20](https://github.com/uphold/eslint-config-uphold/pull/20) ([rplopes](https://github.com/rplopes))
