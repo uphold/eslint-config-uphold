@@ -253,6 +253,11 @@ noop(quotes);
 // `require-await`.
 (async () => {})();
 
+// `rulesdir/explicit-sinon-use-fake-timers`
+const sinon = {};
+
+sinon.useFakeTimers();
+
 // `semi`.
 noop()
 
