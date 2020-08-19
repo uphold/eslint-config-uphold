@@ -22,8 +22,9 @@ describe('eslint-config-uphold', () => {
 
   it('should generate violations for incorrect code', () => {
     const source = path.join(__dirname, 'fixtures', 'incorrect.js');
+    const rules = linter.executeOnFiles([source]).results[0].messages.map(violation => violation.ruleId);
 
-    Array.from(linter.executeOnFiles([source]).results[0].messages.map(violation => violation.ruleId)).should.eql([
+    Array.from(rules).should.eql([
       'consistent-this',
       'curly',
       'dot-notation',
@@ -50,6 +51,7 @@ describe('eslint-config-uphold', () => {
       'prefer-destructuring',
       'prettier/prettier',
       'prettier/prettier',
+      'rulesdir/explicit-sinon-use-fake-timers',
       'sort-imports-es6/sort-imports-es6',
       'sort-keys',
       'spaced-comment',

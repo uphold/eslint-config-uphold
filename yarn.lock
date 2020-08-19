@@ -610,6 +610,11 @@ eslint-plugin-prettier@^3.1.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
+eslint-plugin-rulesdir@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-rulesdir/-/eslint-plugin-rulesdir-0.1.0.tgz#ad144d7e98464fda82963eff3fab331aecb2bf08"
+  integrity sha1-rRRNfphGT9qClj7/P6szGuyyvwg=
+
 eslint-plugin-sort-imports-es6@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/eslint-plugin-sort-imports-es6/-/eslint-plugin-sort-imports-es6-0.0.3.tgz#959f391d459efbf971d3ebb696d79e1b567aeedc"

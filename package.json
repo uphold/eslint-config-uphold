@@ -30,6 +30,7 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-mocha": "^5.3.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-rulesdir": "^0.1.0",
     "eslint-plugin-sort-imports-es6": "^0.0.3",
     "eslint-plugin-sql-template": "^2.0.0"
   },
