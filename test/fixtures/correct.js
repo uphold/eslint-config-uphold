@@ -165,6 +165,11 @@ noop(maximumLineLength);
   await noop();
 })();
 
+// `rulesdir/explicit-sinon-use-fake-timers`
+const sinon = {};
+
+sinon.useFakeTimers({ toFake: ['Date'] });
+
 // `sort-imports`.
 import 'import-1';
 import * as Import6 from 'import-2';

@@ -149,6 +149,11 @@ noop(maximumLineLength);
 // `require-await`.
 (async () => {})();
 
+// `rulesdir/explicit-sinon-use-fake-timers`
+const sinon = {};
+
+sinon.useFakeTimers();
+
 // `sort-imports`.
 import import1 from 'import-1';
 import { import2 } from 'import-2';
