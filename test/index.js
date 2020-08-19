@@ -31,8 +31,9 @@ describe('eslint-config-uphold', () => {
 
   it('should generate violations for incorrect code', () => {
     const source = path.join(__dirname, 'fixtures', 'incorrect.js');
+    const rules = linter.executeOnFiles([source]).results[0].messages.map(violation => violation.ruleId);
 
-    Array.from(linter.executeOnFiles([source]).results[0].messages.map(violation => violation.ruleId)).should.eql([
+    Array.from(rules).should.eql([
       'array-bracket-spacing',
       'arrow-parens',
       'brace-style',
@@ -87,6 +88,7 @@ describe('eslint-config-uphold', () => {
       'quote-props',
       'quote-props',
       'quotes',
+      'rulesdir/explicit-sinon-use-fake-timers',
       'semi',
       'semi-spacing',
       'semi-spacing',

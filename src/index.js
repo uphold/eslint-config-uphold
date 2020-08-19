@@ -1,5 +1,17 @@
 
 /**
+ * Module dependencies.
+ */
+
+const rulesDir = require('eslint-plugin-rulesdir');
+
+/**
+ * Configure the rulesdir plugin.
+ */
+
+rulesDir.RULES_DIR = `${__dirname}/rules`;
+
+/**
  * Export `uphold` shared configuration preset.
  */
 
@@ -13,7 +25,7 @@ module.exports = {
   },
   extends: ['eslint:recommended'],
   parser: 'babel-eslint',
-  plugins: ['mocha', 'sort-class-members', 'sort-imports-es6', 'sql-template'],
+  plugins: ['mocha', 'rulesdir', 'sort-class-members', 'sort-imports-es6', 'sql-template'],
   root: true,
   rules: {
     'accessor-pairs': 'error',
@@ -167,6 +179,7 @@ module.exports = {
     radix: 'error',
     'require-await': 'error',
     'require-yield': 'error',
+    'rulesdir/explicit-sinon-use-fake-timers': 'error',
     semi: 'error',
     'semi-spacing': 'error',
     'sort-imports-es6/sort-imports-es6': ['error', {
