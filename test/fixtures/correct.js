@@ -213,3 +213,11 @@ let yoda = true;
 if (yoda === true) {
   yoda = false;
 }
+
+(async () => {
+  const foobar = ['a', 'b', 'c'];
+
+  for await (const foo of foobar) {
+    foo.test = foo;
+  }
+})();

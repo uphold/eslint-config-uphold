@@ -1,16 +1,4 @@
 /**
- * Module dependencies.
- */
-
-const rulesDir = require('eslint-plugin-rulesdir');
-
-/**
- * Configure the rulesdir plugin.
- */
-
-rulesDir.RULES_DIR = `${__dirname}/rules`;
-
-/**
  * Export `uphold` shared configuration preset.
  */
 
