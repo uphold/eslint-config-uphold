@@ -1,15 +1,16 @@
 'use strict';
 
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 // Validates that `sinon.useFakeTimers()` is always called with an explicit `toFake` property.
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 
 module.exports = {
   meta: {
     messages: {
-      avoidName: "Calls to `sinon.useFakeTimers()` must provide a `toFake` configuration"
+      avoidName: 'Calls to `sinon.useFakeTimers()` must provide a `toFake` configuration'
     }
   },
+  // eslint-disable-next-line sort-keys
   create(context) {
     return {
       CallExpression(node) {
@@ -20,8 +21,8 @@ module.exports = {
         if (node.callee.object.name === 'sinon' && node.callee.property.name === 'useFakeTimers') {
           if (!node.arguments.length) {
             context.report({
-              node,
-              message: 'Must pass an object with `toFake` configuration'
+              message: 'Must pass an object with `toFake` configuration',
+              node
             });
           }
 
@@ -29,8 +30,8 @@ module.exports = {
             if (argument.type === 'ObjectExpression') {
               if (!argument.properties.find(({ key: { name } }) => name === 'toFake')) {
                 context.report({
-                  node,
-                  message: 'Object must contain `toFake` configuration'
+                  message: 'Object must contain `toFake` configuration',
+                  node
                 });
               }
 
@@ -38,13 +39,12 @@ module.exports = {
             }
 
             context.report({
-              node,
-              message: 'Not an object'
+              message: 'Not an object',
+              node
             });
           }
         }
       }
     };
-
   }
 };
