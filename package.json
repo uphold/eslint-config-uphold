@@ -36,21 +36,21 @@
   },
   "devDependencies": {
     "@uphold/github-changelog-generator": "^1.0.1",
-    "eslint": "^6.1.0",
+    "eslint": "^7.18.0",
     "mocha": "^7.1.1",
     "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
     "should": "^9.0.2"
   },
   "peerDependencies": {
-    "eslint": "^6.5.1",
+    "eslint": "^7.18.0",
     "prettier": "^1.18.2"
   },
   "pre-commit": [
     "lint"
   ],
   "engines": {
-    "node": ">=8.10.0"
+    "node": ">=10.23.2"
   },
   "options": {
     "mocha": "-t 10000 --require should test"
