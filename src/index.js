@@ -34,26 +34,12 @@ module.exports = {
     'default-case': 'error',
     'dot-notation': 'error',
     eqeqeq: ['error', 'smart'],
-    'func-style': [
-      'error',
-      'declaration',
-      {
-        allowArrowFunctions: true
-      }
-    ],
-    'id-length': [
-      'error',
-      {
-        exceptions: ['_', 'e', 'i']
-      }
-    ],
+    'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
+    'id-length': ['error', { exceptions: ['_', 'e', 'i'] }],
     'id-match': [
       'error',
       '^_$|^[$_a-zA-Z]*[_a-zA-Z0-9]*[a-zA-Z0-9]*$|^[A-Z][_A-Z0-9]+[A-Z0-9]$',
-      {
-        onlyDeclarations: true,
-        properties: true
-      }
+      { onlyDeclarations: true, properties: true }
     ],
     'max-depth': 'error',
     'max-params': ['error', 4],
@@ -100,6 +86,7 @@ module.exports = {
     'no-self-compare': 'error',
     'no-sequences': 'error',
     'no-sync': 'error',
+    'no-tabs': ['error', { allowIndentationTabs: true }],
     'no-throw-literal': 'error',
     'no-undef-init': 'error',
     'no-underscore-dangle': 'error',
@@ -122,14 +109,8 @@ module.exports = {
     'prefer-destructuring': [
       'error',
       {
-        AssignmentExpression: {
-          array: false,
-          object: false
-        },
-        VariableDeclarator: {
-          array: true,
-          object: true
-        }
+        AssignmentExpression: { array: false, object: false },
+        VariableDeclarator: { array: true, object: true }
       },
       {
         enforceForRenamedProperties: false
@@ -137,13 +118,7 @@ module.exports = {
     ],
     'prefer-spread': 'error',
     'prefer-template': 'error',
-    'prettier/prettier': [
-      'error',
-      {
-        printWidth: 120,
-        singleQuote: true
-      }
-    ],
+    'prettier/prettier': ['error', { arrowParens: 'avoid', printWidth: 120, singleQuote: true, trailingComma: 'none' }],
     radix: 'error',
     'require-atomic-updates': 'off',
     'require-await': 'error',
@@ -156,13 +131,7 @@ module.exports = {
         memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
       }
     ],
-    'sort-keys': [
-      'error',
-      'asc',
-      {
-        natural: true
-      }
-    ],
+    'sort-keys': ['error', 'asc', { natural: true }],
     'spaced-comment': 'error',
     'sql-template/no-unsafe-query': 'error',
     'valid-jsdoc': 'error',
