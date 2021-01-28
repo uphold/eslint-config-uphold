@@ -19,6 +19,9 @@
     "type": "git",
     "url": "git+ssh://git@github.com/uphold/eslint-config-uphold.git"
   },
+  "files": [
+    "src"
+  ],
   "scripts": {
     "changelog": "github-changelog-generator --future-release=v$npm_config_future_release > CHANGELOG.md",
     "lint": "eslint src test/index.js",
