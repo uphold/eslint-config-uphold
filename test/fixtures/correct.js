@@ -156,6 +156,11 @@ const maximumLineLength = '120';
 
 noop(maximumLineLength);
 
+// promise/prefer-await-to-then
+(async (foo = {}) => {
+  await foo;
+})();
+
 // `require-atomic-updates`.
 (async (foo = {}) => {
   await foo;

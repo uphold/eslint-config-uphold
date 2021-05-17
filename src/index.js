@@ -35,7 +35,7 @@ module.exports = {
   parserOptions: {
     requireConfigFile: false
   },
-  plugins: ['mocha', 'rulesdir', 'sort-imports-requires', 'sql-template'],
+  plugins: ['mocha', 'promise', 'rulesdir', 'sort-imports-requires', 'sql-template'],
   root: true,
   rules: {
     'accessor-pairs': 'error',
@@ -133,6 +133,7 @@ module.exports = {
     'prefer-spread': 'error',
     'prefer-template': 'error',
     'prettier/prettier': ['error', { arrowParens: 'avoid', printWidth: 120, singleQuote: true, trailingComma: 'none' }],
+    'promise/prefer-await-to-then': 'error',
     radix: 'error',
     'require-atomic-updates': 'off',
     'require-await': 'error',
