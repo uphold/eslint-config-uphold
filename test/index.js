@@ -53,6 +53,7 @@ describe('eslint-config-uphold', () => {
       'prefer-destructuring',
       'prettier/prettier',
       'prettier/prettier',
+      'promise/prefer-await-to-then',
       'rulesdir/explicit-sinon-use-fake-timers',
       'sort-imports-es6/sort-imports-es6',
       'sort-keys',
