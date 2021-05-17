@@ -156,6 +156,11 @@ const maximumLineLength = 'prettier dictates that lines of code must not exceed 
 
 noop(maximumLineLength);
 
+// promise/prefer-await-to-then
+((foo = {}) => {
+  foo.then({});
+})();
+
 // `require-await`.
 (async () => {})();
 
