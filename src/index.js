@@ -23,7 +23,10 @@ module.exports = {
     node: true
   },
   extends: ['eslint:recommended', 'plugin:prettier/recommended'],
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false
+  },
   plugins: ['mocha', 'rulesdir', 'sort-imports-es6', 'sql-template'],
   root: true,
   rules: {
