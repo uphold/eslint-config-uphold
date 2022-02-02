@@ -42,3 +42,11 @@ To automatically fix all lint issues, use the `--fix` option:
 ```sh
 $ npm run lint --fix
 ```
+
+## Upgrading eslint
+
+See the [eslint repo](https://github.com/eslint/eslint#semantic-versioning-policy) for eslint's guidelines on semantic versioning.
+
+A [tilde range](https://docs.npmjs.com/cli/v6/using-npm/semver#tilde-ranges-123-12-1) is set for the eslint dependency to pick up any patch changes by default.
+
+For any minor/major upgrades to `eslint` it is recommended to update both eslint and `eslint-config-uphold` and keep them in parallel. This is down to the fact that no guarantee is made that minor upgrades do not cause conflicts or issues with existing or new rules. The downside here is a package update is required for any security or other bug fixes. The benefit however is the included rules are always guaranteed to be stable.
