@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/uphold/eslint-config-uphold/releases/tag/2.1.0) (2022-02-03)
+- Upgrade github-changelog-generator to version 3.0.0 [\#48](https://github.com/uphold/eslint-config-uphold/pull/48) ([Finglas](https://github.com/Finglas))
+- Replace travis with github actions [\#45](https://github.com/uphold/eslint-config-uphold/pull/45) ([diogotorres97](https://github.com/diogotorres97))
+- Set eslint version to allow patch upgrades [\#46](https://github.com/uphold/eslint-config-uphold/pull/46) ([Finglas](https://github.com/Finglas))
+- Update to use `eslint-parser` [\#44](https://github.com/uphold/eslint-config-uphold/pull/44) ([Finglas](https://github.com/Finglas))
+- Bump y18n from 4.0.0 to 4.0.1 [\#38](https://github.com/uphold/eslint-config-uphold/pull/38) ([dependabot](https://github.com/apps/dependabot))
+
 ## [v2.0.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v2.0.0) (2021-01-29)
 - Add `files` property to package.json [\#37](https://github.com/uphold/eslint-config-uphold/pull/37) ([Americas](https://github.com/Americas))
 - Bump prettier@2.2.1 [\#36](https://github.com/uphold/eslint-config-uphold/pull/36) ([Americas](https://github.com/Americas))
