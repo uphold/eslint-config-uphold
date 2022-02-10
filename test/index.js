@@ -12,7 +12,7 @@ const path = require('path');
  */
 
 describe('eslint-config-uphold', () => {
-  const linter = new ESLint({ overrideConfigFile: path.join(__dirname, '..', 'src', 'index.js') });
+  const linter = new ESLint({ ignore: false, overrideConfigFile: path.join(__dirname, '..', 'src', 'index.js') });
 
   it('should not generate any violation for correct code', async () => {
     const source = path.join(__dirname, 'fixtures', 'correct.js');
@@ -41,6 +41,11 @@ describe('eslint-config-uphold', () => {
       'no-const-assign',
       'no-constant-condition',
       'no-dupe-class-members',
+      'no-irregular-whitespace',
+      'no-irregular-whitespace',
+      'prettier/prettier',
+      'no-irregular-whitespace',
+      'no-irregular-whitespace',
       'no-labels',
       'no-labels',
       'no-multi-str',

@@ -82,6 +82,10 @@ class NoDupeClassMembers {
 
 noop(NoDupeClassMembers);
 
+// `no-irregular-whitespace`.
+// Comments should not have irregular spaces.
+noop('Strings cannot have irregular spaces', `String templates cannot have irregular spaces`);
+
 // `no-labels`.
 noLabels: {
   break noLabels;

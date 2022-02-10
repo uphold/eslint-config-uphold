@@ -65,6 +65,7 @@ module.exports = {
     'no-extra-bind': 'error',
     'no-implied-eval': 'error',
     'no-inline-comments': 'error',
+    'no-irregular-whitespace': ['error', { skipComments: false, skipStrings: false, skipTemplates: false }],
     'no-iterator': 'error',
     'no-labels': 'error',
     'no-lone-blocks': 'error',
