@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.2.0](https://github.com/uphold/eslint-config-uphold/releases/tag/2.2.0) (2022-02-11)
+- Update `no-irregular-whitespace` rule [\#50](https://github.com/uphold/eslint-config-uphold/pull/50) ([Americas](https://github.com/Americas))
+- Release v2.1.0 [\#49](https://github.com/uphold/eslint-config-uphold/pull/49) ([Finglas](https://github.com/Finglas))
+
 ## [2.1.0](https://github.com/uphold/eslint-config-uphold/releases/tag/2.1.0) (2022-02-03)
 - Upgrade github-changelog-generator to version 3.0.0 [\#48](https://github.com/uphold/eslint-config-uphold/pull/48) ([Finglas](https://github.com/Finglas))
 - Replace travis with github actions [\#45](https://github.com/uphold/eslint-config-uphold/pull/45) ([diogotorres97](https://github.com/diogotorres97))
