@@ -54,7 +54,7 @@
     "lint"
   ],
   "engines": {
-    "node": ">=10.23.2"
+    "node": ">=12.22"
   },
   "options": {
     "mocha": "-t 10000 --require should test"
