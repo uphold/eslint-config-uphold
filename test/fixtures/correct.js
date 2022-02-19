@@ -13,6 +13,9 @@ function noop() {
   // do nothing
 }
 
+// `array-callback-return`.
+[1, 2].map(number => number + 1);
+
 // `consistent-this`.
 const self = this;
 

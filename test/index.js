@@ -27,6 +27,7 @@ describe('eslint-config-uphold', () => {
     const rules = results[0].messages.map(violation => violation.ruleId);
 
     Array.from(rules).should.eql([
+      'array-callback-return',
       'consistent-this',
       'curly',
       'dot-notation',

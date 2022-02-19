@@ -31,6 +31,7 @@ module.exports = {
   root: true,
   rules: {
     'accessor-pairs': 'error',
+    'array-callback-return': 'error',
     'block-scoped-var': 'error',
     'consistent-this': ['error', 'self'],
     curly: 'error',
