@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.3.0](https://github.com/uphold/eslint-config-uphold/releases/tag/2.3.0) (2022-02-21)
+- Enable array-callback-return rule [\#52](https://github.com/uphold/eslint-config-uphold/pull/52) ([satazor](https://github.com/satazor))
+- Bump minimum node version to 12.22 [\#51](https://github.com/uphold/eslint-config-uphold/pull/51) ([diogotorres97](https://github.com/diogotorres97))
+
 ## [2.2.0](https://github.com/uphold/eslint-config-uphold/releases/tag/2.2.0) (2022-02-11)
 - Update `no-irregular-whitespace` rule [\#50](https://github.com/uphold/eslint-config-uphold/pull/50) ([Americas](https://github.com/Americas))
 - Release v2.1.0 [\#49](https://github.com/uphold/eslint-config-uphold/pull/49) ([Finglas](https://github.com/Finglas))
