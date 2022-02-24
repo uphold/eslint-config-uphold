@@ -27,7 +27,7 @@ module.exports = {
   parserOptions: {
     requireConfigFile: false
   },
-  plugins: ['mocha', 'rulesdir', 'sort-imports-es6', 'sql-template'],
+  plugins: ['mocha', 'rulesdir', 'sort-imports-requires', 'sql-template'],
   root: true,
   rules: {
     'accessor-pairs': 'error',
@@ -128,12 +128,19 @@ module.exports = {
     'require-atomic-updates': 'off',
     'require-await': 'error',
     'rulesdir/explicit-sinon-use-fake-timers': 'error',
-    'sort-imports-es6/sort-imports-es6': [
+    'sort-imports-requires/sort-imports': [
       'error',
       {
-        ignoreCase: false,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
+        unsafeAutofix: true,
+        useOldSingleMemberSyntax: true
+      }
+    ],
+    'sort-imports-requires/sort-requires': [
+      'error',
+      {
+        unsafeAutofix: true,
+        useAliases: false,
+        useOldSingleMemberSyntax: true
       }
     ],
     'sort-keys': ['error', 'asc', { natural: true }],

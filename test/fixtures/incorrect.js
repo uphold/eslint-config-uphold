@@ -101,7 +101,7 @@ const noMultiStr = 'Line 1 \
 noop(noMultiStr);
 
 // `no-this-before-super`.
-const NoThisBeforeSuper = require('no-this-before-super');
+function NoThisBeforeSuper() {}
 
 class Child extends NoThisBeforeSuper {
   constructor() {
@@ -161,12 +161,19 @@ const sinon = {};
 
 sinon.useFakeTimers();
 
-// `sort-imports`.
+// `sort-imports-requires/sort-imports`.
 import import1 from 'import-1';
 import { import2 } from 'import-2';
 
 noop(import1);
 noop(import2);
+
+// `sort-imports-requires/sort-requires`.
+const import3 = require('import-1');
+const { import4 } = require('import-2');
+
+noop(import3);
+noop(import4);
 
 // `sort-keys`.
 const sortObjectProps = {
