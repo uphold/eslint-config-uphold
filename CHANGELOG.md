@@ -1,5 +1,8 @@
 # Changelog
 
+## [3.0.0](https://github.com/uphold/eslint-config-uphold/releases/tag/3.0.0) (2022-02-25)
+- Add sorting of require statements with autofix [\#53](https://github.com/uphold/eslint-config-uphold/pull/53) ([satazor](https://github.com/satazor))
+
 ## [2.3.0](https://github.com/uphold/eslint-config-uphold/releases/tag/2.3.0) (2022-02-21)
 - Enable array-callback-return rule [\#52](https://github.com/uphold/eslint-config-uphold/pull/52) ([satazor](https://github.com/satazor))
 - Bump minimum node version to 12.22 [\#51](https://github.com/uphold/eslint-config-uphold/pull/51) ([diogotorres97](https://github.com/diogotorres97))
