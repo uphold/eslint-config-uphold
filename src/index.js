@@ -23,6 +23,14 @@ module.exports = {
     node: true
   },
   extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  overrides: [
+    {
+      files: ['**/bin/**', '**/scripts/**'],
+      rules: {
+        'no-console': 'off'
+      }
+    }
+  ],
   parser: '@babel/eslint-parser',
   parserOptions: {
     requireConfigFile: false
@@ -57,6 +65,7 @@ module.exports = {
     'no-bitwise': 'error',
     'no-caller': 'error',
     'no-cond-assign': ['error', 'always'],
+    'no-console': 'warn',
     'no-div-regex': 'error',
     'no-duplicate-imports': 'error',
     'no-else-return': 'error',
