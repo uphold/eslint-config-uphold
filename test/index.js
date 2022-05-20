@@ -28,6 +28,7 @@ describe('eslint-config-uphold', () => {
 
     Array.from(rules).should.eql([
       'array-callback-return',
+      'no-console',
       'consistent-this',
       'curly',
       'dot-notation',
@@ -67,5 +68,14 @@ describe('eslint-config-uphold', () => {
       'sql-template/no-unsafe-query',
       'yoda'
     ]);
+  });
+
+  it('should not generate any violation for correct code inside bin & scripts folders', async () => {
+    const source1 = path.join(__dirname, 'fixtures', 'bin', 'correct.js');
+    const source2 = path.join(__dirname, 'fixtures', 'scripts', 'correct.js');
+    const results = await linter.lintFiles([source1, source2]);
+
+    results[0].messages.should.be.empty();
+    results[1].messages.should.be.empty();
   });
 });

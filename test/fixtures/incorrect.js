@@ -6,6 +6,9 @@ function noop() {
 // `array-callback-return`.
 [1, 2].map(() => {});
 
+// `no-console`.
+console.log('foo');
+
 // `consistent-this`.
 const consistentThis = this;
 
