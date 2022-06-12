@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.1.0](https://github.com/uphold/eslint-config-uphold/releases/tag/3.1.0) (2022-06-12)
+- Add no-console rule [\#57](https://github.com/uphold/eslint-config-uphold/pull/57) ([satazor](https://github.com/satazor))
+- Bump prettier@2.5.1 [\#54](https://github.com/uphold/eslint-config-uphold/pull/54) ([diogotorres97](https://github.com/diogotorres97))
+
 ## [3.0.0](https://github.com/uphold/eslint-config-uphold/releases/tag/3.0.0) (2022-02-25)
 - Add sorting of require statements with autofix [\#53](https://github.com/uphold/eslint-config-uphold/pull/53) ([satazor](https://github.com/satazor))
 
