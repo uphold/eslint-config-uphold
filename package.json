@@ -40,14 +40,14 @@
   },
   "devDependencies": {
     "@uphold/github-changelog-generator": "^3.0.0",
-    "eslint": "~8.7.0",
+    "eslint": "~8.20.0",
     "mocha": "^9.2.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.5.1",
     "should": "^9.0.2"
   },
   "peerDependencies": {
-    "eslint": "~8.7.0",
+    "eslint": "~8.20.0",
     "prettier": "^2.5.1"
   },
   "pre-commit": [
