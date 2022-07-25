@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/uphold/eslint-config-uphold/releases/tag/3.2.0) (2022-07-25)
+- Bump moment from 2.29.2 to 2.29.4 [\#60](https://github.com/uphold/eslint-config-uphold/pull/60) ([dependabot](https://github.com/apps/dependabot))
+- Bump prettier to ^2.7.1 [\#59](https://github.com/uphold/eslint-config-uphold/pull/59) ([Finglas](https://github.com/Finglas))
+- Bump eslint to ~8.20.0 [\#58](https://github.com/uphold/eslint-config-uphold/pull/58) ([Finglas](https://github.com/Finglas))
+- Bump minimist from 1.2.5 to 1.2.6 [\#56](https://github.com/uphold/eslint-config-uphold/pull/56) ([dependabot](https://github.com/apps/dependabot))
+- Bump moment from 2.29.1 to 2.29.2 [\#55](https://github.com/uphold/eslint-config-uphold/pull/55) ([dependabot](https://github.com/apps/dependabot))
+
 ## [3.1.0](https://github.com/uphold/eslint-config-uphold/releases/tag/3.1.0) (2022-06-12)
 - Add no-console rule [\#57](https://github.com/uphold/eslint-config-uphold/pull/57) ([satazor](https://github.com/satazor))
 - Bump prettier@2.5.1 [\#54](https://github.com/uphold/eslint-config-uphold/pull/54) ([diogotorres97](https://github.com/diogotorres97))
