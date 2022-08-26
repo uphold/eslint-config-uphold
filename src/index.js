@@ -67,6 +67,7 @@ module.exports = {
     'no-cond-assign': ['error', 'always'],
     'no-console': 'warn',
     'no-div-regex': 'error',
+    'no-dupe-keys': 'error',
     'no-duplicate-imports': 'error',
     'no-else-return': 'error',
     'no-eq-null': 'error',

@@ -88,6 +88,11 @@ class NoDupeClassMembers {
 
 noop(NoDupeClassMembers);
 
+// `no-dupe-keys`.
+const noDupeKeys = { foo: 'bar', foo: 'biz' };
+
+noop(noDupeKeys);
+
 // `no-irregular-whitespace`.
 // Comments should not have irregular spaces.
 noop('Strings cannot have irregular spaces', `String templates cannot have irregular spaces`);

@@ -97,6 +97,11 @@ class NoDupeClassMembers {
 
 noop(NoDupeClassMembers);
 
+// `no-dupe-keys`.
+const noDupeKeys = { bar: 'foo', foo: 'bar' };
+
+noop(noDupeKeys);
+
 // `no-labels`.
 const noLabels = { label: true };
 

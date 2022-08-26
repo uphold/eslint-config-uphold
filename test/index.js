@@ -43,6 +43,7 @@ describe('eslint-config-uphold', () => {
       'no-const-assign',
       'no-constant-condition',
       'no-dupe-class-members',
+      'no-dupe-keys',
       'no-irregular-whitespace',
       'no-irregular-whitespace',
       'prettier/prettier',
