@@ -1,4 +1,4 @@
-# Changelog
+
 
 ## [3.2.0](https://github.com/uphold/eslint-config-uphold/releases/tag/3.2.0) (2022-07-25)
 - Bump moment from 2.29.2 to 2.29.4 [\#60](https://github.com/uphold/eslint-config-uphold/pull/60) ([dependabot](https://github.com/apps/dependabot))
