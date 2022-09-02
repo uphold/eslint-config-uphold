@@ -65,7 +65,7 @@ describe('eslint-config-uphold', () => {
       'rulesdir/explicit-sinon-use-fake-timers',
       'sort-imports-requires/sort-imports',
       'sort-imports-requires/sort-requires',
-      'sort-keys',
+      'sort-keys-fix/sort-keys-fix',
       'spaced-comment',
       'sql-template/no-unsafe-query',
       'yoda'

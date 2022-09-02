@@ -10,7 +10,7 @@ module.exports = {
       avoidName: 'Calls to `sinon.useFakeTimers()` must provide a `toFake` configuration'
     }
   },
-  // eslint-disable-next-line sort-keys
+  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   create(context) {
     return {
       CallExpression(node) {

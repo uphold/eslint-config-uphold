@@ -35,7 +35,7 @@ module.exports = {
   parserOptions: {
     requireConfigFile: false
   },
-  plugins: ['mocha', 'promise', 'rulesdir', 'sort-imports-requires', 'sql-template'],
+  plugins: ['mocha', 'promise', 'rulesdir', 'sort-imports-requires', 'sort-keys-fix', 'sql-template'],
   root: true,
   rules: {
     'accessor-pairs': 'error',
@@ -154,7 +154,7 @@ module.exports = {
         useOldSingleMemberSyntax: true
       }
     ],
-    'sort-keys': ['error', 'asc', { natural: true }],
+    'sort-keys-fix/sort-keys-fix': ['error', 'asc', { natural: true }],
     'spaced-comment': 'error',
     'sql-template/no-unsafe-query': 'error',
     'valid-jsdoc': 'error',
