@@ -1,5 +1,8 @@
 # Changelog
 
+## [4.0.0](https://github.com/uphold/eslint-config-uphold/releases/tag/4.0.0) (2022-09-07)
+- Add sort-keys-fix plugin [\#62](https://github.com/uphold/eslint-config-uphold/pull/62) ([Finglas](https://github.com/Finglas))
+
 ## [3.4.0](https://github.com/uphold/eslint-config-uphold/releases/tag/3.4.0) (2022-08-30)
 - Add no-dupe-keys rule [\#61](https://github.com/uphold/eslint-config-uphold/pull/61) ([acostalima](https://github.com/acostalima))
 - Add `prefer-await-to-then` rule [\#40](https://github.com/uphold/eslint-config-uphold/pull/40) ([nunofgs](https://github.com/nunofgs))
