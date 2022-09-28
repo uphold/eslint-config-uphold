@@ -1,5 +1,8 @@
 # Changelog
 
+## [4.1.0](https://github.com/uphold/eslint-config-uphold/releases/tag/4.1.0) (2022-09-28)
+- Update all dependencies [\#63](https://github.com/uphold/eslint-config-uphold/pull/63) ([satazor](https://github.com/satazor))
+
 ## [4.0.0](https://github.com/uphold/eslint-config-uphold/releases/tag/4.0.0) (2022-09-07)
 - Add sort-keys-fix plugin [\#62](https://github.com/uphold/eslint-config-uphold/pull/62) ([Finglas](https://github.com/Finglas))
 
