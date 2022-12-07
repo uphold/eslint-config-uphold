@@ -57,6 +57,7 @@ describe('eslint-config-uphold', () => {
       'no-unused-vars',
       'padding-line-between-statements',
       'padding-line-between-statements',
+      'padding-line-between-statements',
       'prefer-destructuring',
       'prefer-destructuring',
       'prettier/prettier',
