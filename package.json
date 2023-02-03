@@ -29,7 +29,7 @@
     "version": "npm run changelog --future-release=$npm_package_version && git add -A CHANGELOG.md"
   },
   "dependencies": {
-    "@babel/core": "^7.16.12",
+    "@babel/core": "^7.20.12",
     "@babel/eslint-parser": "^7.16.5",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-mocha": "^10.1.0",
