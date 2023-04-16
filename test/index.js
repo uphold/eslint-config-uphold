@@ -51,6 +51,7 @@ describe('eslint-config-uphold', () => {
       'no-irregular-whitespace',
       'no-labels',
       'no-labels',
+      'prettier/prettier',
       'no-multi-str',
       'no-this-before-super',
       'no-underscore-dangle',
