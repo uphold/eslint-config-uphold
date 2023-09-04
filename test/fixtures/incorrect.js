@@ -174,6 +174,26 @@ const sinon = {};
 
 sinon.useFakeTimers();
 
+// `sort-destructure-keys/sort-destructure-keys`.
+const foobject = {
+  FOXTROT: 0,
+  alpha: 1,
+  beta: 2,
+  charlie: 3,
+  delta: 4
+};
+
+const { beta, alpha } = foobject;
+const { delta, FOXTROT } = foobject;
+const { delta: Echo, charlie } = foobject;
+
+noop(alpha);
+noop(beta);
+noop(charlie);
+noop(delta);
+noop(Echo);
+noop(FOXTROT);
+
 // `sort-imports-requires/sort-imports`.
 import import1 from 'import-1';
 import { import2 } from 'import-2';
