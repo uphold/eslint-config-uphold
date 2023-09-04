@@ -183,6 +183,26 @@ const sinon = {};
 
 sinon.useFakeTimers({ toFake: ['Date'] });
 
+// `sort-destructure-keys/sort-destructure-keys`
+const foobject = {
+  FOXTROT: 0,
+  alpha: 1,
+  beta: 2,
+  charlie: 3,
+  delta: 4
+};
+
+const { alpha, beta } = foobject;
+const { FOXTROT, delta } = foobject;
+const { charlie, delta: Echo } = foobject;
+
+noop(alpha);
+noop(beta);
+noop(charlie);
+noop(delta);
+noop(Echo);
+noop(FOXTROT);
+
 // `sort-imports`.
 import 'import-1';
 import * as Import6 from 'import-2';

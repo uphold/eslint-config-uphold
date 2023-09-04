@@ -35,7 +35,15 @@ module.exports = {
   parserOptions: {
     requireConfigFile: false
   },
-  plugins: ['mocha', 'promise', 'rulesdir', 'sort-imports-requires', 'sort-keys-fix', 'sql-template'],
+  plugins: [
+    'mocha',
+    'promise',
+    'rulesdir',
+    'sort-destructure-keys',
+    'sort-imports-requires',
+    'sort-keys-fix',
+    'sql-template'
+  ],
   root: true,
   rules: {
     'accessor-pairs': 'error',
@@ -139,6 +147,7 @@ module.exports = {
     'require-atomic-updates': 'off',
     'require-await': 'error',
     'rulesdir/explicit-sinon-use-fake-timers': 'error',
+    'sort-destructure-keys/sort-destructure-keys': 'error',
     'sort-imports-requires/sort-imports': [
       'error',
       {
