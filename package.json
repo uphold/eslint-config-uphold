@@ -36,6 +36,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-rulesdir": "^0.2.2",
+    "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "eslint-plugin-sort-imports-requires": "^1.0.2",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-sql-template": "^2.0.0"
@@ -43,7 +44,6 @@
   "devDependencies": {
     "@uphold/github-changelog-generator": "^3.3.1",
     "eslint": "^8.38.0",
-    "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "mocha": "^10.2.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.8.7",
