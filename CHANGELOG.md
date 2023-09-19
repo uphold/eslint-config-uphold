@@ -1,5 +1,10 @@
 # Changelog
 
+## [5.0.0](https://github.com/uphold/eslint-config-uphold/releases/tag/5.0.0) (2023-09-19)
+- Add sorting keys during object destructuring [\#70](https://github.com/uphold/eslint-config-uphold/pull/70) ([JoaoOliveiraRocha](https://github.com/JoaoOliveiraRocha))
+- Bump all dependencies [\#67](https://github.com/uphold/eslint-config-uphold/pull/67) ([diogotorres97](https://github.com/diogotorres97))
+- Bump json5 from 2.2.1 to 2.2.3 [\#65](https://github.com/uphold/eslint-config-uphold/pull/65) ([dependabot](https://github.com/apps/dependabot))
+
 ## [4.1.0](https://github.com/uphold/eslint-config-uphold/releases/tag/4.1.0) (2022-09-28)
 - Update all dependencies [\#63](https://github.com/uphold/eslint-config-uphold/pull/63) ([satazor](https://github.com/satazor))
 
