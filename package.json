@@ -29,8 +29,8 @@
     "version": "npm run changelog --future-release=$npm_package_version && git add -A CHANGELOG.md"
   },
   "dependencies": {
-    "@babel/core": "^7.21.4",
-    "@babel/eslint-parser": "^7.21.3",
+    "@babel/core": "^7.23.6",
+    "@babel/eslint-parser": "^7.23.3",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-mocha": "^10.1.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@uphold/github-changelog-generator": "^3.3.1",
-    "eslint": "^8.38.0",
+    "eslint": "^8.56.0",
     "mocha": "^10.2.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.8.7",
