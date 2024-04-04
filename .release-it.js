@@ -19,3 +19,4 @@ module.exports = {
   npm: {
     publish: true
   }
+};
