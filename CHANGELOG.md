@@ -1,5 +1,10 @@
 # Changelog
 
+## [v6.0.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.0.0) (2024-04-04)
+- Fix `release-it` [\#74](https://github.com/uphold/eslint-config-uphold/pull/74) ([risantos](https://github.com/risantos))
+- Add GitHub release workflow and bump minimum `node` version to `18` [\#73](https://github.com/uphold/eslint-config-uphold/pull/73) ([risantos](https://github.com/risantos))
+- Update dependencies to fix vulnerabilities [\#72](https://github.com/uphold/eslint-config-uphold/pull/72) ([eduardoconceicao](https://github.com/eduardoconceicao))
+
 ## [5.0.1](https://github.com/uphold/eslint-config-uphold/releases/tag/5.0.1) (2023-09-19)
 - Fix eslint plugin being a dev dependency [\#71](https://github.com/uphold/eslint-config-uphold/pull/71) ([JoaoOliveiraRocha](https://github.com/JoaoOliveiraRocha))
 
