@@ -10,7 +10,7 @@ that allow the [Prettier](https://prettier.io) pretty-printer to reformat the co
 ## Installation
 
 ```sh
-$ npm install eslint eslint-config-uphold prettier --save-dev
+npm install eslint eslint-config-uphold prettier --save-dev
 ```
 
 ## Usage
@@ -34,19 +34,31 @@ Add a `lint` command to the `scripts` section of your `package.json`, like so:
 and run the linter with:
 
 ```sh
-$ npm run lint
+npm run lint
 ```
 
 To automatically fix all lint issues, use the `--fix` option:
 
 ```sh
-$ npm run lint --fix
+npm run lint --fix
 ```
 
-## Upgrading eslint
+## Upgrading ESLint
 
-See the [eslint repo](https://github.com/eslint/eslint#semantic-versioning-policy) for eslint's guidelines on semantic versioning.
+See the [ESLint repo](https://github.com/eslint/eslint#semantic-versioning-policy) for ESLint's guidelines on semantic versioning.
 
-A [tilde range](https://docs.npmjs.com/cli/v6/using-npm/semver#tilde-ranges-123-12-1) is set for the eslint dependency to pick up any patch changes by default.
+A [tilde range](https://docs.npmjs.com/cli/v6/using-npm/semver#tilde-ranges-123-12-1) is set for the ESLint dependency to pick up any patch changes by default.
 
-For any minor/major upgrades to `eslint` it is recommended to update both eslint and `eslint-config-uphold` and keep them in parallel. This is down to the fact that no guarantee is made that minor upgrades do not cause conflicts or issues with existing or new rules. The downside here is a package update is required for any security or other bug fixes. The benefit however is the included rules are always guaranteed to be stable.
+For any minor/major upgrades to ESLint it is recommended to update both `eslint` and `eslint-config-uphold` and keep them in parallel.
+This is down to the fact that no guarantee is made that minor upgrades do not cause conflicts or issues with existing or new rules.
+The downside here is a package update is required for any security or other bug fixes.
+The benefit however is the included rules are always guaranteed to be stable.
+
+## Release process
+
+The release of a version is automated via the [release](https://github.com/uphold/eslint-config-uphold/.github/workflows/release.yml) GitHub workflow.
+Run it by clicking the "Run workflow" button.
+
+## License
+
+MIT

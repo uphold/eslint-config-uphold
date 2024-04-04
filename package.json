@@ -22,11 +22,13 @@
   "files": [
     "src"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "changelog": "echo \"$(github-changelog-generator --owner uphold --repo eslint-config-uphold --future-release=$npm_package_version)\n$(tail -n +2 CHANGELOG.md)\" > CHANGELOG.md",
     "lint": "eslint src test/index.js",
-    "test": "mocha $npm_package_options_mocha",
-    "version": "npm run changelog --future-release=$npm_package_version && git add -A CHANGELOG.md"
+    "release": "release-it",
+    "test": "mocha $npm_package_options_mocha"
   },
   "dependencies": {
     "@babel/core": "^7.23.6",
@@ -42,11 +44,12 @@
     "eslint-plugin-sql-template": "^2.0.0"
   },
   "devDependencies": {
-    "@uphold/github-changelog-generator": "^3.3.1",
+    "@uphold/github-changelog-generator": "^3.4.0",
     "eslint": "^8.56.0",
     "mocha": "^10.2.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.8.7",
+    "release-it": "^17.1.1",
     "should": "^13.2.3"
   },
   "peerDependencies": {
