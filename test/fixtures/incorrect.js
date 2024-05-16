@@ -29,6 +29,11 @@ let id_mátch;
 
 noop(id_mátch);
 
+/**
+ * testing `jsdoc/require-description-complete-sentence`
+ * @description Also testing `jsdoc/tag-lines`.
+ */
+
 // `mocha/no-exclusive-tests`.
 describe.only('noExclusiveTests', () => {
   it('should not work');
