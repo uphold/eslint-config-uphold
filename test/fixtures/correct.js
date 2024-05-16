@@ -54,6 +54,12 @@ noop(ID_M_ATCH);
 noop(__dirname);
 noop(`${__dirname}`);
 
+/**
+ * Testing `jsdoc/require-description-complete-sentence`.
+ *
+ * @description Also testing `jsdoc/tag-lines`.
+ */
+
 // `mocha/no-exclusive-tests`.
 describe('noExclusiveTests', () => {
   it('should work');

@@ -22,7 +22,7 @@ module.exports = {
     mocha: true,
     node: true
   },
-  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  extends: ['eslint:recommended', 'plugin:jsdoc/recommended-error', 'plugin:prettier/recommended'],
   overrides: [
     {
       files: ['**/bin/**', '**/scripts/**'],
@@ -36,6 +36,7 @@ module.exports = {
     requireConfigFile: false
   },
   plugins: [
+    'jsdoc',
     'mocha',
     'promise',
     'rulesdir',
@@ -61,6 +62,10 @@ module.exports = {
       '^_$|^[$_a-zA-Z]*[_a-zA-Z0-9]*[a-zA-Z0-9]*$|^[A-Z][_A-Z0-9]+[A-Z0-9]$',
       { onlyDeclarations: true, properties: true }
     ],
+    'jsdoc/no-defaults': 0,
+    'jsdoc/require-description-complete-sentence': 'error',
+    'jsdoc/require-jsdoc': 0,
+    'jsdoc/tag-lines': ['error', 'any', { startLines: 1 }],
     'max-depth': 'error',
     'max-params': ['error', 4],
     'mocha/no-exclusive-tests': 'error',
