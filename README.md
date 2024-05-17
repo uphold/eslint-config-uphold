@@ -7,6 +7,10 @@ extend the [eslint-recommended](https://github.com/eslint/eslint/blob/master/con
 as well as the [overrides](https://github.com/prettier/eslint-config-prettier/blob/master/index.js)
 that allow the [Prettier](https://prettier.io) pretty-printer to reformat the code without conflicts.
 
+## Status
+
+[![npm version][npm-image]][npm-url]
+
 ## Installation
 
 ```sh
@@ -15,18 +19,37 @@ npm install eslint eslint-config-uphold prettier --save-dev
 
 ## Usage
 
-Create an `.eslintrc.yml` file with the following content:
+Create an `eslint.config.js` file with the following content:
 
-```yaml
-extends: uphold
+```js
+const uphold = require('eslint-config-uphold');
+
+module.exports = uphold;
 ```
+
+If you'd like to extend the config, you can do so like this:
+
+```js
+const uphold = require('eslint-config-uphold');
+const yourPlugin = require('your-eslint-plugin');
+
+module.exports = [
+  ...uphold,
+  plugins: {
+    ...uphold[0].plugins,
+    yourPlugin,
+  }
+];
+```
+
+See [Using a Shareable Config](https://eslint.org/docs/latest/extend/shareable-configs#using-a-shareable-config) for more information.
 
 Add a `lint` command to the `scripts` section of your `package.json`, like so:
 
 ```json
 {
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint"
   }
 }
 ```
@@ -62,3 +85,6 @@ Run it by clicking the "Run workflow" button.
 ## License
 
 MIT
+
+[npm-image]: https://img.shields.io/npm/v/eslint-config-uphold.svg
+[npm-url]: https://www.npmjs.com/package/eslint-config-uphold

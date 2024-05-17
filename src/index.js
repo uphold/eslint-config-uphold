@@ -1,52 +1,66 @@
 /**
  * Module dependencies.
+ *
+ * @typedef {import('eslint').Linter.Config} LinterConfig
  */
 
+const babelParser = require('@babel/eslint-parser');
+const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+const globals = require('globals');
+const js = require('@eslint/js');
+const jsdoc = require('eslint-plugin-jsdoc');
+const mocha = require('eslint-plugin-mocha');
+const promise = require('eslint-plugin-promise');
 const rulesDir = require('eslint-plugin-rulesdir');
+const sortDestructureKeys = require('eslint-plugin-sort-destructure-keys');
+const sortImportsRequires = require('eslint-plugin-sort-imports-requires');
+const sortKeysFix = require('eslint-plugin-sort-keys-fix');
+const sqlTemplate = require('eslint-plugin-sql-template');
 
 /**
- * Configure the rulesdir plugin.
+ * Configure the `rulesDir` plugin.
  */
 
 rulesDir.RULES_DIR = `${__dirname}/rules`;
 
 /**
- * Export `uphold` shared configuration preset.
+ * Language options.
+ *
+ * @type {LinterConfig['languageOptions']}
  */
-
-module.exports = {
-  env: {
-    es6: true,
-    jasmine: true,
-    jest: true,
-    mocha: true,
-    node: true
+const languageOptions = {
+  ecmaVersion: 2020,
+  globals: {
+    ...globals.jasmine,
+    ...globals.jest,
+    ...globals.mocha,
+    ...globals.node
   },
-  extends: ['eslint:recommended', 'plugin:jsdoc/recommended-error', 'plugin:prettier/recommended'],
-  overrides: [
-    {
-      files: ['**/bin/**', '**/scripts/**'],
-      rules: {
-        'no-console': 'off'
-      }
-    }
-  ],
-  parser: '@babel/eslint-parser',
+  parser: babelParser,
   parserOptions: {
     requireConfigFile: false
+  }
+};
+
+/**
+ * Base configuration for Uphold.
+ *
+ * @type {LinterConfig}
+ */
+const upholdBaseConfig = {
+  languageOptions,
+  plugins: {
+    jsdoc,
+    mocha,
+    promise,
+    rulesdir: rulesDir,
+    'sort-destructure-keys': sortDestructureKeys,
+    'sort-imports-requires': sortImportsRequires,
+    'sort-keys-fix': sortKeysFix,
+    'sql-template': sqlTemplate
   },
-  plugins: [
-    'jsdoc',
-    'mocha',
-    'promise',
-    'rulesdir',
-    'sort-destructure-keys',
-    'sort-imports-requires',
-    'sort-keys-fix',
-    'sql-template'
-  ],
-  root: true,
   rules: {
+    ...js.configs.recommended.rules,
     'accessor-pairs': 'error',
     'array-callback-return': 'error',
     'block-scoped-var': 'error',
@@ -60,7 +74,10 @@ module.exports = {
     'id-match': [
       'error',
       '^_$|^[$_a-zA-Z]*[_a-zA-Z0-9]*[a-zA-Z0-9]*$|^[A-Z][_A-Z0-9]+[A-Z0-9]$',
-      { onlyDeclarations: true, properties: true }
+      {
+        onlyDeclarations: true,
+        properties: true
+      }
     ],
     'jsdoc/no-defaults': 0,
     'jsdoc/require-description-complete-sentence': 'error',
@@ -120,6 +137,7 @@ module.exports = {
     'no-underscore-dangle': 'error',
     'no-unneeded-ternary': 'error',
     'no-unused-expressions': 'error',
+    'no-unused-vars': ['error', { caughtErrors: 'none' }],
     'no-use-before-define': 'error',
     'no-useless-call': 'error',
     'no-useless-concat': 'error',
@@ -127,52 +145,97 @@ module.exports = {
     'no-void': 'error',
     'object-shorthand': 'error',
     'operator-assignment': 'error',
+
     'padding-line-between-statements': [
       'error',
-      { blankLine: 'always', next: 'return', prev: '*' },
-      { blankLine: 'always', next: '*', prev: ['const', 'let', 'var'] },
-      { blankLine: 'any', next: ['const', 'let', 'var'], prev: ['const', 'let', 'var'] }
+      {
+        blankLine: 'always',
+        next: 'return',
+        prev: '*'
+      },
+      {
+        blankLine: 'always',
+        next: '*',
+        prev: ['const', 'let', 'var']
+      },
+      {
+        blankLine: 'any',
+        next: ['const', 'let', 'var'],
+        prev: ['const', 'let', 'var']
+      }
     ],
+
     'prefer-const': 'error',
+
     'prefer-destructuring': [
       'error',
       {
-        AssignmentExpression: { array: false, object: false },
-        VariableDeclarator: { array: true, object: true }
+        AssignmentExpression: {
+          array: false,
+          object: false
+        },
+
+        VariableDeclarator: {
+          array: true,
+          object: true
+        }
       },
       {
         enforceForRenamedProperties: false
       }
     ],
+
     'prefer-spread': 'error',
     'prefer-template': 'error',
-    'prettier/prettier': ['error', { arrowParens: 'avoid', printWidth: 120, singleQuote: true, trailingComma: 'none' }],
+    'prettier/prettier': [
+      'error',
+      {
+        arrowParens: 'avoid',
+        printWidth: 120,
+        singleQuote: true,
+        trailingComma: 'none'
+      }
+    ],
     'promise/prefer-await-to-then': 'error',
     radix: 'error',
     'require-atomic-updates': 'off',
     'require-await': 'error',
     'rulesdir/explicit-sinon-use-fake-timers': 'error',
     'sort-destructure-keys/sort-destructure-keys': 'error',
-    'sort-imports-requires/sort-imports': [
-      'error',
-      {
-        unsafeAutofix: true,
-        useOldSingleMemberSyntax: true
-      }
-    ],
+    'sort-imports-requires/sort-imports': ['error', { unsafeAutofix: true, useOldSingleMemberSyntax: true }],
     'sort-imports-requires/sort-requires': [
       'error',
-      {
-        unsafeAutofix: true,
-        useAliases: false,
-        useOldSingleMemberSyntax: true
-      }
+      { unsafeAutofix: true, useAliases: false, useOldSingleMemberSyntax: true }
     ],
     'sort-keys-fix/sort-keys-fix': ['error', 'asc', { natural: true }],
     'spaced-comment': 'error',
     'sql-template/no-unsafe-query': 'error',
-    'valid-jsdoc': 'error',
     'vars-on-top': 'error',
     yoda: 'error'
   }
 };
+
+/**
+ * Configuration for bin and scripts files.
+ *
+ * @type {LinterConfig}
+ */
+const upholdBinScriptsConfig = {
+  files: ['**/bin/**', '**/scripts/**'],
+  languageOptions,
+  rules: {
+    'no-console': 'off'
+  }
+};
+
+/**
+ * Export `uphold` shared configuration preset.
+ *
+ * @type {LinterConfig[]}
+ */
+module.exports = [
+  jsdoc.configs['flat/recommended-error'],
+  eslintPluginPrettierRecommended,
+  upholdBaseConfig,
+  upholdBinScriptsConfig
+];

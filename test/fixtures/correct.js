@@ -2,7 +2,7 @@
 try {
   fail();
 } catch (e) {
-  // eslint-disable-line no-empty
+  /* empty */
 }
 
 // env: jest and mocha.
