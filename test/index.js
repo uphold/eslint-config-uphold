@@ -58,8 +58,6 @@ describe('eslint-config-uphold', () => {
       'no-this-before-super',
       'no-underscore-dangle',
       'no-unused-vars',
-      'padding-line-between-statements',
-      'padding-line-between-statements',
       'prefer-destructuring',
       'prefer-destructuring',
       'prettier/prettier',
@@ -72,7 +70,9 @@ describe('eslint-config-uphold', () => {
       'sort-imports-requires/sort-imports',
       'sort-imports-requires/sort-requires',
       'sort-keys-fix/sort-keys-fix',
-      'spaced-comment',
+      'stylistic/padding-line-between-statements',
+      'stylistic/padding-line-between-statements',
+      'stylistic/spaced-comment',
       'sql-template/no-unsafe-query',
       'yoda'
     ]);

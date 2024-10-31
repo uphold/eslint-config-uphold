@@ -16,6 +16,7 @@ const sortDestructureKeys = require('eslint-plugin-sort-destructure-keys');
 const sortImportsRequires = require('eslint-plugin-sort-imports-requires');
 const sortKeysFix = require('eslint-plugin-sort-keys-fix');
 const sqlTemplate = require('eslint-plugin-sql-template');
+const stylistic = require('@stylistic/eslint-plugin-js');
 
 /**
  * Configure the `rulesDir` plugin.
@@ -57,7 +58,8 @@ const upholdBaseConfig = {
     'sort-destructure-keys': sortDestructureKeys,
     'sort-imports-requires': sortImportsRequires,
     'sort-keys-fix': sortKeysFix,
-    'sql-template': sqlTemplate
+    'sql-template': sqlTemplate,
+    stylistic
   },
   rules: {
     ...js.configs.recommended.rules,
@@ -131,7 +133,6 @@ const upholdBaseConfig = {
     'no-self-compare': 'error',
     'no-sequences': 'error',
     'no-sync': 'error',
-    'no-tabs': ['error', { allowIndentationTabs: true }],
     'no-throw-literal': 'error',
     'no-undef-init': 'error',
     'no-underscore-dangle': 'error',
@@ -145,28 +146,7 @@ const upholdBaseConfig = {
     'no-void': 'error',
     'object-shorthand': 'error',
     'operator-assignment': 'error',
-
-    'padding-line-between-statements': [
-      'error',
-      {
-        blankLine: 'always',
-        next: 'return',
-        prev: '*'
-      },
-      {
-        blankLine: 'always',
-        next: '*',
-        prev: ['const', 'let', 'var']
-      },
-      {
-        blankLine: 'any',
-        next: ['const', 'let', 'var'],
-        prev: ['const', 'let', 'var']
-      }
-    ],
-
     'prefer-const': 'error',
-
     'prefer-destructuring': [
       'error',
       {
@@ -184,7 +164,6 @@ const upholdBaseConfig = {
         enforceForRenamedProperties: false
       }
     ],
-
     'prefer-spread': 'error',
     'prefer-template': 'error',
     'prettier/prettier': [
@@ -208,8 +187,27 @@ const upholdBaseConfig = {
       { unsafeAutofix: true, useAliases: false, useOldSingleMemberSyntax: true }
     ],
     'sort-keys-fix/sort-keys-fix': ['error', 'asc', { natural: true }],
-    'spaced-comment': 'error',
     'sql-template/no-unsafe-query': 'error',
+    'stylistic/no-tabs': ['error', { allowIndentationTabs: true }],
+    'stylistic/padding-line-between-statements': [
+      'error',
+      {
+        blankLine: 'always',
+        next: 'return',
+        prev: '*'
+      },
+      {
+        blankLine: 'always',
+        next: '*',
+        prev: ['const', 'let', 'var']
+      },
+      {
+        blankLine: 'any',
+        next: ['const', 'let', 'var'],
+        prev: ['const', 'let', 'var']
+      }
+    ],
+    'stylistic/spaced-comment': 'error',
     'vars-on-top': 'error',
     yoda: 'error'
   }

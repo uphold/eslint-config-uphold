@@ -136,19 +136,6 @@ noop(new NoUnderscoreDangle());
 // `no-unused-vars`
 const foobar = '';
 
-// `padding-line-between-statements`.
-const newLineAfterVar = 'foo';
-noop(newLineAfterVar);
-
-function funcThatReturns(bar) {
-  if (!bar) {
-    return;
-  }
-  return bar;
-}
-
-funcThatReturns('foo');
-
 // `prefer-destructuring`.
 const bar = {};
 const biz = bar.biz;
@@ -221,7 +208,20 @@ const sortObjectProps = {
 
 noop(sortObjectProps);
 
-// `spaced-comment`.
+// `stylistic/padding-line-between-statements`.
+const newLineAfterVar = 'foo';
+noop(newLineAfterVar);
+
+function funcThatReturns(bar) {
+  if (!bar) {
+    return;
+  }
+  return bar;
+}
+
+funcThatReturns('foo');
+
+// `stylistic/spaced-comment`.
 //Comment missing space.
 
 // `sql-template/no-unsafe-query`.
