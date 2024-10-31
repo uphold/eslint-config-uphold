@@ -10,6 +10,8 @@ const globals = require('globals');
 const js = require('@eslint/js');
 const jsdoc = require('eslint-plugin-jsdoc');
 const mocha = require('eslint-plugin-mocha');
+const nodePlugin = require('eslint-plugin-n');
+const path = require('node:path');
 const promise = require('eslint-plugin-promise');
 const rulesDir = require('eslint-plugin-rulesdir');
 const sortDestructureKeys = require('eslint-plugin-sort-destructure-keys');
@@ -22,7 +24,7 @@ const stylistic = require('@stylistic/eslint-plugin-js');
  * Configure the `rulesDir` plugin.
  */
 
-rulesDir.RULES_DIR = `${__dirname}/rules`;
+rulesDir.RULES_DIR = path.join(__dirname, 'rules');
 
 /**
  * Language options.
@@ -53,6 +55,7 @@ const upholdBaseConfig = {
   plugins: {
     jsdoc,
     mocha,
+    'node-plugin': nodePlugin,
     promise,
     rulesdir: rulesDir,
     'sort-destructure-keys': sortDestructureKeys,
@@ -114,25 +117,18 @@ const upholdBaseConfig = {
     'no-lone-blocks': 'error',
     'no-lonely-if': 'error',
     'no-loop-func': 'error',
-    'no-mixed-requires': 'error',
     'no-multi-str': 'error',
     'no-nested-ternary': 'error',
     'no-new': 'error',
     'no-new-func': 'error',
-    'no-new-require': 'error',
     'no-new-wrappers': 'error',
     'no-object-constructor': 'error',
     'no-octal-escape': 'error',
-    'no-path-concat': 'error',
-    'no-process-env': 'error',
-    'no-process-exit': 'error',
     'no-proto': 'error',
-    'no-restricted-modules': 'error',
     'no-return-assign': 'error',
     'no-script-url': 'error',
     'no-self-compare': 'error',
     'no-sequences': 'error',
-    'no-sync': 'error',
     'no-throw-literal': 'error',
     'no-undef-init': 'error',
     'no-underscore-dangle': 'error',
@@ -144,6 +140,14 @@ const upholdBaseConfig = {
     'no-useless-concat': 'error',
     'no-var': 'error',
     'no-void': 'error',
+    'node-plugin/no-mixed-requires': 'error',
+    'node-plugin/no-new-require': 'error',
+    'node-plugin/no-path-concat': 'error',
+    'node-plugin/no-process-env': 'error',
+    'node-plugin/no-process-exit': 'error',
+    'node-plugin/no-restricted-import': 'error',
+    'node-plugin/no-restricted-require': 'error',
+    'node-plugin/no-sync': 'error',
     'object-shorthand': 'error',
     'operator-assignment': 'error',
     'prefer-const': 'error',
