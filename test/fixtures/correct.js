@@ -131,21 +131,6 @@ class Child extends NoThisBeforeSuper {
 
 noop(Child);
 
-// `padding-line-between-statements`.
-const newLineAfterVar = 'foo';
-
-noop(newLineAfterVar);
-
-function funcThatReturns(bar) {
-  if (!bar) {
-    return;
-  }
-
-  return bar;
-}
-
-funcThatReturns('foo');
-
 // `prefer-destructuring`.
 let { bar } = {};
 let [biz] = bar;
@@ -231,9 +216,6 @@ const sortObjectProps = {
 
 noop(sortObjectProps);
 
-// `spaced-comment`.
-// spaced comment.
-
 // `sql-template/no-unsafe-query`.
 const db = {
   query: noop()
@@ -243,6 +225,24 @@ const sql = 'sql-tag';
 
 db.query(sql`SELECT ${foo} FROM bar`);
 db.query(`SELECT foo FROM bar`);
+
+// `stylistic/padding-line-between-statements`.
+const newLineAfterVar = 'foo';
+
+noop(newLineAfterVar);
+
+function funcThatReturns(bar) {
+  if (!bar) {
+    return;
+  }
+
+  return bar;
+}
+
+funcThatReturns('foo');
+
+// `stylistic/spaced-comment`.
+// spaced comment.
 
 // `yoda`.
 let yoda = true;
