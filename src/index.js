@@ -226,7 +226,8 @@ const upholdBinScriptsConfig = {
   files: ['**/bin/**', '**/scripts/**'],
   languageOptions,
   rules: {
-    'no-console': 'off'
+    'no-console': 'off',
+    'node-plugin/no-process-exit': 'off'
   }
 };
 
