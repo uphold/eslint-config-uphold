@@ -56,8 +56,6 @@ noop(`${__dirname}`);
 
 /**
  * Testing `jsdoc/require-description-complete-sentence`.
- *
- * @description Also testing `jsdoc/tag-lines`.
  */
 
 // `mocha/no-exclusive-tests`.

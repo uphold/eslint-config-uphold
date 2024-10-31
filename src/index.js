@@ -82,7 +82,7 @@ const upholdBaseConfig = {
     'jsdoc/no-defaults': 0,
     'jsdoc/require-description-complete-sentence': 'error',
     'jsdoc/require-jsdoc': 0,
-    'jsdoc/tag-lines': ['error', 'any', { startLines: 1 }],
+    'jsdoc/tag-lines': 0,
     'max-depth': 'error',
     'max-params': ['error', 4],
     'mocha/no-exclusive-tests': 'error',

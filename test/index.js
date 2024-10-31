@@ -35,7 +35,6 @@ describe('eslint-config-uphold', () => {
       'id-match',
       'jsdoc/require-description-complete-sentence',
       'jsdoc/require-description-complete-sentence',
-      'jsdoc/tag-lines',
       'mocha/no-exclusive-tests',
       'mocha/no-identical-title',
       'mocha/no-nested-tests',
