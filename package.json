@@ -62,6 +62,11 @@
     "eslint": ">=9.0.0",
     "prettier": ">=3.0.0"
   },
+  "peerDependenciesMeta": {
+    "prettier": {
+      "optional": true
+    }
+  },
   "pre-commit": [
     "lint"
   ],
