@@ -1,5 +1,12 @@
 # Changelog
 
+## [v6.1.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.1.0) (2025-03-20)
+- Fix project dependency issues [\#82](https://github.com/uphold/eslint-config-uphold/pull/82) ([Americas](https://github.com/Americas))
+- Update release workflow setup [\#81](https://github.com/uphold/eslint-config-uphold/pull/81) ([risantos](https://github.com/risantos))
+- Upgrade `ESLint` to `v9` and `prettier` to `v3` [\#80](https://github.com/uphold/eslint-config-uphold/pull/80) ([risantos](https://github.com/risantos))
+- Bump all dependencies [\#76](https://github.com/uphold/eslint-config-uphold/pull/76) ([risantos](https://github.com/risantos))
+- Add `eslint-plugin-jsdoc` [\#75](https://github.com/uphold/eslint-config-uphold/pull/75) ([risantos](https://github.com/risantos))
+
 ## [v6.0.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.0.0) (2024-04-04)
 - Fix `release-it` [\#74](https://github.com/uphold/eslint-config-uphold/pull/74) ([risantos](https://github.com/risantos))
 - Add GitHub release workflow and bump minimum `node` version to `18` [\#73](https://github.com/uphold/eslint-config-uphold/pull/73) ([risantos](https://github.com/risantos))
