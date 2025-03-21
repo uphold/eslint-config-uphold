@@ -1,5 +1,9 @@
 # Changelog
 
+## [v6.2.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.2.0) (2025-03-21)
+
+- Bump dependencies to fix vulnerabilities [\#83](https://github.com/uphold/eslint-config-uphold/pull/83) ([risantos](https://github.com/risantos))
+
 ## [v6.1.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.1.0) (2025-03-20)
 - Fix project dependency issues [\#82](https://github.com/uphold/eslint-config-uphold/pull/82) ([Americas](https://github.com/Americas))
 - Update release workflow setup [\#81](https://github.com/uphold/eslint-config-uphold/pull/81) ([risantos](https://github.com/risantos))
