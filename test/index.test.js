@@ -1,32 +1,43 @@
-'use strict';
-
 /**
  * Module dependencies.
  */
 
-const { ESLint } = require('eslint');
-const path = require('path');
+import { ESLint } from 'eslint';
+import { describe, expect, it } from 'vitest';
+import { resolve } from 'node:path';
+import baseConfig from '../src/index.js';
 
 /**
- * Tests for `eslint-config-uphold`.
+ * Instances.
+ */
+
+const linter = new ESLint({ baseConfig, ignore: false });
+
+/**
+ * Test `eslint-config-uphold`.
  */
 
 describe('eslint-config-uphold', () => {
-  const linter = new ESLint({ ignore: false, overrideConfigFile: path.join(__dirname, '..', 'src', 'index.js') });
-
   it('should not generate any violation for correct code', async () => {
-    const source = path.join(__dirname, 'fixtures', 'correct.js');
-    const results = await linter.lintFiles([source]);
+    const source = resolve(import.meta.dirname, 'fixtures/correct.js');
+    const [result] = await linter.lintFiles([source]);
 
-    results[0].messages.should.be.empty();
+    expect(result.messages).toHaveLength(0);
   });
 
   it('should generate violations for incorrect code', async () => {
-    const source = path.join(__dirname, 'fixtures', 'incorrect.js');
-    const results = await linter.lintFiles([source]);
-    const rules = results[0].messages.map(violation => violation.ruleId);
+    const source = resolve(import.meta.dirname, 'fixtures/incorrect.js');
+    const [result] = await linter.lintFiles([source]);
+    const rules = result.messages.map(violation => violation.ruleId);
+    const violations = result.messages.map(({ column, line, ruleId, severity }) => ({
+      column,
+      line,
+      ruleId,
+      severity
+    }));
 
-    Array.from(rules).should.eql([
+    expect(violations).toMatchSnapshot();
+    expect(Array.from(rules)).toEqual([
       'array-callback-return',
       'no-console',
       'consistent-this',
@@ -79,11 +90,11 @@ describe('eslint-config-uphold', () => {
   });
 
   it('should not generate any violation for correct code inside bin & scripts folders', async () => {
-    const source1 = path.join(__dirname, 'fixtures', 'bin', 'correct.js');
-    const source2 = path.join(__dirname, 'fixtures', 'scripts', 'correct.js');
-    const results = await linter.lintFiles([source1, source2]);
+    const binCorrect = resolve(import.meta.dirname, 'fixtures/bin/correct.js');
+    const scriptsCorrect = resolve(import.meta.dirname, 'fixtures/scripts/correct.js');
+    const [binResult, scriptResult] = await linter.lintFiles([binCorrect, scriptsCorrect]);
 
-    results[0].messages.should.be.empty();
-    results[1].messages.should.be.empty();
+    expect(binResult.messages).toHaveLength(0);
+    expect(scriptResult.messages).toHaveLength(0);
   });
 });

@@ -19,6 +19,14 @@
     "type": "git",
     "url": "git+ssh://git@github.com/uphold/eslint-config-uphold.git"
   },
+  "exports": {
+    ".": {
+      "default": "./src/index.js"
+    },
+    "./react": {
+      "default": "./src/react.js"
+    }
+  },
   "files": [
     "src"
   ],
@@ -26,9 +34,9 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "eslint src test/index.js",
+    "lint": "eslint",
     "release": "release-it",
-    "test": "mocha $npm_package_options_mocha"
+    "test": "vitest run"
   },
   "dependencies": {
     "@babel/core": "^7.26.10",
@@ -36,11 +44,15 @@
     "@eslint/js": "^9.23.0",
     "@stylistic/eslint-plugin-js": "4.2.0",
     "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsdoc": "^50.6.9",
     "eslint-plugin-mocha": "^10.5.0",
     "eslint-plugin-n": "^17.16.2",
     "eslint-plugin-prettier": "^5.2.4",
     "eslint-plugin-promise": "^7.2.1",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-sort-class-members": "^1.21.0",
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
     "eslint-plugin-sort-imports-requires": "^2.0.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
@@ -48,14 +60,17 @@
     "globals": "^16.0.0"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.26.3",
     "@fastify/pre-commit": "^2.2.0",
     "@types/eslint": "^9.6.1",
     "@uphold/github-changelog-generator": "^4.0.2",
+    "@vitest/coverage-v8": "^1.4.0",
     "eslint": "^9.23.0",
     "mocha": "^11.1.0",
     "prettier": "^3.5.3",
+    "react": "^19.0.0",
     "release-it": "^18.1.2",
-    "should": "^13.2.3"
+    "vitest": "^1.4.0"
   },
   "peerDependencies": {
     "eslint": "~9.23.0",
@@ -74,5 +89,6 @@
   },
   "options": {
     "mocha": "-t 10000 --require should test"
-  }
+  },
+  "type": "module"
 }

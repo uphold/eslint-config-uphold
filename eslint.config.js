@@ -1,20 +1,25 @@
-'use strict';
-
 /**
  * Module dependencies.
  */
 
-const { defineConfig, globalIgnores } = require('eslint/config');
-const uphold = require('./src');
+import { defineConfig, globalIgnores } from 'eslint/config';
+import uphold from './src/index.js';
+import upholdReact from './src/react.js';
 
 /**
  * `ESLint` configuration.
  */
 
-module.exports = defineConfig([
+export default defineConfig([
   {
     extends: [uphold],
+    files: ['src/**.js', 'test/index.js', 'eslint.config.js', '.release-it.js'],
     name: 'uphold-config'
   },
-  globalIgnores(['!**/.release-it.js', 'test/fixtures'])
+  {
+    extends: [upholdReact],
+    files: ['test/react.test.js'],
+    name: 'uphold-react-config'
+  },
+  globalIgnores(['test/fixtures'])
 ]);
