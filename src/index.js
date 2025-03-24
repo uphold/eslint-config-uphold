@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Module dependencies.
  *
@@ -12,9 +14,8 @@ const js = require('@eslint/js');
 const jsdoc = require('eslint-plugin-jsdoc');
 const mocha = require('eslint-plugin-mocha');
 const nodePlugin = require('eslint-plugin-n');
-const path = require('node:path');
 const promise = require('eslint-plugin-promise');
-const rulesDir = require('eslint-plugin-rulesdir');
+const rules = require('./rules');
 const sortDestructureKeys = require('eslint-plugin-sort-destructure-keys');
 const sortImportsRequires = require('eslint-plugin-sort-imports-requires');
 const sortKeysFix = require('eslint-plugin-sort-keys-fix');
@@ -22,16 +23,11 @@ const sqlTemplate = require('eslint-plugin-sql-template');
 const stylistic = require('@stylistic/eslint-plugin-js');
 
 /**
- * Configure the `rulesDir` plugin.
- */
-
-rulesDir.RULES_DIR = path.join(__dirname, 'rules');
-
-/**
  * Language options.
  *
  * @type {LinterConfig['languageOptions']}
  */
+
 const languageOptions = {
   ecmaVersion: 2020,
   globals: {
@@ -51,6 +47,7 @@ const languageOptions = {
  *
  * @type {LinterConfig[]}
  */
+
 const upholdBaseConfig = defineConfig([
   {
     extends: [js.configs.recommended, jsdoc.configs['flat/recommended-error'], eslintPluginPrettierRecommended],
@@ -61,12 +58,12 @@ const upholdBaseConfig = defineConfig([
       mocha,
       'node-plugin': nodePlugin,
       promise,
-      rulesdir: rulesDir,
       'sort-destructure-keys': sortDestructureKeys,
       'sort-imports-requires': sortImportsRequires,
       'sort-keys-fix': sortKeysFix,
       'sql-template': sqlTemplate,
-      stylistic
+      stylistic,
+      'uphold-plugin': { rules }
     },
     rules: {
       'accessor-pairs': 'error',
@@ -186,7 +183,6 @@ const upholdBaseConfig = defineConfig([
       radix: 'error',
       'require-atomic-updates': 'off',
       'require-await': 'error',
-      'rulesdir/explicit-sinon-use-fake-timers': 'error',
       'sort-destructure-keys/sort-destructure-keys': 'error',
       'sort-imports-requires/sort-imports': ['error', { unsafeAutofix: true, useOldSingleMemberSyntax: true }],
       'sort-imports-requires/sort-requires': [
@@ -219,6 +215,7 @@ const upholdBaseConfig = defineConfig([
         }
       ],
       'stylistic/spaced-comment': 'error',
+      'uphold-plugin/explicit-sinon-use-fake-timers': 'error',
       'vars-on-top': 'error',
       yoda: 'error'
     }
@@ -230,6 +227,7 @@ const upholdBaseConfig = defineConfig([
  *
  * @type {LinterConfig}
  */
+
 const upholdBinScriptsConfig = {
   files: ['**/bin/**', '**/scripts/**'],
   languageOptions,
@@ -245,6 +243,7 @@ const upholdBinScriptsConfig = {
  *
  * @type {LinterConfig[]}
  */
+
 module.exports = defineConfig([
   {
     extends: [upholdBaseConfig, upholdBinScriptsConfig],

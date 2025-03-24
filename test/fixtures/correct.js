@@ -167,7 +167,7 @@ noop(maximumLineLength);
   await noop();
 })();
 
-// `rulesdir/explicit-sinon-use-fake-timers`
+// `uphold-plugin/explicit-sinon-use-fake-timers`
 const sinon = {};
 
 sinon.useFakeTimers({ toFake: ['Date'] });

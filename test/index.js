@@ -63,7 +63,7 @@ describe('eslint-config-uphold', () => {
       'prettier/prettier',
       'prettier/prettier',
       'promise/prefer-await-to-then',
-      'rulesdir/explicit-sinon-use-fake-timers',
+      'uphold-plugin/explicit-sinon-use-fake-timers',
       'sort-destructure-keys/sort-destructure-keys',
       'sort-destructure-keys/sort-destructure-keys',
       'sort-destructure-keys/sort-destructure-keys',
