@@ -27,19 +27,25 @@ const uphold = require('eslint-config-uphold');
 module.exports = uphold;
 ```
 
-If you'd like to extend the config, you can do so like this:
+If you'd like to extend the config, or change rules, you can do so like this:
 
 ```js
+const { defineConfig } = require('eslint/config');
 const uphold = require('eslint-config-uphold');
 const yourPlugin = require('your-eslint-plugin');
 
-module.exports = [
-  ...uphold,
-  plugins: {
-    ...uphold[0].plugins,
-    yourPlugin,
+module.exports = defineConfig([
+  {
+    extends: [uphold],
+    name: 'uphold-config',
+    plugins: {
+      'your-plugin': yourPlugin,
+    },
+    rules: {
+      'your-plugin/rule-name': 'error'
+    },
   }
-];
+]);
 ```
 
 See [Using a Shareable Config](https://eslint.org/docs/latest/extend/shareable-configs#using-a-shareable-config) for more information.
