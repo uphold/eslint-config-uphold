@@ -1,16 +1,13 @@
 'use strict';
 
-// ------------------------------------------------------------------------------
-// Validates that `sinon.useFakeTimers()` is always called with an explicit `toFake` property.
-// ------------------------------------------------------------------------------
+/**
+ * Export `explicit-sinon-use-fake-timers` rule.
+ * - Validates that `sinon.useFakeTimers()` is always called with an explicit `toFake` property.
+ *
+ * @type {import('eslint').Rule.RuleModule}
+ */
 
 module.exports = {
-  meta: {
-    messages: {
-      avoidName: 'Calls to `sinon.useFakeTimers()` must provide a `toFake` configuration'
-    }
-  },
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   create(context) {
     return {
       CallExpression(node) {
@@ -18,33 +15,41 @@ module.exports = {
           return;
         }
 
-        if (node.callee.object.name === 'sinon' && node.callee.property.name === 'useFakeTimers') {
-          if (!node.arguments.length) {
-            context.report({
-              message: 'Must pass an object with `toFake` configuration',
-              node
-            });
+        const isCalleeSinonUseFakeTimers =
+          node.callee.object.name === 'sinon' && node.callee.property.name === 'useFakeTimers';
+
+        if (!isCalleeSinonUseFakeTimers) {
+          return;
+        }
+
+        if (!node.arguments.length) {
+          context.report({ messageId: 'mustPassObject', node });
+        }
+
+        for (const argument of node.arguments) {
+          const isArgumentObjectExpression = argument.type === 'ObjectExpression';
+
+          if (!isArgumentObjectExpression) {
+            context.report({ messageId: 'notAnObject', node });
           }
 
-          for (const argument of node.arguments) {
-            if (argument.type === 'ObjectExpression') {
-              if (!argument.properties.find(({ key: { name } }) => name === 'toFake')) {
-                context.report({
-                  message: 'Object must contain `toFake` configuration',
-                  node
-                });
-              }
-
-              continue;
-            }
-
-            context.report({
-              message: 'Not an object',
-              node
-            });
+          if (!argument.properties.find(({ key }) => key && key.name === 'toFake')) {
+            context.report({ messageId: 'objectMustContainToFake', node });
           }
         }
       }
     };
+  },
+  meta: {
+    docs: {
+      description:
+        'Calls to `sinon.useFakeTimers()` must provide a `toFake` configuration. (e.g. `sinon.useFakeTimers({ toFake: ["Date"] })`)'
+    },
+    messages: {
+      mustPassObject: 'Must pass an object with `toFake` configuration',
+      notAnObject: 'Not an object',
+      objectMustContainToFake: 'Object must contain `toFake` configuration'
+    },
+    type: 'problem'
   }
 };
