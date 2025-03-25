@@ -1,5 +1,10 @@
 # Changelog
 
+## [v6.3.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.3.0) (2025-03-25)
+
+- Remove `eslint-plugin-rulesdir` and update ESLint configuration [\#86](https://github.com/uphold/eslint-config-uphold/pull/86) ([risantos](https://github.com/risantos))
+- Update Config export format [\#84](https://github.com/uphold/eslint-config-uphold/pull/84) ([risantos](https://github.com/risantos))
+
 ## [v6.2.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.2.0) (2025-03-21)
 
 - Bump dependencies to fix vulnerabilities [\#83](https://github.com/uphold/eslint-config-uphold/pull/83) ([risantos](https://github.com/risantos))
