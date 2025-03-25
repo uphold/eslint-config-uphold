@@ -1,5 +1,9 @@
 # Changelog
 
+## [v6.3.1](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.3.1) (2025-03-25)
+
+- Update Node.js minimum version requirements [\#87](https://github.com/uphold/eslint-config-uphold/pull/87) ([risantos](https://github.com/risantos))
+
 ## [v6.3.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.3.0) (2025-03-25)
 
 - Remove `eslint-plugin-rulesdir` and update ESLint configuration [\#86](https://github.com/uphold/eslint-config-uphold/pull/86) ([risantos](https://github.com/risantos))
