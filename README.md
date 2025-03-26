@@ -17,7 +17,8 @@ that allow the [Prettier](https://prettier.io) pretty-printer to reformat the co
 npm install eslint eslint-config-uphold prettier --save-dev
 ```
 
-!! Node.js minimum versions are `v22.12.0` and `v20.19.0`, as `@stylistic/eslint-plugin-js` depends on the `require('esm')` module from `v4.0.0`.
+> [!WARNING]
+> Node.js minimum versions are `v22.12.0` and `v20.19.0`, as `@stylistic/eslint-plugin-js` depends on the `require('esm')` module from `v4.0.0`.
 
 ## Usage
 
@@ -72,6 +73,28 @@ To automatically fix all lint issues, use the `--fix` option:
 
 ```sh
 npm run lint --fix
+```
+
+### React config
+
+If you are using React, you can extend the config with the `eslint-config-uphold/react` preset (example in ESM):
+
+```js
+import { defineConfig } from 'eslint/config';
+import uphold from 'eslint-config-uphold/react';
+
+export default defineConfig([
+  {
+    extends: [uphold],
+    name: 'uphold-react-config',
+    plugins: {
+      'your-plugin': yourPlugin,
+    },
+    rules: {
+      'your-plugin/rule-name': 'error'
+    },
+  }
+]);
 ```
 
 ## Upgrading ESLint

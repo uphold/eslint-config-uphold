@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`eslint-config-uphold/react > should generate violations for \`react/prefer-stateless-function\` in incorrect code 1`] = `
+[
+  {
+    "column": 5,
+    "line": 13,
+    "ruleId": "react-hooks/rules-of-hooks",
+    "severity": 2,
+  },
+  {
+    "column": 18,
+    "line": 23,
+    "ruleId": "arrow-body-style",
+    "severity": 2,
+  },
+  {
+    "column": 4,
+    "line": 25,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
+    "column": 29,
+    "line": 35,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+]
+`;
