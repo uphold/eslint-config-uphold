@@ -16,19 +16,67 @@ import uphold from './index.js';
  */
 
 const upholdReact = defineConfig([
+  uphold,
   {
-    extends: [
-      uphold,
-      reactPlugin.configs.flat.recommended,
-      reactHooksPlugin.configs['recommended-latest'],
-      importPlugin.recommended,
-      sortClassMembers.configs['flat/recommended']
-    ],
+    name: 'uphold/base-config',
+    rules: {
+      'array-callback-return': 'off',
+      'arrow-body-style': ['error', 'as-needed'],
+      'new-cap': ['error', { capIsNewExceptions: ['BigNumber'] }],
+      'newline-after-var': 'off',
+      'one-var': 'off',
+      'prefer-object-spread': 'error',
+      'promise/prefer-await-to-then': 'off',
+      'stylistic/jsx-quotes': ['error', 'prefer-double']
+    }
+  },
+  {
+    ...importPlugin.recommended,
+    // extends: [importPlugin.recommended],
+    name: 'uphold/import-plugin',
+    rules: {
+      'import/default': 'error',
+      'import/named': 'error',
+      'import/no-cycle': 'warn',
+      'import/no-duplicates': 'error',
+      'import/no-unresolved': 'error',
+      'import/no-useless-path-segments': ['error', { noUselessIndex: true }]
+    }
+  },
+  {
+    ...sortClassMembers.configs['flat/recommended'],
+    name: 'uphold/sort-class-members',
+    rules: {
+      /* eslint-disable sort-keys-fix/sort-keys-fix */
+      'sort-class-members/sort-class-members': [
+        'error',
+        {
+          order: [
+            '[static-properties-alpha]',
+            '[static-methods-alpha]',
+            '[properties-alpha]',
+            '[constructor]',
+            '[methods-alpha]'
+          ],
+          groups: {
+            'static-properties-alpha': [{ type: 'property', static: true, sort: 'alphabetical' }],
+            'static-methods-alpha': [{ type: 'method', static: true, sort: 'alphabetical' }],
+            'properties-alpha': [{ type: 'property', propertyType: 'Literal', sort: 'alphabetical' }],
+            'methods-alpha': [{ type: 'method', sort: 'alphabetical' }]
+          }
+        }
+      ]
+      /* eslint-enable sort-keys-fix/sort-keys-fix */
+    }
+  },
+  {
+    ...reactPlugin.configs.flat.recommended,
+    extends: [reactHooksPlugin.configs['recommended-latest']],
     files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
     languageOptions: {
       parser: babelParser,
       parserOptions: {
-        ...reactPlugin.configs.flat.recommended.languageOptions,
+        ...reactPlugin.configs.flat.recommended.languageOptions.parserOptions,
         babelOptions: {
           presets: ['@babel/preset-react']
         },
@@ -42,20 +90,8 @@ const upholdReact = defineConfig([
         requireConfigFile: false
       }
     },
+    name: 'uphold/react-plugin',
     rules: {
-      'array-callback-return': 'off',
-      'arrow-body-style': ['error', 'as-needed'],
-      'import/default': 'error',
-      'import/named': 'error',
-      'import/no-cycle': 'warn',
-      'import/no-duplicates': 'error',
-      'import/no-unresolved': 'error',
-      'import/no-useless-path-segments': ['error', { noUselessIndex: true }],
-      'new-cap': ['error', { capIsNewExceptions: ['BigNumber'] }],
-      'newline-after-var': 'off',
-      'one-var': 'off',
-      'prefer-object-spread': 'error',
-      'promise/prefer-await-to-then': 'off',
       'react/boolean-prop-naming': ['warn', { rule: 'autoFocus|invalid|^(has|is|should|can)[A-Z]([A-Za-z0-9]?)+' }],
       'react/display-name': 'error',
       'react/hook-use-state': ['error', { allowDestructuredState: true }],
@@ -83,28 +119,7 @@ const upholdReact = defineConfig([
       'react/self-closing-comp': 'error',
       'react/sort-prop-types': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      'react-hooks/rules-of-hooks': 'error',
-      /* eslint-disable sort-keys-fix/sort-keys-fix */
-      'sort-class-members/sort-class-members': [
-        'error',
-        {
-          order: [
-            '[static-properties-alpha]',
-            '[static-methods-alpha]',
-            '[properties-alpha]',
-            '[constructor]',
-            '[methods-alpha]'
-          ],
-          groups: {
-            'static-properties-alpha': [{ type: 'property', static: true, sort: 'alphabetical' }],
-            'static-methods-alpha': [{ type: 'method', static: true, sort: 'alphabetical' }],
-            'properties-alpha': [{ type: 'property', propertyType: 'Literal', sort: 'alphabetical' }],
-            'methods-alpha': [{ type: 'method', sort: 'alphabetical' }]
-          }
-        }
-      ],
-      /* eslint-enable sort-keys-fix/sort-keys-fix */
-      'stylistic/jsx-quotes': ['error', 'prefer-double']
+      'react-hooks/rules-of-hooks': 'error'
     },
     settings: {
       react: {

@@ -247,12 +247,7 @@ const upholdBinScriptsConfig = {
  * @type {LinterConfig[]}
  */
 
-const uphold = defineConfig([
-  {
-    extends: [upholdBaseConfig, upholdBinScriptsConfig],
-    name: 'uphold/default'
-  }
-]);
+const uphold = defineConfig([upholdBaseConfig, upholdBinScriptsConfig]);
 
 /**
  * Export the configuration.
