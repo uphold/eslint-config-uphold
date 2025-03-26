@@ -49,7 +49,11 @@ const languageOptions = {
 
 const upholdBaseConfig = defineConfig([
   {
-    extends: [js.configs.recommended, jsdoc.configs['flat/recommended-error'], eslintPluginPrettierRecommended],
+    extends: [
+      { ...js.configs.recommended, name: 'eslint/recommended' },
+      jsdoc.configs['flat/recommended-error'],
+      eslintPluginPrettierRecommended
+    ],
     languageOptions,
     name: 'uphold/base',
     plugins: {
