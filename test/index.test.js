@@ -3,6 +3,7 @@
  */
 
 import { ESLint } from 'eslint';
+import { describe, expect, it } from 'vitest';
 import { join, resolve } from 'node:path';
 
 /**
@@ -12,25 +13,41 @@ import { join, resolve } from 'node:path';
 const dirname = resolve(import.meta.dirname);
 
 /**
- * Tests for `eslint-config-uphold`.
+ * Test `eslint-config-uphold`.
  */
 
 describe('eslint-config-uphold', () => {
   const linter = new ESLint({ ignore: false, overrideConfigFile: join(dirname, '..', 'src', 'index.js') });
 
   it('should not generate any violation for correct code', async () => {
-    const source = join(dirname, 'fixtures', 'correct.js');
-    const results = await linter.lintFiles([source]);
+    const fixturesCorrect = join(dirname, 'fixtures', 'correct.js');
+    const binCorrect = join(dirname, 'fixtures', 'bin', 'correct.js');
+    const scriptsCorrect = join(dirname, 'fixtures', 'scripts', 'correct.js');
 
-    results[0].messages.should.be.empty();
+    const [binResult, fixturesResult, scriptResult] = await linter.lintFiles([
+      binCorrect,
+      fixturesCorrect,
+      scriptsCorrect
+    ]);
+
+    expect(binResult.messages).toHaveLength(0);
+    expect(fixturesResult.messages).toHaveLength(0);
+    expect(scriptResult.messages).toHaveLength(0);
   });
 
   it('should generate violations for incorrect code', async () => {
-    const source = join(dirname, 'fixtures', 'incorrect.js');
-    const results = await linter.lintFiles([source]);
-    const rules = results[0].messages.map(violation => violation.ruleId);
+    const fixturesIncorrect = join(dirname, 'fixtures', 'incorrect.js');
+    const [result] = await linter.lintFiles([fixturesIncorrect]);
+    const rules = result.messages.map(violation => violation.ruleId);
+    const violations = result.messages.map(({ column, line, ruleId, severity }) => ({
+      column,
+      line,
+      ruleId,
+      severity
+    }));
 
-    Array.from(rules).should.eql([
+    expect(violations).toMatchSnapshot();
+    expect(Array.from(rules)).toEqual([
       'array-callback-return',
       'no-console',
       'consistent-this',
@@ -80,14 +97,5 @@ describe('eslint-config-uphold', () => {
       'sql-template/no-unsafe-query',
       'yoda'
     ]);
-  });
-
-  it('should not generate any violation for correct code inside bin & scripts folders', async () => {
-    const source1 = join(dirname, 'fixtures', 'bin', 'correct.js');
-    const source2 = join(dirname, 'fixtures', 'scripts', 'correct.js');
-    const results = await linter.lintFiles([source1, source2]);
-
-    results[0].messages.should.be.empty();
-    results[1].messages.should.be.empty();
   });
 });

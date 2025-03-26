@@ -28,7 +28,7 @@
   "scripts": {
     "lint": "eslint",
     "release": "release-it",
-    "test": "mocha $npm_package_options_mocha"
+    "test": "vitest run"
   },
   "dependencies": {
     "@babel/core": "^7.26.10",
@@ -51,11 +51,11 @@
     "@fastify/pre-commit": "^2.2.0",
     "@types/eslint": "^9.6.1",
     "@uphold/github-changelog-generator": "^4.0.2",
+    "@vitest/coverage-v8": "^3.0.9",
     "eslint": "^9.23.0",
-    "mocha": "^11.1.0",
     "prettier": "^3.5.3",
     "release-it": "^18.1.2",
-    "should": "^13.2.3"
+    "vitest": "^3.0.9"
   },
   "peerDependencies": {
     "eslint": "~9.23.0",
