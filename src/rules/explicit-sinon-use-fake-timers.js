@@ -1,13 +1,11 @@
-'use strict';
-
 /**
- * Export `explicit-sinon-use-fake-timers` rule.
+ * `explicit-sinon-use-fake-timers` rule.
  * - Validates that `sinon.useFakeTimers()` is always called with an explicit `toFake` property.
  *
  * @type {import('eslint').Rule.RuleModule}
  */
 
-module.exports = {
+const explicitSinonUseFakeTimers = {
   create(context) {
     return {
       CallExpression(node) {
@@ -53,3 +51,9 @@ module.exports = {
     type: 'problem'
   }
 };
+
+/**
+ * Export `explicit-sinon-use-fake-timers` rule.
+ */
+
+export default explicitSinonUseFakeTimers;

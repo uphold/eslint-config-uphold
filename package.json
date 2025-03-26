@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "author": "Uphold",
-  "main": "src",
+  "main": "./src/index.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/uphold/eslint-config-uphold.git"
@@ -26,7 +26,7 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "eslint src test/index.js",
+    "lint": "eslint",
     "release": "release-it",
     "test": "mocha $npm_package_options_mocha"
   },
@@ -74,5 +74,6 @@
   },
   "options": {
     "mocha": "-t 10000 --require should test"
-  }
+  },
+  "type": "module"
 }

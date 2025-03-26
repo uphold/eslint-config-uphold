@@ -1,28 +1,32 @@
-'use strict';
-
 /**
  * Module dependencies.
  */
 
-const { ESLint } = require('eslint');
-const path = require('path');
+import { ESLint } from 'eslint';
+import { join, resolve } from 'node:path';
+
+/**
+ * Constants.
+ */
+
+const dirname = resolve(import.meta.dirname);
 
 /**
  * Tests for `eslint-config-uphold`.
  */
 
 describe('eslint-config-uphold', () => {
-  const linter = new ESLint({ ignore: false, overrideConfigFile: path.join(__dirname, '..', 'src', 'index.js') });
+  const linter = new ESLint({ ignore: false, overrideConfigFile: join(dirname, '..', 'src', 'index.js') });
 
   it('should not generate any violation for correct code', async () => {
-    const source = path.join(__dirname, 'fixtures', 'correct.js');
+    const source = join(dirname, 'fixtures', 'correct.js');
     const results = await linter.lintFiles([source]);
 
     results[0].messages.should.be.empty();
   });
 
   it('should generate violations for incorrect code', async () => {
-    const source = path.join(__dirname, 'fixtures', 'incorrect.js');
+    const source = join(dirname, 'fixtures', 'incorrect.js');
     const results = await linter.lintFiles([source]);
     const rules = results[0].messages.map(violation => violation.ruleId);
 
@@ -79,8 +83,8 @@ describe('eslint-config-uphold', () => {
   });
 
   it('should not generate any violation for correct code inside bin & scripts folders', async () => {
-    const source1 = path.join(__dirname, 'fixtures', 'bin', 'correct.js');
-    const source2 = path.join(__dirname, 'fixtures', 'scripts', 'correct.js');
+    const source1 = join(dirname, 'fixtures', 'bin', 'correct.js');
+    const source2 = join(dirname, 'fixtures', 'scripts', 'correct.js');
     const results = await linter.lintFiles([source1, source2]);
 
     results[0].messages.should.be.empty();
