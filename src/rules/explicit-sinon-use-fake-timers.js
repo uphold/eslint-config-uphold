@@ -20,20 +20,20 @@ const explicitSinonUseFakeTimers = {
           return;
         }
 
-        if (!node.arguments.length) {
-          context.report({ messageId: 'mustPassObject', node });
+        const [sinonOptions] = node.arguments;
+
+        if (!sinonOptions) {
+          return context.report({ messageId: 'mustPassObject', node });
         }
 
-        for (const argument of node.arguments) {
-          const isArgumentObjectExpression = argument.type === 'ObjectExpression';
+        const isArgumentObjectExpression = sinonOptions.type === 'ObjectExpression';
 
-          if (!isArgumentObjectExpression) {
-            context.report({ messageId: 'notAnObject', node });
-          }
+        if (!isArgumentObjectExpression) {
+          return context.report({ messageId: 'notAnObject', node });
+        }
 
-          if (!argument.properties.find(({ key }) => key && key.name === 'toFake')) {
-            context.report({ messageId: 'objectMustContainToFake', node });
-          }
+        if (!sinonOptions.properties.find(({ key }) => key && key.name === 'toFake')) {
+          return context.report({ messageId: 'objectMustContainToFake', node });
         }
       }
     };
