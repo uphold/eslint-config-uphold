@@ -88,7 +88,12 @@ const upholdBaseConfig = defineConfig([
         }
       ],
       'jsdoc/no-defaults': 0,
-      'jsdoc/require-description-complete-sentence': 'error',
+      'jsdoc/require-description-complete-sentence': [
+        'error',
+        {
+          abbreviations: ['e.g.', 'i.e.', 'etc.']
+        }
+      ],
       'jsdoc/require-jsdoc': 0,
       'jsdoc/tag-lines': 0,
       'max-depth': 'error',
