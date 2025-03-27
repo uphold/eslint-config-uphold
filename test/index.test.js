@@ -3,7 +3,9 @@
  */
 
 import { ESLint } from 'eslint';
+import { describe, it } from 'node:test';
 import { join, resolve } from 'node:path';
+import assert from 'node:assert/strict';
 
 /**
  * Constants.
@@ -20,17 +22,17 @@ describe('eslint-config-uphold', () => {
 
   it('should not generate any violation for correct code', async () => {
     const source = join(dirname, 'fixtures', 'correct.js');
-    const results = await linter.lintFiles([source]);
+    const [result] = await linter.lintFiles([source]);
 
-    results[0].messages.should.be.empty();
+    assert.equal(result.messages.length, 0);
   });
 
   it('should generate violations for incorrect code', async () => {
     const source = join(dirname, 'fixtures', 'incorrect.js');
-    const results = await linter.lintFiles([source]);
-    const rules = results[0].messages.map(violation => violation.ruleId);
+    const [result] = await linter.lintFiles([source]);
+    const rules = result.messages.map(violation => violation.ruleId);
 
-    Array.from(rules).should.eql([
+    assert.deepEqual(rules, [
       'array-callback-return',
       'no-console',
       'consistent-this',
@@ -85,9 +87,9 @@ describe('eslint-config-uphold', () => {
   it('should not generate any violation for correct code inside bin & scripts folders', async () => {
     const source1 = join(dirname, 'fixtures', 'bin', 'correct.js');
     const source2 = join(dirname, 'fixtures', 'scripts', 'correct.js');
-    const results = await linter.lintFiles([source1, source2]);
+    const [result1, result2] = await linter.lintFiles([source1, source2]);
 
-    results[0].messages.should.be.empty();
-    results[1].messages.should.be.empty();
+    assert.equal(result1.messages.length, 0);
+    assert.equal(result2.messages.length, 0);
   });
 });
