@@ -75,6 +75,29 @@ To automatically fix all lint issues, use the `--fix` option:
 npm run lint --fix
 ```
 
+### React config
+
+A React config is available under `eslint-config-uphold/configs`.
+It can be used like the following example in ESM, on `eslint.config.mjs`:
+
+```js
+import { defineConfig } from 'eslint/config';
+import { react as upholdReact } from 'eslint-config-uphold/configs';
+
+export default defineConfig([
+  {
+    extends: [upholdReact],
+    name: 'uphold-config-react',
+    plugins: {
+      'your-plugin': yourPlugin
+    },
+    rules: {
+      'your-plugin/rule-name': 'error'
+    }
+  }
+]);
+```
+
 ### TypeScript
 
 A TypeScript-specific config using `typescript-eslint` is available under `eslint-config-uphold/configs/`.
@@ -224,7 +247,7 @@ logger.error('An error occurred.'); // ❌ Remove the trailing period.
 
 #### `require-comment-punctuation`
 
-Requires `//` comment blocks to end with punctuation on the last line. Valid endings are `.`, `:`, `;`, `?`, `!`, or paired triple backticks (`` ``` ``). This helps maintain consistency in code comments.
+Requires `//` comment blocks to end with punctuation on the last line. Valid endings are `.`, `:`, `;`, `?`, `!`, or paired triple backticks (` ``` `). This helps maintain consistency in code comments.
 
 **Valid:**
 
@@ -239,10 +262,10 @@ Requires `//` comment blocks to end with punctuation on the last line. Valid end
 
 - ❌ Missing punctuation.
 
-  ```js
+  ````js
   // This is a comment without punctuation
   // Comment with unmatched backticks ```
-  ```
+  ````
 
 **Options:**
 
@@ -256,7 +279,7 @@ Requires `//` comment blocks to end with punctuation on the last line. Valid end
 
   With this config, comments like `// TODO: implement this` will not require punctuation.
 
-- `additionalAllowedEndings` - An array of strings to extend the default allowed endings (`.`, `:`, `;`, `?`, `!`, `` ``` ``):
+- `additionalAllowedEndings` - An array of strings to extend the default allowed endings (`.`, `:`, `;`, `?`, `!`, ` ``` `):
 
   ```js
   'uphold-plugin/require-comment-punctuation': ['error', {

@@ -17,6 +17,7 @@ describe('Test configs', () => {
     assert.ok(configs.javascript, '`javascript` config should be exported');
     assert.ok(configs.jest, '`jest` config should be exported');
     assert.ok(configs.mocha, '`mocha` config should be exported');
+    assert.ok(configs.react, '`react` config should be exported');
     assert.ok(configs.typescript, '`typescript` config should be exported');
     assert.ok(configs.vitest, '`vitest` config should be exported');
   });
@@ -27,8 +28,21 @@ describe('Test configs', () => {
     assert.ok(configs.default.javascript, '`default export` should have `javascript`');
     assert.ok(configs.default.jest, '`default export` should have `jest`');
     assert.ok(configs.default.mocha, '`default export` should have `mocha`');
+    assert.ok(configs.default.react, '`default export` should have `react`');
     assert.ok(configs.default.typescript, '`default export` should have `typescript`');
     assert.ok(configs.default.vitest, '`default export` should have `vitest`');
+  });
+
+  it('should export `react` config with correct structure', async () => {
+    const configs = await import('../../../src/configs/index.js');
+    const config = configs.react;
+
+    assert.ok(Array.isArray(config), '`react` config should be an array');
+    assert.ok(config.length > 0, '`react` config array should not be empty');
+    assert.ok(
+      config.some(item => item.name && item.name.startsWith('uphold/react')),
+      '`react` config should contain an item named `uphold/react`'
+    );
   });
 
   for (const configName of ['javascript', 'jest', 'mocha', 'typescript', 'vitest']) {
