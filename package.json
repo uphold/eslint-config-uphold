@@ -19,6 +19,14 @@
     "type": "git",
     "url": "git+ssh://git@github.com/uphold/eslint-config-uphold.git"
   },
+  "exports": {
+    "./node": {
+      "default": "./src/configs/node.js"
+    },
+    "./react": {
+      "default": "./src/configs/react.js"
+    }
+  },
   "files": [
     "src"
   ],
@@ -36,11 +44,15 @@
     "@eslint/js": "^9.23.0",
     "@stylistic/eslint-plugin-js": "4.2.0",
     "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsdoc": "^50.6.9",
     "eslint-plugin-mocha": "^10.5.0",
     "eslint-plugin-n": "^17.16.2",
     "eslint-plugin-prettier": "^5.2.4",
     "eslint-plugin-promise": "^7.2.1",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-sort-class-members": "^1.21.0",
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
     "eslint-plugin-sort-imports-requires": "^2.0.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",

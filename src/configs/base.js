@@ -1,19 +1,15 @@
 /**
  * Module dependencies.
- *
- * @typedef {import('eslint').Linter.Config} LinterConfig
  */
 
 import { defineConfig } from 'eslint/config';
-import babelParser from '@babel/eslint-parser';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import globals from 'globals';
 import js from '@eslint/js';
 import jsdoc from 'eslint-plugin-jsdoc';
 import mocha from 'eslint-plugin-mocha';
 import nodePlugin from 'eslint-plugin-n';
 import promise from 'eslint-plugin-promise';
-import rules from './rules/index.js';
+import rules from '../rules/index.js';
 import sortDestructureKeys from 'eslint-plugin-sort-destructure-keys';
 import sortImportsRequires from 'eslint-plugin-sort-imports-requires';
 import sortKeysFix from 'eslint-plugin-sort-keys-fix';
@@ -21,30 +17,7 @@ import sqlTemplate from 'eslint-plugin-sql-template';
 import stylistic from '@stylistic/eslint-plugin-js';
 
 /**
- * Language options.
- *
- * @type {LinterConfig['languageOptions']}
- */
-
-const languageOptions = {
-  ecmaVersion: 2020,
-  globals: {
-    ...globals.jasmine,
-    ...globals.jest,
-    ...globals.mocha,
-    ...globals.node
-  },
-  parser: babelParser,
-  parserOptions: {
-    requireConfigFile: false
-  },
-  sourceType: 'module'
-};
-
-/**
  * Base configuration for Uphold.
- *
- * @type {LinterConfig[]}
  */
 
 const upholdBaseConfig = defineConfig([
@@ -54,7 +27,6 @@ const upholdBaseConfig = defineConfig([
       jsdoc.configs['flat/recommended-error'],
       eslintPluginPrettierRecommended
     ],
-    languageOptions,
     name: 'uphold/base',
     plugins: {
       jsdoc,
@@ -226,39 +198,10 @@ const upholdBaseConfig = defineConfig([
 ]);
 
 /**
- * Configuration for bin and scripts files.
- *
- * @type {LinterConfig}
- */
-
-const upholdBinScriptsConfig = {
-  files: ['**/bin/**', '**/scripts/**'],
-  languageOptions,
-  name: 'uphold/scripts',
-  rules: {
-    'no-console': 'off',
-    'node-plugin/no-process-exit': 'off'
-  }
-};
-
-/**
- * `uphold` shared configuration preset.
- *
- * @type {LinterConfig[]}
- */
-
-const uphold = defineConfig([
-  {
-    extends: [upholdBaseConfig, upholdBinScriptsConfig],
-    name: 'uphold/default'
-  }
-]);
-
-/**
  * Export the configuration.
  *
  * @see https://nodejs.org/docs/latest-v22.x/api/modules.html#loading-ecmascript-modules-using-require
  */
 
-export { uphold as 'module.exports' };
-export default uphold;
+export { upholdBaseConfig as 'module.exports' };
+export default upholdBaseConfig;

@@ -19,19 +19,19 @@ const ruleTester = new RuleTester();
  * @param {string} options.path
  */
 
-const runDirectoryTests = ({ directory, path }) => {
-  describe(directory, async () => {
-    const files = await fs.readdir(`${import.meta.dirname}/${path}/${directory}`, { withFileTypes: true });
+const runDirectoryTests = ({ name, path }) => {
+  describe(name, async () => {
+    const files = await fs.readdir(`${import.meta.dirname}/${path}`, { withFileTypes: true });
 
     for (const file of files) {
       if (file.isDirectory()) {
-        runDirectoryTests({ directory: file.name, path: `${path}/${directory}` });
+        runDirectoryTests({ name: file.name, path: `${path}/${file.name}` });
 
         continue;
       }
 
-      if (file.isFile() && file.name.endsWith('.js')) {
-        const { name, rule, tests } = await import(`${path}/${directory}/${file.name}`);
+      if (file.isFile() && file.name.endsWith('.js') && !file.name.endsWith('test.js')) {
+        const { name, rule, tests } = await import(`${path}/${file.name}`);
 
         ruleTester.run(name, rule, tests);
       }
@@ -43,4 +43,4 @@ const runDirectoryTests = ({ directory, path }) => {
  * Run tests for all rules.
  */
 
-runDirectoryTests({ directory: 'rules', path: '.' });
+runDirectoryTests({ name: 'rules', path: '.' });

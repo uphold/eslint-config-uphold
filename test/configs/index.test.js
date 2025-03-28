@@ -4,32 +4,30 @@
 
 import { ESLint } from 'eslint';
 import { describe, it } from 'node:test';
-import { join, resolve } from 'node:path';
+import { resolve } from 'node:path';
 import assert from 'node:assert/strict';
+import upholdNode from '../../src/configs/node.js';
 
 /**
- * Constants.
+ * Tests for `eslint-config-uphold/node`.
  */
 
-const dirname = resolve(import.meta.dirname);
-
-/**
- * Tests for `eslint-config-uphold`.
- */
-
-describe('eslint-config-uphold', () => {
-  const linter = new ESLint({ ignore: false, overrideConfigFile: join(dirname, '..', 'src', 'index.js') });
+describe('eslint-config-uphold/node', () => {
+  const linter = new ESLint({
+    cwd: resolve(import.meta.dirname, '..'),
+    ignore: false,
+    overrideConfig: upholdNode,
+    overrideConfigFile: true
+  });
 
   it('should not generate any violation for correct code', async () => {
-    const source = join(dirname, 'fixtures', 'correct.js');
-    const [result] = await linter.lintFiles([source]);
+    const [result] = await linter.lintFiles(['fixtures/correct.js']);
 
     assert.equal(result.messages.length, 0);
   });
 
   it('should generate violations for incorrect code', async () => {
-    const source = join(dirname, 'fixtures', 'incorrect.js');
-    const [result] = await linter.lintFiles([source]);
+    const [result] = await linter.lintFiles(['fixtures/incorrect.js']);
     const rules = result.messages.map(violation => violation.ruleId);
 
     assert.deepEqual(rules, [
@@ -85,9 +83,7 @@ describe('eslint-config-uphold', () => {
   });
 
   it('should not generate any violation for correct code inside bin & scripts folders', async () => {
-    const source1 = join(dirname, 'fixtures', 'bin', 'correct.js');
-    const source2 = join(dirname, 'fixtures', 'scripts', 'correct.js');
-    const [result1, result2] = await linter.lintFiles([source1, source2]);
+    const [result1, result2] = await linter.lintFiles(['fixtures/bin/correct.js', 'fixtures/scripts/correct.js']);
 
     assert.equal(result1.messages.length, 0);
     assert.equal(result2.messages.length, 0);

@@ -18,6 +18,10 @@ const tests = {
     {
       code: 'sinon.useFakeTimers({});',
       errors: [{ message: 'Object must contain `toFake` configuration' }]
+    },
+    {
+      code: 'sinon.useFakeTimers({ now: 123 });',
+      errors: [{ message: 'Object must contain `toFake` configuration' }]
     }
   ],
   valid: [
