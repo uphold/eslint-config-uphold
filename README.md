@@ -45,9 +45,9 @@ module.exports = defineConfig([
       'your-plugin': yourPlugin,
     },
     rules: {
-      'your-plugin/rule-name': 'error'
+      'your-plugin/rule-name': 'error',
     },
-  }
+  },
 ]);
 ```
 
@@ -73,6 +73,29 @@ To automatically fix all lint issues, use the `--fix` option:
 
 ```sh
 npm run lint --fix
+```
+
+### React config
+
+A React config is available under `eslint-config-uphold/configs/react`.
+It can be used like the following example in ESM, on `eslint.config.mjs`:
+
+```js
+import { defineConfig } from 'eslint/config';
+import upholdReact from 'eslint-config-uphold/configs/react';
+
+export default defineConfig([
+  {
+    extends: [upholdReact],
+    name: 'uphold-config-react',
+    plugins: {
+      'your-plugin': yourPlugin,
+    },
+    rules: {
+      'your-plugin/rule-name': 'error',
+    },
+  },
+]);
 ```
 
 ## Upgrading ESLint
