@@ -17,7 +17,8 @@ that allow the [Prettier](https://prettier.io) pretty-printer to reformat the co
 npm install eslint eslint-config-uphold prettier --save-dev
 ```
 
-!! Node.js minimum versions are `v22.12.0` and `v20.19.0`, as `@stylistic/eslint-plugin-js` depends on the `require('esm')` module from `v4.0.0`.
+> [!WARNING]
+> Node.js minimum versions are `v23.0.0`, `v22.12.0` and `v20.19.0`, as `@stylistic/eslint-plugin-js` depends on the `require('esm')` module from `v4.0.0`.
 
 ## Usage
 
