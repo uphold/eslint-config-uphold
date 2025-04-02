@@ -1,5 +1,9 @@
 # Changelog
 
+## [v6.4.1](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.4.1) (2025-04-02)
+
+- Add support for future Node.js versions [\#94](https://github.com/uphold/eslint-config-uphold/pull/94) ([risantos](https://github.com/risantos))
+
 ## [v6.4.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.4.0) (2025-03-28)
 
 - Migrate tests to the native test runner [\#92](https://github.com/uphold/eslint-config-uphold/pull/92) ([Americas](https://github.com/Americas))
