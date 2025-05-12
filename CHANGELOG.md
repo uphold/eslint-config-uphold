@@ -1,5 +1,10 @@
 # Changelog
 
+## [v6.5.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.5.0) (2025-05-12)
+
+- Replace `@stylistic/eslint-plugin-js` with `@stylistic/eslint-plugin` [\#96](https://github.com/uphold/eslint-config-uphold/pull/96) ([risantos](https://github.com/risantos))
+- Update `eslint@9.26.0` and all dependencies [\#95](https://github.com/uphold/eslint-config-uphold/pull/95) ([risantos](https://github.com/risantos))
+
 ## [v6.4.1](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.4.1) (2025-04-02)
 
 - Add support for future Node.js versions [\#94](https://github.com/uphold/eslint-config-uphold/pull/94) ([risantos](https://github.com/risantos))
