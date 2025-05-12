@@ -13,6 +13,24 @@ function noop() {
   // do nothing
 }
 
+// `@stylistic/padding-line-between-statements`.
+const newLineAfterVar = 'foo';
+
+noop(newLineAfterVar);
+
+function funcThatReturns(bar) {
+  if (!bar) {
+    return;
+  }
+
+  return bar;
+}
+
+funcThatReturns('foo');
+
+// `@stylistic/spaced-comment`.
+// spaced comment.
+
 // `array-callback-return`.
 [1, 2].map(number => number + 1);
 
@@ -225,24 +243,6 @@ const sql = 'sql-tag';
 
 db.query(sql`SELECT ${foo} FROM bar`);
 db.query(`SELECT foo FROM bar`);
-
-// `stylistic/padding-line-between-statements`.
-const newLineAfterVar = 'foo';
-
-noop(newLineAfterVar);
-
-function funcThatReturns(bar) {
-  if (!bar) {
-    return;
-  }
-
-  return bar;
-}
-
-funcThatReturns('foo');
-
-// `stylistic/spaced-comment`.
-// spaced comment.
 
 // `yoda`.
 let yoda = true;

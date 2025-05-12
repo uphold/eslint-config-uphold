@@ -18,7 +18,7 @@ import sortDestructureKeys from 'eslint-plugin-sort-destructure-keys';
 import sortImportsRequires from 'eslint-plugin-sort-imports-requires';
 import sortKeysFix from 'eslint-plugin-sort-keys-fix';
 import sqlTemplate from 'eslint-plugin-sql-template';
-import stylistic from '@stylistic/eslint-plugin-js';
+import stylistic from '@stylistic/eslint-plugin';
 
 /**
  * Language options.
@@ -57,6 +57,7 @@ const upholdBaseConfig = defineConfig([
     languageOptions,
     name: 'uphold/base',
     plugins: {
+      '@stylistic': stylistic,
       jsdoc,
       mocha,
       'node-plugin': nodePlugin,
@@ -65,10 +66,29 @@ const upholdBaseConfig = defineConfig([
       'sort-imports-requires': sortImportsRequires,
       'sort-keys-fix': sortKeysFix,
       'sql-template': sqlTemplate,
-      stylistic,
       'uphold-plugin': { rules }
     },
     rules: {
+      '@stylistic/no-tabs': ['error', { allowIndentationTabs: true }],
+      '@stylistic/padding-line-between-statements': [
+        'error',
+        {
+          blankLine: 'always',
+          next: 'return',
+          prev: '*'
+        },
+        {
+          blankLine: 'always',
+          next: '*',
+          prev: ['const', 'let', 'var']
+        },
+        {
+          blankLine: 'any',
+          next: ['const', 'let', 'var'],
+          prev: ['const', 'let', 'var']
+        }
+      ],
+      '@stylistic/spaced-comment': 'error',
       'accessor-pairs': 'error',
       'array-callback-return': 'error',
       'block-scoped-var': 'error',
@@ -203,26 +223,6 @@ const upholdBaseConfig = defineConfig([
       ],
       'sort-keys-fix/sort-keys-fix': ['error', 'asc', { natural: true }],
       'sql-template/no-unsafe-query': 'error',
-      'stylistic/no-tabs': ['error', { allowIndentationTabs: true }],
-      'stylistic/padding-line-between-statements': [
-        'error',
-        {
-          blankLine: 'always',
-          next: 'return',
-          prev: '*'
-        },
-        {
-          blankLine: 'always',
-          next: '*',
-          prev: ['const', 'let', 'var']
-        },
-        {
-          blankLine: 'any',
-          next: ['const', 'let', 'var'],
-          prev: ['const', 'let', 'var']
-        }
-      ],
-      'stylistic/spaced-comment': 'error',
       'uphold-plugin/explicit-sinon-use-fake-timers': 'error',
       'vars-on-top': 'error',
       yoda: 'error'
