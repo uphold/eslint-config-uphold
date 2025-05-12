@@ -31,32 +31,32 @@
     "test": "node --test 'test/index.test.js'"
   },
   "dependencies": {
-    "@babel/core": "^7.26.10",
-    "@babel/eslint-parser": "^7.26.10",
-    "@eslint/js": "^9.23.0",
-    "@stylistic/eslint-plugin-js": "4.2.0",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-jsdoc": "^50.6.9",
-    "eslint-plugin-mocha": "^10.5.0",
-    "eslint-plugin-n": "^17.16.2",
-    "eslint-plugin-prettier": "^5.2.4",
+    "@babel/core": "^7.27.1",
+    "@babel/eslint-parser": "^7.27.1",
+    "@eslint/js": "^9.26.0",
+    "@stylistic/eslint-plugin-js": "^4.2.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-jsdoc": "^50.6.14",
+    "eslint-plugin-mocha": "^11.0.0",
+    "eslint-plugin-n": "^17.18.0",
+    "eslint-plugin-prettier": "^5.4.0",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
     "eslint-plugin-sort-imports-requires": "^2.0.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-sql-template": "^3.1.0",
-    "globals": "^16.0.0"
+    "globals": "^16.1.0"
   },
   "devDependencies": {
     "@fastify/pre-commit": "^2.2.0",
     "@types/eslint": "^9.6.1",
     "@uphold/github-changelog-generator": "^4.0.2",
-    "eslint": "^9.23.0",
+    "eslint": "^9.26.0",
     "prettier": "^3.5.3",
-    "release-it": "^18.1.2"
+    "release-it": "^19.0.2"
   },
   "peerDependencies": {
-    "eslint": "~9.23.0",
+    "eslint": "~9.26.0",
     "prettier": ">=3.0.0"
   },
   "peerDependenciesMeta": {
