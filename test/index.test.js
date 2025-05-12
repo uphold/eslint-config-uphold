@@ -33,6 +33,9 @@ describe('eslint-config-uphold', () => {
     const rules = result.messages.map(violation => violation.ruleId);
 
     assert.deepEqual(rules, [
+      '@stylistic/padding-line-between-statements',
+      '@stylistic/padding-line-between-statements',
+      '@stylistic/spaced-comment',
       'array-callback-return',
       'no-console',
       'consistent-this',
@@ -76,9 +79,6 @@ describe('eslint-config-uphold', () => {
       'sort-imports-requires/sort-imports',
       'sort-imports-requires/sort-requires',
       'sort-keys-fix/sort-keys-fix',
-      'stylistic/padding-line-between-statements',
-      'stylistic/padding-line-between-statements',
-      'stylistic/spaced-comment',
       'sql-template/no-unsafe-query',
       'yoda'
     ]);

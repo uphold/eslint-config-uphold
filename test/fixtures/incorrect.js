@@ -3,6 +3,22 @@ function noop() {
   // do nothing
 }
 
+// `@stylistic/padding-line-between-statements`.
+const newLineAfterVar = 'foo';
+noop(newLineAfterVar);
+
+function funcThatReturns(bar) {
+  if (!bar) {
+    return;
+  }
+  return bar;
+}
+
+funcThatReturns('foo');
+
+// `@stylistic/spaced-comment`.
+//Comment missing space.
+
 // `array-callback-return`.
 [1, 2].map(() => {});
 
@@ -207,22 +223,6 @@ const sortObjectProps = {
 };
 
 noop(sortObjectProps);
-
-// `stylistic/padding-line-between-statements`.
-const newLineAfterVar = 'foo';
-noop(newLineAfterVar);
-
-function funcThatReturns(bar) {
-  if (!bar) {
-    return;
-  }
-  return bar;
-}
-
-funcThatReturns('foo');
-
-// `stylistic/spaced-comment`.
-//Comment missing space.
 
 // `sql-template/no-unsafe-query`.
 const db = {
