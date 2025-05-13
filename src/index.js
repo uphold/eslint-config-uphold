@@ -36,6 +36,9 @@ const languageOptions = {
   },
   parser: babelParser,
   parserOptions: {
+    ecmaFeatures: {
+      impliedStrict: true
+    },
     requireConfigFile: false
   },
   sourceType: 'module'
@@ -130,7 +133,7 @@ const upholdBaseConfig = defineConfig([
       'no-cond-assign': ['error', 'always'],
       'no-console': 'warn',
       'no-div-regex': 'error',
-      'no-dupe-keys': 'error',
+      // 'no-dupe-keys': 'error', // Already set by eslint:recommended
       'no-duplicate-imports': 'error',
       'no-else-return': 'error',
       'no-eq-null': 'error',
