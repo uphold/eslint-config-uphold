@@ -22,8 +22,16 @@
   "files": [
     "src"
   ],
-  "publishConfig": {
-    "access": "public"
+  "exports": {
+    ".": {
+      "default": "./src/index.js"
+    },
+    "./javascript": {
+      "default": "./src/javascript.js"
+    },
+    "./typescript": {
+      "default": "./src/typescript.js"
+    }
   },
   "scripts": {
     "lint": "eslint",
@@ -53,14 +61,19 @@
     "@uphold/github-changelog-generator": "^4.0.2",
     "eslint": "^9.26.0",
     "prettier": "^3.5.3",
-    "release-it": "^19.0.2"
+    "release-it": "^19.0.2",
+    "typescript-eslint": "^8.32.0"
   },
   "peerDependencies": {
     "eslint": "~9.26.0",
-    "prettier": ">=3.0.0"
+    "prettier": ">=3.0.0",
+    "typescript-eslint": "~8.32.0"
   },
   "peerDependenciesMeta": {
     "prettier": {
+      "optional": true
+    },
+    "typescript-eslint": {
       "optional": true
     }
   },
