@@ -1,10 +1,18 @@
 /**
  * Module dependencies.
- *
- * @typedef {import('eslint').Linter.Config} LinterConfig
  */
 
 import { defineConfig } from 'eslint/config';
+import {
+  eslintRules,
+  jsdocPluginConfigJavaScript,
+  promisePluginConfig,
+  sortDestructureKeysConfig,
+  sortImportsRequiresConfig,
+  sortKeysFixConfig,
+  sqlTemplateConfig,
+  stylisticConfig
+} from './configs/common.js';
 import babelParser from '@babel/eslint-parser';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
@@ -23,7 +31,7 @@ import stylistic from '@stylistic/eslint-plugin';
 /**
  * Language options.
  *
- * @type {LinterConfig['languageOptions']}
+ * @type {import('eslint').Linter.Config['languageOptions']}
  */
 
 const languageOptions = {
@@ -44,14 +52,14 @@ const languageOptions = {
 /**
  * Base configuration for Uphold.
  *
- * @type {LinterConfig[]}
+ * @type {import('eslint').Linter.Config[]}
  */
 
 const upholdBaseConfig = defineConfig([
   {
     extends: [
       { ...js.configs.recommended, name: 'eslint/recommended' },
-      jsdoc.configs['flat/recommended-error'],
+      jsdocPluginConfigJavaScript,
       eslintPluginPrettierRecommended
     ],
     languageOptions,
@@ -60,6 +68,7 @@ const upholdBaseConfig = defineConfig([
       '@stylistic': stylistic,
       jsdoc,
       mocha,
+      // To be renamed to `n` on next major release.
       'node-plugin': nodePlugin,
       // @ts-expect-error Outdated types for `eslint-plugin-promise`.
       promise,
@@ -72,105 +81,18 @@ const upholdBaseConfig = defineConfig([
       'uphold-plugin': { rules }
     },
     rules: {
-      '@stylistic/no-tabs': ['error', { allowIndentationTabs: true }],
-      '@stylistic/padding-line-between-statements': [
-        'error',
-        {
-          blankLine: 'always',
-          next: 'return',
-          prev: '*'
-        },
-        {
-          blankLine: 'always',
-          next: '*',
-          prev: ['const', 'if', 'let', 'var']
-        },
-        {
-          blankLine: 'any',
-          next: ['const', 'let', 'var'],
-          prev: ['const', 'let', 'var']
-        }
-      ],
-      '@stylistic/spaced-comment': 'error',
-      'accessor-pairs': 'error',
-      'array-callback-return': 'error',
-      'block-scoped-var': 'error',
-      'consistent-this': ['error', 'self'],
-      curly: 'error',
-      'default-case': 'error',
-      'dot-notation': 'error',
-      eqeqeq: ['error', 'smart'],
-      'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
-      'id-length': ['error', { exceptions: ['_', 'e', 'i'] }],
-      'id-match': [
-        'error',
-        '^_$|^[$_a-zA-Z]*[_a-zA-Z0-9]*[a-zA-Z0-9]*$|^[A-Z][_A-Z0-9]+[A-Z0-9]$',
-        {
-          onlyDeclarations: true,
-          properties: true
-        }
-      ],
-      'jsdoc/no-defaults': 0,
-      'jsdoc/require-description-complete-sentence': [
-        'error',
-        {
-          abbreviations: ['e.g.', 'i.e.', 'etc.']
-        }
-      ],
-      'jsdoc/require-jsdoc': 0,
-      'jsdoc/tag-lines': 0,
-      'max-depth': 'error',
-      'max-params': ['error', 4],
+      ...eslintRules,
+      ...promisePluginConfig.rules,
+      ...sortDestructureKeysConfig.rules,
+      ...sortImportsRequiresConfig.rules,
+      ...sortKeysFixConfig.rules,
+      ...sqlTemplateConfig.rules,
+      ...stylisticConfig.rules,
+      // Mocha rules to be removed on next major release.
       'mocha/no-exclusive-tests': 'error',
       'mocha/no-identical-title': 'error',
       'mocha/no-nested-tests': 'error',
       'mocha/no-sibling-hooks': 'error',
-      'new-cap': 'error',
-      'no-alert': 'error',
-      'no-array-constructor': 'error',
-      'no-bitwise': 'error',
-      'no-caller': 'error',
-      'no-cond-assign': ['error', 'always'],
-      'no-console': 'warn',
-      'no-div-regex': 'error',
-      'no-dupe-keys': 'error',
-      'no-duplicate-imports': ['error', { includeExports: true }],
-      'no-else-return': 'error',
-      'no-eq-null': 'error',
-      'no-eval': 'error',
-      'no-extend-native': 'error',
-      'no-extra-bind': 'error',
-      'no-implied-eval': 'error',
-      'no-inline-comments': 'error',
-      'no-irregular-whitespace': ['error', { skipComments: false, skipStrings: false, skipTemplates: false }],
-      'no-iterator': 'error',
-      'no-labels': 'error',
-      'no-lone-blocks': 'error',
-      'no-lonely-if': 'error',
-      'no-loop-func': 'error',
-      'no-multi-str': 'error',
-      'no-nested-ternary': 'error',
-      'no-new': 'error',
-      'no-new-func': 'error',
-      'no-new-wrappers': 'error',
-      'no-object-constructor': 'error',
-      'no-octal-escape': 'error',
-      'no-proto': 'error',
-      'no-return-assign': 'error',
-      'no-script-url': 'error',
-      'no-self-compare': 'error',
-      'no-sequences': 'error',
-      'no-throw-literal': 'error',
-      'no-undef-init': 'error',
-      'no-underscore-dangle': 'error',
-      'no-unneeded-ternary': 'error',
-      'no-unused-expressions': 'error',
-      'no-unused-vars': ['error', { caughtErrors: 'none' }],
-      'no-use-before-define': 'error',
-      'no-useless-call': 'error',
-      'no-useless-concat': 'error',
-      'no-var': 'error',
-      'no-void': 'error',
       'node-plugin/no-mixed-requires': 'error',
       'node-plugin/no-new-require': 'error',
       'node-plugin/no-path-concat': 'error',
@@ -179,57 +101,8 @@ const upholdBaseConfig = defineConfig([
       'node-plugin/no-restricted-import': 'error',
       'node-plugin/no-restricted-require': 'error',
       'node-plugin/no-sync': 'error',
-      'object-shorthand': 'error',
-      'operator-assignment': 'error',
-      'prefer-const': 'error',
-      'prefer-destructuring': [
-        'error',
-        {
-          AssignmentExpression: {
-            array: false,
-            object: false
-          },
-
-          VariableDeclarator: {
-            array: true,
-            object: true
-          }
-        },
-        {
-          enforceForRenamedProperties: false
-        }
-      ],
-      'prefer-spread': 'error',
-      'prefer-template': 'error',
-      'prettier/prettier': [
-        'error',
-        {
-          arrowParens: 'avoid',
-          printWidth: 120,
-          singleQuote: true,
-          trailingComma: 'none'
-        }
-      ],
-      'promise/prefer-await-to-then': 'error',
-      radix: 'error',
-      'require-atomic-updates': 'off',
-      'require-await': 'error',
-      'sort-destructure-keys/sort-destructure-keys': 'error',
-      'sort-imports-requires/sort-imports': ['error', { unsafeAutofix: true, useOldSingleMemberSyntax: true }],
-      'sort-imports-requires/sort-requires': [
-        'error',
-        {
-          unsafeAutofix: true,
-          useAliases: false,
-          useOldSingleMemberSyntax: true
-        }
-      ],
-      'sort-keys-fix/sort-keys-fix': ['error', 'asc', { natural: true }],
-      'sql-template/no-unsafe-query': 'error',
       'uphold-plugin/explicit-sinon-use-fake-timers': 'error',
-      'uphold-plugin/no-trailing-period-in-log-messages': 'error',
-      'vars-on-top': 'error',
-      yoda: 'error'
+      'uphold-plugin/no-trailing-period-in-log-messages': 'error'
     }
   }
 ]);
@@ -237,7 +110,7 @@ const upholdBaseConfig = defineConfig([
 /**
  * Configuration for bin and scripts files.
  *
- * @type {LinterConfig}
+ * @type {import('eslint').Linter.Config}
  */
 
 const upholdBinScriptsConfig = {
@@ -253,7 +126,7 @@ const upholdBinScriptsConfig = {
 /**
  * `uphold` shared configuration preset.
  *
- * @type {LinterConfig[]}
+ * @type {import('eslint').Linter.Config[]}
  */
 
 const uphold = defineConfig([

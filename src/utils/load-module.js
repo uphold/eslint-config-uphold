@@ -35,6 +35,7 @@ function isModuleAvailable(moduleName) {
  *  "jest": import('jest'),
  *  "mocha": import('mocha'),
  *  "typescript": import('typescript'),
+ *  "typescript-eslint": import('typescript-eslint'),
  *  "vitest": import('vitest')
  * }} ModuleMap
  */
