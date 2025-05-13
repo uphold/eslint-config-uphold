@@ -45,9 +45,9 @@ module.exports = defineConfig([
       'your-plugin': yourPlugin,
     },
     rules: {
-      'your-plugin/rule-name': 'error'
+      'your-plugin/rule-name': 'error',
     },
-  }
+  },
 ]);
 ```
 
@@ -73,6 +73,41 @@ To automatically fix all lint issues, use the `--fix` option:
 
 ```sh
 npm run lint --fix
+```
+
+### TypeScript
+
+A TypeScript-specific config using `typescript-eslint` is available under `eslint-config-uphold/configs/typescript`.
+
+It can be used like this, on a `eslint.config.mjs` file:
+
+```js
+import { globalIgnores } from 'eslint/config';
+import tseslint from 'typescript-eslint';
+import upholdTypescript from 'eslint-config-uphold/configs/typescript';
+
+export default tseslint.config([
+  {
+    extends: [upholdTypescript],
+    name: 'uphold-config-typescript',
+    rules: {
+      'jsdoc/no-types': 'warn',
+    },
+  },
+  globalIgnores(['coverage', 'dist']),
+]);
+```
+
+It's also possible to use the config without `typescript-eslint`. Minimal setup would look like this:
+
+```js
+import { defineConfig, globalIgnores } from 'eslint/config';
+import upholdTypescript from 'eslint-config-uphold/configs/typescript';
+
+module.exports = defineConfig([
+  upholdTypescript,
+  globalIgnores(['coverage', 'dist']),
+]);
 ```
 
 ## Upgrading ESLint

@@ -15,6 +15,11 @@
   "license": "MIT",
   "author": "Uphold",
   "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./configs": "./src/configs/index.js",
+    "./configs/*": "./src/configs/*.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/uphold/eslint-config-uphold.git"
@@ -22,9 +27,6 @@
   "files": [
     "src"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "lint": "eslint",
     "release": "release-it",
@@ -53,16 +55,24 @@
     "@uphold/github-changelog-generator": "^4.0.2",
     "eslint": "^9.27.0",
     "prettier": "^3.5.3",
-    "release-it": "^19.0.2"
+    "release-it": "^19.0.2",
+    "typescript": "^5.8.3"
   },
   "peerDependencies": {
     "eslint": "~9.27.0",
-    "prettier": ">=3.0.0"
+    "prettier": "^3.0.0",
+    "typescript": ">=4.8.4 <=5.9.0"
   },
   "peerDependenciesMeta": {
     "prettier": {
       "optional": true
+    },
+    "typescript": {
+      "optional": true
     }
+  },
+  "optionalDependencies": {
+    "typescript-eslint": "^8.32.1"
   },
   "pre-commit": [
     "lint"
