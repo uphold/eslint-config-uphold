@@ -61,10 +61,14 @@ const upholdBaseConfig = defineConfig([
       jsdoc,
       mocha,
       'node-plugin': nodePlugin,
+      // @ts-expect-error Outdated types for `eslint-plugin-promise`.
       promise,
+      // @ts-expect-error Outdated types for `eslint-plugin-sort-destructure-keys`.
       'sort-destructure-keys': sortDestructureKeys,
       'sort-imports-requires': sortImportsRequires,
+      // @ts-expect-error Outdated types for `eslint-plugin-sort-keys-fix`.
       'sort-keys-fix': sortKeysFix,
+      // @ts-expect-error Outdated types for `eslint-plugin-sql-template`.
       'sql-template': sqlTemplate,
       'uphold-plugin': { rules }
     },
