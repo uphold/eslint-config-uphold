@@ -22,31 +22,31 @@ npm install eslint eslint-config-uphold prettier --save-dev
 
 ## Usage
 
-Create an `eslint.config.js` file with the following content:
+Create an `eslint.config.mjs` file with the following content:
 
 ```js
-const uphold = require('eslint-config-uphold');
+import upholdConfig from 'eslint-config-uphold';
 
-module.exports = uphold;
+export default upholdConfig;
 ```
 
 If you'd like to extend the config, or change rules, you can do so like this:
 
 ```js
-const { defineConfig } = require('eslint/config');
-const uphold = require('eslint-config-uphold');
-const yourPlugin = require('your-eslint-plugin');
+import { defineConfig } from 'eslint/config';
+import upholdConfig from 'eslint-config-uphold';
+import yourPlugin from 'your-eslint-plugin';
 
-module.exports = defineConfig([
+export default defineConfig([
+  upholdConfig,
   {
-    extends: [uphold],
-    name: 'uphold-config',
+    name: 'project-name/config',
     plugins: {
-      'your-plugin': yourPlugin,
+      'your-plugin': yourPlugin
     },
     rules: {
       'your-plugin/rule-name': 'error'
-    },
+    }
   }
 ]);
 ```
@@ -150,6 +150,43 @@ logger.error('An error occurred.'); // ❌ Remove the trailing period.
     additionalMethods: ['fatal', 'verbose', 'success']
   }]
   ```
+
+### Test configs
+
+This package includes individual exported configs for multiple test frameworks:
+
+- [Jest](https://jestjs.io/)
+- [Mocha](https://mochajs.org/)
+- [Vitest](https://vitest.dev/)
+
+To use them, import the config directly in your `eslint.config.mjs` file:
+
+```js
+import { defineConfig } from 'eslint/config';
+import { mocha as upholdMochaConfig } from 'eslint-config-uphold/configs';
+import upholdConfig from 'eslint-config-uphold';
+
+export default defineConfig([
+  upholdConfig,
+  {
+    extends: [upholdMochaConfig],
+    files: ['test/**/*.js'],
+    name: 'project-name/tests',
+    rules: {
+      'mocha/no-identical-title': 'off'
+    }
+  }
+]);
+```
+
+Those can be imported from `eslint-config-uphold/configs`:
+
+```js
+import { jest, mocha, vitest } from 'eslint-config-uphold/configs';
+```
+
+> [!NOTE]
+> Test configs use top-level `await` for dynamic module detection and are **ESM-only**. If your project uses CommonJS, your `eslint.config.mjs` still supports `import()` and top-level `await`.
 
 ## Upgrading ESLint
 
