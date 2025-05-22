@@ -15,6 +15,11 @@
   "license": "MIT",
   "author": "Uphold",
   "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./configs": "./src/configs/index.js",
+    "./configs/*": "./src/configs/*.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/uphold/eslint-config-uphold.git"
@@ -54,6 +59,9 @@
     "eslint": "^9.27.0",
     "prettier": "^3.5.3",
     "release-it": "^19.0.2"
+  },
+  "optionalDependencies": {
+    "eslint-plugin-jest": "^28.11.0"
   },
   "peerDependencies": {
     "eslint": "~9.27.0",
