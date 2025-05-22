@@ -45,9 +45,9 @@ module.exports = defineConfig([
       'your-plugin': yourPlugin,
     },
     rules: {
-      'your-plugin/rule-name': 'error'
+      'your-plugin/rule-name': 'error',
     },
-  }
+  },
 ]);
 ```
 
@@ -73,6 +73,49 @@ To automatically fix all lint issues, use the `--fix` option:
 
 ```sh
 npm run lint --fix
+```
+
+### Test configs
+
+This package includes individual exported configs for multiple test frameworks:
+
+- [Mocha](https://mochajs.org/)
+- [Jest](https://jestjs.io/)
+- [Vitest](https://vitest.dev/)
+
+To use them, you can import the config directly in your `eslint.config.js` file:
+
+```js
+const { defineConfig } = require('eslint/config');
+const uphold = require('eslint-config-uphold');
+const { mocha } = require('eslint-config-uphold/configs');
+
+module.exports = defineConfig([
+  {
+    extends: [uphold],
+    name: 'uphold-config',
+    plugins: {
+      'your-plugin': yourPlugin,
+    },
+    rules: {
+      'your-plugin/rule-name': 'error',
+    },
+  },
+  {
+    files: ['test/**/*.js'],
+    extends: [mocha],
+    name: 'test-config',
+    rules: {
+      'mocha/no-identical-title': 'off',
+    },
+  },
+]);
+```
+
+Those can be imported from `eslint-config-uphold/configs`:
+
+```js
+const { jest, mocha, vitest } = require('eslint-config-uphold/configs');
 ```
 
 ## Upgrading ESLint

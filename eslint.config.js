@@ -10,9 +10,13 @@ import uphold from './src/index.js';
  */
 
 export default defineConfig([
+  uphold,
   {
-    extends: [uphold],
-    name: 'uphold-config'
+    files: ['src/configs/*.js'],
+    name: 'configs',
+    rules: {
+      'no-console': 'off'
+    }
   },
   globalIgnores(['test/fixtures'])
 ]);
