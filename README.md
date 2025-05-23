@@ -155,9 +155,9 @@ logger.error('An error occurred.'); // ❌ Remove the trailing period.
 
 This package includes individual exported configs for multiple test frameworks:
 
-- [Jest](https://jestjs.io/)
-- [Mocha](https://mochajs.org/)
-- [Vitest](https://vitest.dev/)
+- [Jest](https://jestjs.io/), depending on `eslint-plugin-jest`.
+- [Mocha](https://mochajs.org/), depending on `eslint-plugin-mocha`.
+- [Vitest](https://vitest.dev/), depending on `@vitest/eslint-plugin` and `typescript`.
 
 To use them, import the config directly in your `eslint.config.mjs` file:
 
