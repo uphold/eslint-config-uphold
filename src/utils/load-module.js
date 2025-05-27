@@ -29,13 +29,16 @@ function isModuleAvailable(moduleName) {
  * Module map for dynamic imports.
  *
  * @typedef {{
- *  "@vitest/eslint-plugin": import('@vitest/eslint-plugin'),
- *  "eslint-plugin-jest": import('eslint-plugin-jest'),
- *  "eslint-plugin-mocha": import('eslint-plugin-mocha'),
- *  "globals": import('globals'),
- *  "jest": import('jest'),
- *  "mocha": import('mocha'),
- *  "typescript": import('typescript')
+ *   "@vitest/eslint-plugin": import('@vitest/eslint-plugin'),
+ *   "eslint-plugin-jest": import('eslint-plugin-jest'),
+ *   "eslint-plugin-mocha": import('eslint-plugin-mocha'),
+ *   "eslint-plugin-react": import('eslint-plugin-react'),
+ *   "eslint-plugin-react-hooks": import('eslint-plugin-react-hooks'),
+ *   "globals": import('globals'),
+ *   "jest": import('jest'),
+ *   "mocha": import('mocha'),
+ *   "react": import('react'),
+ *   "typescript": import('typescript')
  * }} ModuleMap
  */
 

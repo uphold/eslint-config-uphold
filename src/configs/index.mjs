@@ -6,6 +6,7 @@ import { createJavaScriptConfig } from './javascript.js';
 import { createTypeScriptConfig } from './typescript.js';
 import jest from './jest.js';
 import mocha from './mocha.js';
+import react from './react.js';
 import vitest from './vitest.js';
 
 /**
@@ -19,6 +20,7 @@ export default {
   javascript,
   jest,
   mocha,
+  react,
   typescript,
   vitest
 };

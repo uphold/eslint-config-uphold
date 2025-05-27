@@ -186,6 +186,29 @@ Those can be imported from `eslint-config-uphold/configs`:
 const { jest, mocha, vitest } = require('eslint-config-uphold/configs');
 ```
 
+### React config
+
+A React config is available under `eslint-config-uphold/configs/react`.
+It can be used like the following example in ESM, on `eslint.config.mjs`:
+
+```js
+import { defineConfig } from 'eslint/config';
+import upholdReact from 'eslint-config-uphold/configs/react';
+
+export default defineConfig([
+  {
+    extends: [upholdReact],
+    name: 'uphold-config-react',
+    plugins: {
+      'your-plugin': yourPlugin,
+    },
+    rules: {
+      'your-plugin/rule-name': 'error',
+    },
+  },
+]);
+```
+
 ## Upgrading ESLint
 
 See the [ESLint repo](https://github.com/eslint/eslint#semantic-versioning-policy) for ESLint's guidelines on semantic versioning.

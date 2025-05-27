@@ -4,6 +4,7 @@
 
 const jest = require('./jest.js');
 const mocha = require('./mocha.js');
+const react = require('./react.js');
 const vitest = require('./vitest.js');
 
 /**
@@ -18,6 +19,7 @@ module.exports = {
   },
   jest,
   mocha,
+  react,
   get typescript() {
     const { createTypeScriptConfig } = require('./typescript.js');
 
