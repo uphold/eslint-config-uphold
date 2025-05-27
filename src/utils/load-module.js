@@ -25,4 +25,29 @@ function isModuleAvailable(moduleName) {
   }
 }
 
-export { isModuleAvailable };
+/**
+ * Module map for dynamic imports.
+ *
+ * @typedef {{
+ *  "eslint-plugin-jest": import('eslint-plugin-jest'),
+ *  "eslint-plugin-mocha": import('eslint-plugin-mocha'),
+ *  "globals": import('globals'),
+ *  "jest": import('jest'),
+ *  "mocha": import('mocha')
+ * }} ModuleMap
+ */
+
+/**
+ * Load a module dynamically with proper typing.
+ *
+ * @template {keyof ModuleMap} T
+ * @param {T} moduleName - Module to load.
+ * @returns {Promise<ModuleMap[T]>} Loaded module.
+ */
+async function loadModule(moduleName) {
+  const module = await import(moduleName);
+
+  return module.default || module;
+}
+
+export { isModuleAvailable, loadModule };

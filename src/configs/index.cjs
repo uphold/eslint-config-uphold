@@ -1,4 +1,12 @@
 /**
+ * Module dependencies.
+ */
+
+const jest = require('./jest.js');
+const mocha = require('./mocha.js');
+const vitest = require('./vitest.js');
+
+/**
  * CommonJS wrapper for configs.
  */
 
@@ -8,10 +16,12 @@ module.exports = {
 
     return createJavaScriptConfig('commonjs');
   },
-
+  jest,
+  mocha,
   get typescript() {
     const { createTypeScriptConfig } = require('./typescript.js');
 
     return createTypeScriptConfig('commonjs');
-  }
+  },
+  vitest
 };
