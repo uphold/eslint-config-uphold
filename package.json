@@ -15,6 +15,14 @@
   "license": "MIT",
   "author": "Uphold",
   "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./configs": {
+      "import": "./src/configs/index.mjs",
+      "require": "./src/configs/index.cjs",
+      "default": "./src/configs/index.mjs"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/uphold/eslint-config-uphold.git"
@@ -33,11 +41,10 @@
   "dependencies": {
     "@babel/core": "^7.27.1",
     "@babel/eslint-parser": "^7.27.1",
-    "@eslint/js": "^9.27.0",
     "@stylistic/eslint-plugin": "^4.2.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-jsdoc": "^50.6.17",
-    "eslint-plugin-mocha": "^11.0.0",
+    "eslint-plugin-mocha": "^11.1.0",
     "eslint-plugin-n": "^17.18.0",
     "eslint-plugin-prettier": "^5.4.0",
     "eslint-plugin-promise": "^7.2.1",
@@ -51,15 +58,20 @@
     "@fastify/pre-commit": "^2.2.0",
     "@types/eslint": "^9.6.1",
     "@uphold/github-changelog-generator": "^4.0.2",
-    "eslint": "^9.27.0",
+    "eslint": "~9.27.0",
+    "eslint-plugin-jest": "^28.11.0",
     "prettier": "^3.5.3",
     "release-it": "^19.0.2"
   },
   "peerDependencies": {
     "eslint": "~9.27.0",
-    "prettier": ">=3.0.0"
+    "eslint-plugin-jest": "^28.11.0",
+    "prettier": "^3.0.0"
   },
   "peerDependenciesMeta": {
+    "eslint-plugin-jest": {
+      "optional": true
+    },
     "prettier": {
       "optional": true
     }
