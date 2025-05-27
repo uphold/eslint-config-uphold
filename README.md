@@ -45,9 +45,9 @@ module.exports = defineConfig([
       'your-plugin': yourPlugin,
     },
     rules: {
-      'your-plugin/rule-name': 'error'
+      'your-plugin/rule-name': 'error',
     },
-  }
+  },
 ]);
 ```
 
@@ -73,6 +73,74 @@ To automatically fix all lint issues, use the `--fix` option:
 
 ```sh
 npm run lint --fix
+```
+
+### TypeScript
+
+A TypeScript-specific config using `typescript-eslint` is available under `eslint-config-uphold/configs/`.
+
+It can be used like this, on a `eslint.config.mjs` file:
+
+```js
+import { globalIgnores } from 'eslint/config';
+import tseslint from 'typescript-eslint';
+import { typescript: upholdTs } from 'eslint-config-uphold/configs';
+
+export default tseslint.config([
+  {
+    extends: [upholdTs],
+    name: 'project-name/uphold-typescript',
+    rules: {
+      'jsdoc/no-types': 'warn',
+    },
+  },
+  globalIgnores(['coverage', 'dist']),
+]);
+```
+
+It's also possible to use the config without `typescript-eslint`. Minimal setup would look like this:
+
+```js
+import { defineConfig, globalIgnores } from 'eslint/config';
+import { typescript: upholdTs } from 'eslint-config-uphold/configs';
+
+module.exports = defineConfig([
+  upholdTs,
+  globalIgnores(['coverage', 'dist']),
+]);
+```
+
+### JavaScript
+
+Likewise, a JavaScript-specific config is export under `eslint-config-uphold/configs/`, which resolves globals for CJS and ESM automatically. The usage is similar to the TypeScript config:
+
+#### CJS
+
+```js
+const { defineConfig, globalIgnores } = require('eslint/config');
+const { javascript: upholdJs } = require('eslint-config-uphold/configs');
+
+module.exports = defineConfig([upholdJs, globalIgnores(['coverage'])]);
+```
+
+If not extending the config, it could even be used like this, which limits customization on files targeted, ignores, rules' specification, etc.:
+
+```js
+const { javascript: upholdJs } = require('eslint-config-uphold/configs');
+
+module.exports = upholdJs;
+```
+
+#### ESM
+
+```js
+import { defineConfig, globalIgnores } from 'eslint/config';
+import { javascript: upholdJs } from 'eslint-config-uphold/configs';
+
+export default defineConfig([
+  upholdJs,
+  globalIgnores(['coverage']),
+]);
 ```
 
 ## Upgrading ESLint
