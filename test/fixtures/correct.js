@@ -1,3 +1,7 @@
+// @ts-nocheck
+
+const { describe, it } = require('node:test');
+
 // env: jasmine.
 try {
   fail();
@@ -9,7 +13,7 @@ try {
 describe();
 
 // Avoid extra `no-unused-vars` violations.
-function noop() {
+function noop(param={}) {
   // do nothing
 }
 
@@ -82,6 +86,7 @@ describe('noExclusiveTests', () => {
 });
 
 // `new-cap`.
+// @ts-expect-error Tests `new-cap` rule. Module `cap` not present.
 const Cap = require('cap');
 const newCap = new Cap();
 
@@ -137,7 +142,9 @@ const noMultiStr = `Line 1
 
 noop(noMultiStr);
 
+
 // `no-this-before-super`.
+// @ts-expect-error Tests `no-this-before-super` rule. Module not defined.
 const NoThisBeforeSuper = require('no-this-before-super');
 
 class Child extends NoThisBeforeSuper {

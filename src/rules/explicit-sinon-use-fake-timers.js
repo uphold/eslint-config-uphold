@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * `explicit-sinon-use-fake-timers` rule.
  * - Validates that `sinon.useFakeTimers()` is always called with an explicit `toFake` property.
