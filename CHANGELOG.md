@@ -1,5 +1,9 @@
 # Changelog
 
+## [v6.5.2](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.5.2) (2025-06-04)
+
+- Update `eslint@9.28.0` and all dependencies [\#103](https://github.com/uphold/eslint-config-uphold/pull/103) ([risantos](https://github.com/risantos))
+
 ## [v6.5.1](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.5.1) (2025-05-22)
 
 - Update `eslint@9.27.0` and `@eslint-plugin-jsdoc@50.6.17` [\#100](https://github.com/uphold/eslint-config-uphold/pull/100) ([risantos](https://github.com/risantos))
