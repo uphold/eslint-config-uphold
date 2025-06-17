@@ -1,5 +1,9 @@
 # Changelog
 
+## [v6.5.3](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.5.3) (2025-06-17)
+
+- Update `eslint@9.29.0` and dependencies to fix vulnerability [\#104](https://github.com/uphold/eslint-config-uphold/pull/104) ([risantos](https://github.com/risantos))
+
 ## [v6.5.2](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.5.2) (2025-06-04)
 
 - Update `eslint@9.28.0` and all dependencies [\#103](https://github.com/uphold/eslint-config-uphold/pull/103) ([risantos](https://github.com/risantos))
