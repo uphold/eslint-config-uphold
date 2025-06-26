@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-uphold",
-  "version": "6.5.3",
+  "version": "6.6.0",
   "description": "Uphold-flavored ESLint config",
   "keywords": [
     "config",

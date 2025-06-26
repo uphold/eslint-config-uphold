@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.6.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.6.0) (2025-06-26)
+
+- Add `jsconfig.json` for improved Developer Experience [\#99](https://github.com/uphold/eslint-config-uphold/pull/99) ([risantos](https://github.com/risantos))
+- Update `prettier@3.6.1` and `eslint-plugin-prettier@5.5.1` [\#105](https://github.com/uphold/eslint-config-uphold/pull/105) ([risantos](https://github.com/risantos))
+- Update `@stylistic/eslint-plugin` to version 5.0.0 [\#106](https://github.com/uphold/eslint-config-uphold/pull/106) ([risantos](https://github.com/risantos))
+
 ## [v6.5.3](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.5.3) (2025-06-17)
 
 - Update `eslint@9.29.0` and dependencies to fix vulnerability [\#104](https://github.com/uphold/eslint-config-uphold/pull/104) ([risantos](https://github.com/risantos))
