@@ -1,5 +1,9 @@
 # Changelog
 
+## [v6.6.1](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.6.1) (2025-06-28)
+
+- Update `eslint@9.30.0` and all dependencies [\#107](https://github.com/uphold/eslint-config-uphold/pull/107) ([risantos](https://github.com/risantos))
+
 ## [v6.6.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.6.0) (2025-06-26)
 
 - Add `jsconfig.json` for improved Developer Experience [\#99](https://github.com/uphold/eslint-config-uphold/pull/99) ([risantos](https://github.com/risantos))
