@@ -84,7 +84,7 @@ const upholdBaseConfig = defineConfig([
         {
           blankLine: 'always',
           next: '*',
-          prev: ['const', 'let', 'var']
+          prev: ['const', 'if', 'let', 'var']
         },
         {
           blankLine: 'any',

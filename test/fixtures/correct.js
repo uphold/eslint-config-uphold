@@ -32,6 +32,12 @@ function funcThatReturns(bar) {
 
 funcThatReturns('foo');
 
+if (noop()) {
+  noop();
+}
+
+noop();
+
 // `@stylistic/spaced-comment`.
 // spaced comment.
 

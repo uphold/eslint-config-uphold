@@ -35,6 +35,7 @@ describe('eslint-config-uphold', () => {
     assert.deepEqual(rules, [
       '@stylistic/padding-line-between-statements',
       '@stylistic/padding-line-between-statements',
+      '@stylistic/padding-line-between-statements',
       '@stylistic/spaced-comment',
       'array-callback-return',
       'no-console',
