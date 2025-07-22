@@ -1,5 +1,9 @@
 # Changelog
 
+## [v6.7.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.7.0) (2025-07-22)
+
+- Add `if` to padding-line-between-statements [\#109](https://github.com/uphold/eslint-config-uphold/pull/109) ([francescouph](https://github.com/francescouph))
+
 ## [v6.6.2](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.6.2) (2025-07-07)
 
 - Update `eslint@9.30.1` and all dependencies [\#108](https://github.com/uphold/eslint-config-uphold/pull/108) ([risantos](https://github.com/risantos))
