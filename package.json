@@ -19,6 +19,13 @@
     "type": "git",
     "url": "git+ssh://git@github.com/uphold/eslint-config-uphold.git"
   },
+  "exports": {
+    ".": "./src/index.js",
+    "./configs" : {
+      "import": "./src/configs/index.mjs",
+      "require": "./src/configs/index.cjs"
+    }
+  },
   "files": [
     "src"
   ],
@@ -28,7 +35,9 @@
   "scripts": {
     "lint": "eslint",
     "release": "release-it",
-    "test": "node --test 'test/index.test.js'"
+    "test": "node --test --experimental-test-coverage 'test/**/*.test.js'",
+    "test:snapshot": "node --test --test-update-snapshots 'test/**/*.test.js'",
+    "test:watch": "node --test --watch 'test/**/*.test.js'"
   },
   "dependencies": {
     "@babel/core": "^7.28.0",
@@ -47,20 +56,46 @@
     "globals": "^16.3.0"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.26.3",
     "@fastify/pre-commit": "^2.2.0",
     "@types/node": "^22.17.0",
     "@uphold/github-changelog-generator": "^4.0.2",
     "eslint": "~9.32.0",
+    "eslint-plugin-import-x": "^4.12.2",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-sort-class-members": "^1.21.0",
     "prettier": "^3.6.2",
+    "react": "^19.0.0",
     "release-it": "^19.0.4"
   },
   "peerDependencies": {
     "eslint": "~9.32.0",
-    "prettier": ">=3.0.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-import-x": "^4.12.2",
+    "eslint-plugin-sort-class-members": "^1.21.0",
+    "prettier": "^3.0.0",
+    "react": "^19.0.0",
     "typescript": ">4.8.4 <5.9.0"
   },
   "peerDependenciesMeta": {
+    "eslint-plugin-import-x": {
+      "optional": true
+    },
+    "eslint-plugin-react": {
+      "optional": true
+    },
+    "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "eslint-plugin-sort-class-members": {
+      "optional": true
+    },
     "prettier": {
+      "optional": true
+    },
+    "react": {
       "optional": true
     },
     "typescript": {
@@ -68,7 +103,8 @@
     }
   },
   "pre-commit": [
-    "lint"
+    "lint",
+    "test"
   ],
   "engines": {
     "node": "^20.19.0 || ^22.12.0 || >=23"
