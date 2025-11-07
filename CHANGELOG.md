@@ -1,5 +1,10 @@
 # Changelog
 
+## [v6.7.2](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.7.2) (2025-11-07)
+
+- Add Node 24 to CI matrix and update workflows [\#112](https://github.com/uphold/eslint-config-uphold/pull/112) ([risantos](https://github.com/risantos))
+- Update `eslint@9.39.1` and all dependencies [\#111](https://github.com/uphold/eslint-config-uphold/pull/111) ([risantos](https://github.com/risantos))
+
 ## [v6.7.1](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.7.1) (2025-07-31)
 
 - Update `eslint@9.32.0` and all dependencies [\#110](https://github.com/uphold/eslint-config-uphold/pull/110) ([risantos](https://github.com/risantos))
