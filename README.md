@@ -81,8 +81,29 @@ This config includes custom Uphold-specific rules, under `uphold-plugin`.
 
 | Rule                                                                        | Enabled in default config? | Fix?  |
 | --------------------------------------------------------------------------- | -------------------------- | ----- |
+| [`database-migration-filename-format`](#database-migration-filename-format) | False                      | False |
 | [`explicit-sinon-use-fake-timers`](#explicit-sinon-use-fake-timers)         | True                       | False |
 | [`no-trailing-period-in-log-messages`](#no-trailing-period-in-log-messages) | True                       | True  |
+
+#### `database-migration-filename-format`
+
+Validates that migration file names are in the format `YYYYMMDDHHMMSS-<name>`, where `name` must match the regex `[a-z0-9-]+`, the date/time is UTC and is not in the future.
+
+To enable the `database-migration-filename-format` rule, you can do so as following:
+
+```js
+export default defineConfig([
+  ...
+  {
+    files: ['**/database/migrations/*.js'] // glob to include/exclude the migration files to lint
+    name: 'project/migrations',
+    rules: {
+      'uphold-plugin/database-migration-filename-format': 'error'
+    }
+  },
+  ...
+]);
+```
 
 #### `explicit-sinon-use-fake-timers`
 
