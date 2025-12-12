@@ -34,6 +34,7 @@
     "@babel/core": "^7.28.5",
     "@babel/eslint-parser": "^7.28.5",
     "@stylistic/eslint-plugin": "^5.5.0",
+    "dayjs": "^1.11.19",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsdoc": "^61.1.12",
     "eslint-plugin-mocha": "^11.2.0",

@@ -13,6 +13,7 @@ describe('rules index', () => {
   it('should export all custom rules', ({ assert }) => {
     // @ts-expect-error TestContextAssert.deepStrictEqual() is not inferred as expected.
     assert.deepStrictEqual(Object.keys(rules).sort(), [
+      'database-migration-filename-format',
       'explicit-sinon-use-fake-timers',
       'no-trailing-period-in-log-messages'
     ]);
