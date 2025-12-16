@@ -75,6 +75,61 @@ To automatically fix all lint issues, use the `--fix` option:
 npm run lint --fix
 ```
 
+### Custom rules
+
+This config includes custom Uphold-specific rules, under `uphold-plugin`.
+
+| Rule                                                                        | Enabled in default config? | Fix?  |
+| --------------------------------------------------------------------------- | -------------------------- | ----- |
+| [`explicit-sinon-use-fake-timers`](#explicit-sinon-use-fake-timers)         | True                       | False |
+| [`no-trailing-period-in-log-messages`](#no-trailing-period-in-log-messages) | True                       | True  |
+
+#### `explicit-sinon-use-fake-timers`
+
+Enforces explicit configuration when using Sinon's `useFakeTimers()` by requiring the `toFake` option to be specified. This ensures that only the intended timer functions are faked, reducing the risk of unintended side effects in tests.
+
+**Valid:**
+
+```js
+sinon.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout'] });
+```
+
+**Invalid:**
+
+```js
+sinon.useFakeTimers(); // ❌ Missing 'toFake' option.
+```
+
+#### `no-trailing-period-in-log-messages`
+
+Disallows trailing periods in log messages, except for `...` (ellipsis). This helps maintain consistency across log messages.
+
+**Valid:**
+
+```js
+console.log('Operation complete');
+console.info('Processing...');
+logger.error('An error occurred');
+```
+
+**Invalid:**
+
+```js
+console.log('Operation complete.'); // ❌ Remove the trailing period.
+console.info('Processing..'); // ❌ Use three dots (...) or none.
+logger.error('An error occurred.'); // ❌ Remove the trailing period.
+```
+
+**Options:**
+
+- `additionalMethods` - You can configure additional methods to check:
+
+  ```js
+  'uphold-plugin/no-trailing-period-in-log-messages': ['error', {
+    additionalMethods: ['fatal', 'verbose', 'success']
+  }]
+  ```
+
 ## Upgrading ESLint
 
 See the [ESLint repo](https://github.com/eslint/eslint#semantic-versioning-policy) for ESLint's guidelines on semantic versioning.
