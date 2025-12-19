@@ -228,6 +228,7 @@ const upholdBaseConfig = defineConfig([
       'sort-keys-fix/sort-keys-fix': ['error', 'asc', { natural: true }],
       'sql-template/no-unsafe-query': 'error',
       'uphold-plugin/explicit-sinon-use-fake-timers': 'error',
+      'uphold-plugin/no-trailing-period-in-log-messages': 'error',
       'vars-on-top': 'error',
       yoda: 'error'
     }

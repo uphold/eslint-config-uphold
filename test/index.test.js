@@ -73,7 +73,6 @@ describe('eslint-config-uphold', () => {
       'prettier/prettier',
       'prettier/prettier',
       'promise/prefer-await-to-then',
-      'uphold-plugin/explicit-sinon-use-fake-timers',
       'sort-destructure-keys/sort-destructure-keys',
       'sort-destructure-keys/sort-destructure-keys',
       'sort-destructure-keys/sort-destructure-keys',
@@ -81,6 +80,10 @@ describe('eslint-config-uphold', () => {
       'sort-imports-requires/sort-requires',
       'sort-keys-fix/sort-keys-fix',
       'sql-template/no-unsafe-query',
+      'uphold-plugin/explicit-sinon-use-fake-timers',
+      'uphold-plugin/no-trailing-period-in-log-messages',
+      'no-console',
+      'uphold-plugin/no-trailing-period-in-log-messages',
       'yoda'
     ]);
   });
