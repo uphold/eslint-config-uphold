@@ -197,11 +197,6 @@ noop(maximumLineLength);
   await noop();
 })();
 
-// `uphold-plugin/explicit-sinon-use-fake-timers`
-const sinon = {};
-
-sinon.useFakeTimers({ toFake: ['Date'] });
-
 // `sort-destructure-keys/sort-destructure-keys`
 const foobject = {
   FOXTROT: 0,
@@ -255,6 +250,19 @@ const sql = 'sql-tag';
 
 db.query(sql`SELECT ${foo} FROM bar`);
 db.query(`SELECT foo FROM bar`);
+
+// `uphold-plugin/explicit-sinon-use-fake-timers`
+const sinon = {};
+
+sinon.useFakeTimers({ toFake: ['Date'] });
+
+// `uphold-plugin/no-trailing-period-in-log-messages`
+const logger = {
+  log: noop
+};
+
+logger.log(`Valid log message without trailing period`);
+logger.log(`Loading...`);
 
 // `yoda`.
 let yoda = true;

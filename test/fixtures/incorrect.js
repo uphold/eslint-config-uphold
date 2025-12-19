@@ -183,11 +183,6 @@ noop(maximumLineLength);
 // `require-await`.
 (async () => {})();
 
-// `rulesdir/explicit-sinon-use-fake-timers`
-const sinon = {};
-
-sinon.useFakeTimers();
-
 // `sort-destructure-keys/sort-destructure-keys`.
 const foobject = {
   FOXTROT: 0,
@@ -238,6 +233,19 @@ const db = {
 const foo = 'foo';
 
 db.query(`SELECT ${foo} FROM bar`);
+
+// `uphold-plugin/explicit-sinon-use-fake-timers`.
+const sinon = {};
+
+sinon.useFakeTimers();
+
+// `uphold-plugin/no-trailing-period-in-log-messages`.
+const logger = {
+  log: noop
+};
+
+logger.log('Invalid log message with trailing period.');
+console.log('Loading..');
 
 // `yoda`.
 let yoda = true;
