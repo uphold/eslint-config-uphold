@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.8.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.8.0) (2026-01-05)
+
+- Update `release` workflow to use trusted OIDC publishing [\#116](https://github.com/uphold/eslint-config-uphold/pull/116) ([risantos](https://github.com/risantos))
+- Add `no-trailing-period-in-log-messages` rule [\#115](https://github.com/uphold/eslint-config-uphold/pull/115) ([risantos](https://github.com/risantos))
+- Bump js-yaml from 4.1.0 to 4.1.1 [\#113](https://github.com/uphold/eslint-config-uphold/pull/113) ([dependabot](https://github.com/apps/dependabot))
+
 ## [v6.7.2](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.7.2) (2025-11-07)
 
 - Add Node 24 to CI matrix and update workflows [\#112](https://github.com/uphold/eslint-config-uphold/pull/112) ([risantos](https://github.com/risantos))
