@@ -222,8 +222,15 @@ import 'import-1';
 import * as Import6 from 'import-2';
 import { Import5, import4 } from 'import-3';
 import { import3 } from 'import-4';
+// `no-duplicate-imports` - Imports.
+import { join, normalize, resolve } from 'node:path';
 import Import2 from 'import-5';
 import import1 from 'import-6';
+
+const path = join(resolve('/foo'), 'bar');
+
+// `no-duplicate-imports` - Exports.
+export { normalize, path };
 
 noop(Import2);
 noop(Import5);

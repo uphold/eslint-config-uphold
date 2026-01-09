@@ -66,7 +66,6 @@ const upholdBaseConfig = defineConfig([
       // @ts-expect-error Outdated types for `eslint-plugin-sort-destructure-keys`.
       'sort-destructure-keys': sortDestructureKeys,
       'sort-imports-requires': sortImportsRequires,
-      // @ts-expect-error Outdated types for `eslint-plugin-sort-keys-fix`.
       'sort-keys-fix': sortKeysFix,
       // @ts-expect-error Outdated types for `eslint-plugin-sql-template`.
       'sql-template': sqlTemplate,
@@ -135,7 +134,7 @@ const upholdBaseConfig = defineConfig([
       'no-console': 'warn',
       'no-div-regex': 'error',
       'no-dupe-keys': 'error',
-      'no-duplicate-imports': 'error',
+      'no-duplicate-imports': ['error', { includeExports: true }],
       'no-else-return': 'error',
       'no-eq-null': 'error',
       'no-eval': 'error',

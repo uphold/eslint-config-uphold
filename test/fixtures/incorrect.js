@@ -206,6 +206,15 @@ noop(FOXTROT);
 // `sort-imports-requires/sort-imports`.
 import import1 from 'import-1';
 import { import2 } from 'import-2';
+// `no-duplicate-imports` - Imports.
+import { join } from 'node:path';
+import { resolve } from 'node:path';
+
+const path = join(resolve('/foo'), 'bar');
+
+// `no-duplicate-imports` - Exports.
+export { normalize } from 'node:path';
+export { path };
 
 noop(import1);
 noop(import2);
