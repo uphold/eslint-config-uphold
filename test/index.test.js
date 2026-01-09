@@ -77,6 +77,8 @@ describe('eslint-config-uphold', () => {
       'sort-destructure-keys/sort-destructure-keys',
       'sort-destructure-keys/sort-destructure-keys',
       'sort-imports-requires/sort-imports',
+      'no-duplicate-imports',
+      'no-duplicate-imports',
       'sort-imports-requires/sort-requires',
       'sort-keys-fix/sort-keys-fix',
       'sql-template/no-unsafe-query',
