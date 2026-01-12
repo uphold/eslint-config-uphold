@@ -1,5 +1,10 @@
 # Changelog
 
+## [v6.9.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.9.0) (2026-01-12)
+
+- Enable `includeExports` check on `no-duplicate-imports` [\#117](https://github.com/uphold/eslint-config-uphold/pull/117) ([risantos](https://github.com/risantos))
+- Add `database-migration-filename-format` rule [\#114](https://github.com/uphold/eslint-config-uphold/pull/114) ([acostalima](https://github.com/acostalima))
+
 ## [v6.8.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.8.0) (2026-01-05)
 
 - Update `release` workflow to use trusted OIDC publishing [\#116](https://github.com/uphold/eslint-config-uphold/pull/116) ([risantos](https://github.com/risantos))
