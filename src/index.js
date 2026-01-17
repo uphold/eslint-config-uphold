@@ -13,7 +13,6 @@ import {
   sqlTemplateConfig,
   stylisticConfig
 } from './configs/common.js';
-import babelParser from '@babel/eslint-parser';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
 import js from '@eslint/js';
@@ -35,16 +34,12 @@ import stylistic from '@stylistic/eslint-plugin';
  */
 
 const languageOptions = {
-  ecmaVersion: 2020,
+  ecmaVersion: 2022,
   globals: {
     ...globals.jasmine,
     ...globals.jest,
     ...globals.mocha,
     ...globals.node
-  },
-  parser: babelParser,
-  parserOptions: {
-    requireConfigFile: false
   },
   sourceType: 'module'
 };

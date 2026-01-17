@@ -303,6 +303,20 @@ import { jest, mocha, vitest } from 'eslint-config-uphold/configs';
 > [!NOTE]
 > Test configs use top-level `await` for dynamic module detection and are **ESM-only**. If your project uses CommonJS, your `eslint.config.mjs` still supports `import()` and top-level `await`.
 
+### Custom parsers
+
+From [ESLint's docs > Configure a Parser](https://eslint.org/docs/latest/use/configure/parser):
+
+> You can use custom parsers to convert JavaScript code into an abstract syntax tree for ESLint to evaluate. You might want to add a custom parser if your code isn’t compatible with ESLint’s default parser, Espree.
+>
+> (...)
+>
+> The following third-party parsers are known to be compatible with ESLint:
+>
+> - [Esprima](https://www.npmjs.com/package/esprima)
+> - [@babel/eslint-parser](https://www.npmjs.com/package/@babel/eslint-parser) - A wrapper around the Babel parser that makes it compatible with ESLint.
+> - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser) - A parser that converts TypeScript into an ESTree-compatible form so it can be used in ESLint.
+
 ## Upgrading ESLint
 
 See the [ESLint repo](https://github.com/eslint/eslint#semantic-versioning-policy) for ESLint's guidelines on semantic versioning.
