@@ -36,12 +36,7 @@ import stylistic from '@stylistic/eslint-plugin';
 
 const languageOptions = {
   ecmaVersion: 2022,
-  globals: {
-    ...globals.jasmine,
-    ...globals.jest,
-    ...globals.mocha,
-    ...globals.node
-  },
+  globals: globals.node,
   sourceType: 'module'
 };
 
@@ -85,11 +80,6 @@ const upholdBaseConfig = defineConfig([
       ...sortKeysFixConfig.rules,
       ...sqlTemplateConfig.rules,
       ...stylisticConfig.rules,
-      // Mocha rules to be removed on next major release.
-      'mocha/no-exclusive-tests': 'error',
-      'mocha/no-identical-title': 'error',
-      'mocha/no-nested-tests': 'error',
-      'mocha/no-sibling-hooks': 'error',
       'uphold-plugin/explicit-sinon-use-fake-timers': 'error',
       'uphold-plugin/no-trailing-period-in-log-messages': 'error',
       'uphold-plugin/require-comment-punctuation': 'error'
