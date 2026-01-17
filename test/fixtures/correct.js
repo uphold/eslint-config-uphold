@@ -1,17 +1,5 @@
 // @ts-nocheck
 
-const { describe, it } = require('node:test');
-
-// env: jasmine.
-try {
-  fail();
-} catch (e) {
-  /* empty */
-}
-
-// env: jest and mocha.
-describe();
-
 // Avoid extra `no-unused-vars` violations.
 function noop() {
   // do nothing.
@@ -85,11 +73,6 @@ noop(`${__dirname}`);
 /**
  * Testing `jsdoc/require-description-complete-sentence`.
  */
-
-// `mocha/no-exclusive-tests`.
-describe('noExclusiveTests', () => {
-  it('should work');
-});
 
 // `new-cap`.
 // @ts-expect-error Tests `new-cap` rule. Module `cap` not present.
