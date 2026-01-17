@@ -6,6 +6,7 @@ import { defineConfig } from 'eslint/config';
 import {
   eslintRules,
   jsdocPluginConfigJavaScript,
+  nodePluginConfig,
   promisePluginConfig,
   sortDestructureKeysConfig,
   sortImportsRequiresConfig,
@@ -68,8 +69,8 @@ const upholdBaseConfig = defineConfig([
       '@stylistic': stylistic,
       jsdoc,
       mocha,
-      // To be renamed to `n` on next major release.
-      'node-plugin': nodePlugin,
+      // eslint-disable-next-line id-length
+      n: nodePlugin,
       // @ts-expect-error Outdated types for `eslint-plugin-promise`.
       promise,
       // @ts-expect-error Outdated types for `eslint-plugin-sort-destructure-keys`.
@@ -82,6 +83,7 @@ const upholdBaseConfig = defineConfig([
     },
     rules: {
       ...eslintRules,
+      ...nodePluginConfig.rules,
       ...promisePluginConfig.rules,
       ...sortDestructureKeysConfig.rules,
       ...sortImportsRequiresConfig.rules,
@@ -93,14 +95,6 @@ const upholdBaseConfig = defineConfig([
       'mocha/no-identical-title': 'error',
       'mocha/no-nested-tests': 'error',
       'mocha/no-sibling-hooks': 'error',
-      'node-plugin/no-mixed-requires': 'error',
-      'node-plugin/no-new-require': 'error',
-      'node-plugin/no-path-concat': 'error',
-      'node-plugin/no-process-env': 'error',
-      'node-plugin/no-process-exit': 'error',
-      'node-plugin/no-restricted-import': 'error',
-      'node-plugin/no-restricted-require': 'error',
-      'node-plugin/no-sync': 'error',
       'uphold-plugin/explicit-sinon-use-fake-timers': 'error',
       'uphold-plugin/no-trailing-period-in-log-messages': 'error',
       'uphold-plugin/require-comment-punctuation': 'error'
@@ -119,8 +113,8 @@ const upholdBinScriptsConfig = {
   languageOptions,
   name: 'uphold/scripts',
   rules: {
-    'no-console': 'off',
-    'node-plugin/no-process-exit': 'off'
+    'n/no-process-exit': 'off',
+    'no-console': 'off'
   }
 };
 
