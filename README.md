@@ -328,6 +328,10 @@ This is down to the fact that no guarantee is made that minor upgrades do not ca
 The downside here is a package update is required for any security or other bug fixes.
 The benefit however is the included rules are always guaranteed to be stable.
 
+## Migration guide
+
+See the [MIGRATIONS.md](MIGRATIONS.md) file for migration guides between versions v5 and v6, v6 and v7.
+
 ## Release process
 
 The release of a version is automated via the [release](https://github.com/uphold/eslint-config-uphold/.github/workflows/release.yml) GitHub workflow.
