@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.10.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.10.0) (2026-01-19)
+
+- Update all dependencies to fix vulnerabilities [\#122](https://github.com/uphold/eslint-config-uphold/pull/122) ([risantos](https://github.com/risantos))
+- Add `@vitest/eslint-plugin` for `vitest` linting [\#102](https://github.com/uphold/eslint-config-uphold/pull/102) ([risantos](https://github.com/risantos))
+- Add `eslint-plugin-jest` and export test configs [\#101](https://github.com/uphold/eslint-config-uphold/pull/101) ([risantos](https://github.com/risantos))
+
 ## [v6.9.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.9.0) (2026-01-12)
 
 - Enable `includeExports` check on `no-duplicate-imports` [\#117](https://github.com/uphold/eslint-config-uphold/pull/117) ([risantos](https://github.com/risantos))
