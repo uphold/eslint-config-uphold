@@ -1,5 +1,9 @@
 # Changelog
 
+## [v6.10.1](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.10.1) (2026-01-22)
+
+- Bump lodash from 4.17.21 to 4.17.23 [\#123](https://github.com/uphold/eslint-config-uphold/pull/123) ([dependabot](https://github.com/apps/dependabot))
+
 ## [v6.10.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.10.0) (2026-01-19)
 
 - Update all dependencies to fix vulnerabilities [\#122](https://github.com/uphold/eslint-config-uphold/pull/122) ([risantos](https://github.com/risantos))
