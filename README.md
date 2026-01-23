@@ -75,6 +75,56 @@ To automatically fix all lint issues, use the `--fix` option:
 npm run lint --fix
 ```
 
+### TypeScript
+
+A TypeScript-specific config using `typescript-eslint` is available under `eslint-config-uphold/configs/`.
+
+It can be used like this, on a `eslint.config.mjs` file:
+
+```js
+import { defineConfig, globalIgnores } from 'eslint/config';
+import { typescript as upholdTypescriptConfig } from 'eslint-config-uphold/configs';
+import tseslint from 'typescript-eslint';
+
+export default defineConfig([
+  {
+    extends: [upholdTypescriptConfig],
+    name: 'project-name/uphold-typescript',
+    rules: {
+      'jsdoc/no-types': 'warn'
+    }
+  },
+  globalIgnores(['coverage', 'dist'])
+]);
+```
+
+It's also possible to use the config without `typescript-eslint`. Minimal setup would look like the following:
+
+```js
+import { typescript as upholdTypescriptConfig } from 'eslint-config-uphold/configs';
+
+export default upholdTypescriptConfig;
+```
+
+### JavaScript
+
+Likewise, a JavaScript-specific config is export under `eslint-config-uphold/configs/`. The usage is similar to TypeScript's config:
+
+```js
+import { defineConfig, globalIgnores } from 'eslint/config';
+import { javascript as upholdJavascriptConfig } from 'eslint-config-uphold/configs';
+
+export default defineConfig([upholdJavascriptConfig, globalIgnores(['coverage'])]);
+```
+
+If not wanting to extend the config, it could even be used like the following:
+
+```js
+import { javascript as upholdJavascriptConfig } from 'eslint-config-uphold/configs';
+
+export default upholdJavascriptConfig;
+```
+
 ### Custom rules
 
 This config includes custom Uphold-specific rules, under `uphold-plugin`.
