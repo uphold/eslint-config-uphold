@@ -35,8 +35,6 @@
     "test": "node --test $(find test -name '*.test.js')"
   },
   "dependencies": {
-    "@babel/core": "^7.28.6",
-    "@babel/eslint-parser": "^7.28.6",
     "@stylistic/eslint-plugin": "^5.7.0",
     "dayjs": "^1.11.19",
     "eslint-config-prettier": "^10.1.8",
