@@ -28,12 +28,7 @@ import stylistic from '@stylistic/eslint-plugin';
 
 const languageOptions = {
   ecmaVersion: 2020,
-  globals: {
-    ...globals.jasmine,
-    ...globals.jest,
-    ...globals.mocha,
-    ...globals.node
-  },
+  globals: globals.node,
   parser: babelParser,
   parserOptions: {
     requireConfigFile: false
@@ -121,10 +116,6 @@ const upholdBaseConfig = defineConfig([
       'jsdoc/tag-lines': 0,
       'max-depth': 'error',
       'max-params': ['error', 4],
-      'mocha/no-exclusive-tests': 'error',
-      'mocha/no-identical-title': 'error',
-      'mocha/no-nested-tests': 'error',
-      'mocha/no-sibling-hooks': 'error',
       'new-cap': 'error',
       'no-alert': 'error',
       'no-array-constructor': 'error',
