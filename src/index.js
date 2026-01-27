@@ -60,7 +60,8 @@ const upholdBaseConfig = defineConfig([
       '@stylistic': stylistic,
       jsdoc,
       mocha,
-      'node-plugin': nodePlugin,
+      // eslint-disable-next-line id-length
+      n: nodePlugin,
       // @ts-expect-error Outdated types for `eslint-plugin-promise`.
       promise,
       // @ts-expect-error Outdated types for `eslint-plugin-sort-destructure-keys`.
@@ -125,6 +126,14 @@ const upholdBaseConfig = defineConfig([
       'mocha/no-identical-title': 'error',
       'mocha/no-nested-tests': 'error',
       'mocha/no-sibling-hooks': 'error',
+      'n/no-mixed-requires': 'error',
+      'n/no-new-require': 'error',
+      'n/no-path-concat': 'error',
+      'n/no-process-env': 'error',
+      'n/no-process-exit': 'error',
+      'n/no-restricted-import': 'error',
+      'n/no-restricted-require': 'error',
+      'n/no-sync': 'error',
       'new-cap': 'error',
       'no-alert': 'error',
       'no-array-constructor': 'error',
@@ -171,14 +180,6 @@ const upholdBaseConfig = defineConfig([
       'no-useless-concat': 'error',
       'no-var': 'error',
       'no-void': 'error',
-      'node-plugin/no-mixed-requires': 'error',
-      'node-plugin/no-new-require': 'error',
-      'node-plugin/no-path-concat': 'error',
-      'node-plugin/no-process-env': 'error',
-      'node-plugin/no-process-exit': 'error',
-      'node-plugin/no-restricted-import': 'error',
-      'node-plugin/no-restricted-require': 'error',
-      'node-plugin/no-sync': 'error',
       'object-shorthand': 'error',
       'operator-assignment': 'error',
       'prefer-const': 'error',
@@ -245,8 +246,8 @@ const upholdBinScriptsConfig = {
   languageOptions,
   name: 'uphold/scripts',
   rules: {
-    'no-console': 'off',
-    'node-plugin/no-process-exit': 'off'
+    'n/no-process-exit': 'off',
+    'no-console': 'off'
   }
 };
 
