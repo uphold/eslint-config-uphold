@@ -1,5 +1,10 @@
 # Changelog
 
+## [v6.11.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.11.0) (2026-02-03)
+
+- Remove redundant `typescript-eslint` warning [\#125](https://github.com/uphold/eslint-config-uphold/pull/125) ([risantos](https://github.com/risantos))
+- Add TypeScript support using `typescript-eslint` [\#97](https://github.com/uphold/eslint-config-uphold/pull/97) ([risantos](https://github.com/risantos))
+
 ## [v6.10.1](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.10.1) (2026-01-22)
 
 - Bump lodash from 4.17.21 to 4.17.23 [\#123](https://github.com/uphold/eslint-config-uphold/pull/123) ([dependabot](https://github.com/apps/dependabot))
