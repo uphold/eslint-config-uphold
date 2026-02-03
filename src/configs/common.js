@@ -374,7 +374,8 @@ export const upholdPluginConfig = {
   },
   rules: {
     ...(isSinonAvailable && { 'uphold-plugin/explicit-sinon-use-fake-timers': 'error' }),
-    'uphold-plugin/no-trailing-period-in-log-messages': 'error'
+    'uphold-plugin/no-trailing-period-in-log-messages': 'error',
+    'uphold-plugin/require-comment-punctuation': 'error'
   }
 };
 

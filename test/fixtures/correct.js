@@ -14,7 +14,7 @@ describe();
 
 // Avoid extra `no-unused-vars` violations.
 function noop() {
-  // do nothing
+  // do nothing.
 }
 
 // `@stylistic/padding-line-between-statements`.
@@ -180,7 +180,7 @@ const maximumLineLength = '120';
 
 noop(maximumLineLength);
 
-// promise/prefer-await-to-then
+// `promise/prefer-await-to-then`.
 (async (foo = {}) => {
   await foo;
 })();
@@ -197,7 +197,7 @@ noop(maximumLineLength);
   await noop();
 })();
 
-// `sort-destructure-keys/sort-destructure-keys`
+// `sort-destructure-keys/sort-destructure-keys`.
 const foobject = {
   FOXTROT: 0,
   alpha: 1,
@@ -258,12 +258,12 @@ const sql = 'sql-tag';
 db.query(sql`SELECT ${foo} FROM bar`);
 db.query(`SELECT foo FROM bar`);
 
-// `uphold-plugin/explicit-sinon-use-fake-timers`
+// `uphold-plugin/explicit-sinon-use-fake-timers`.
 const sinon = {};
 
 sinon.useFakeTimers({ toFake: ['Date'] });
 
-// `uphold-plugin/no-trailing-period-in-log-messages`
+// `uphold-plugin/no-trailing-period-in-log-messages`.
 const logger = {
   log: noop
 };

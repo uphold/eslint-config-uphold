@@ -15,7 +15,8 @@ describe('rules index', () => {
     assert.deepStrictEqual(Object.keys(rules).sort(), [
       'database-migration-filename-format',
       'explicit-sinon-use-fake-timers',
-      'no-trailing-period-in-log-messages'
+      'no-trailing-period-in-log-messages',
+      'require-comment-punctuation'
     ]);
   });
 });
