@@ -2,7 +2,7 @@
 
 // Avoid extra `no-unused-vars` violations.
 function noop() {
-  // do nothing
+  // do nothing.
 }
 
 // `@stylistic/padding-line-between-statements`.

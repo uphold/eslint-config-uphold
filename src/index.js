@@ -102,7 +102,8 @@ const upholdBaseConfig = defineConfig([
       'node-plugin/no-restricted-require': 'error',
       'node-plugin/no-sync': 'error',
       'uphold-plugin/explicit-sinon-use-fake-timers': 'error',
-      'uphold-plugin/no-trailing-period-in-log-messages': 'error'
+      'uphold-plugin/no-trailing-period-in-log-messages': 'error',
+      'uphold-plugin/require-comment-punctuation': 'error'
     }
   }
 ]);

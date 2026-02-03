@@ -100,7 +100,7 @@ const noTrailingPeriodInLogMessages = {
     /**
      * Extracts the log method name from a callee node.
      * @param {import('estree').Node} callee - Callee node to analyze.
-     * @returns {string|null} Method name if it's a log method, null otherwise.
+     * @returns {string | null} Method name if it's a log method, null otherwise.
      */
     function getLogMethodName(callee) {
       if (callee.type === 'MemberExpression') {

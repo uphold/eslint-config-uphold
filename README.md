@@ -154,6 +154,7 @@ This config includes custom Uphold-specific rules, under `uphold-plugin`.
 | [`database-migration-filename-format`](#database-migration-filename-format) | False                      | False |
 | [`explicit-sinon-use-fake-timers`](#explicit-sinon-use-fake-timers)         | True                       | False |
 | [`no-trailing-period-in-log-messages`](#no-trailing-period-in-log-messages) | True                       | True  |
+| [`require-comment-punctuation`](#require-comment-punctuation)               | True                       | True  |
 
 #### `database-migration-filename-format`
 
@@ -220,6 +221,50 @@ logger.error('An error occurred.'); // ❌ Remove the trailing period.
     additionalMethods: ['fatal', 'verbose', 'success']
   }]
   ```
+
+#### `require-comment-punctuation`
+
+Requires `//` comment blocks to end with punctuation on the last line. Valid endings are `.`, `:`, `;`, `?`, `!`, or paired triple backticks (`` ``` ``). This helps maintain consistency in code comments.
+
+**Valid:**
+
+````js
+// This is a comment with a period.
+// Is this a question?
+// This is important!
+// ``` let foo = 1 + 2 ```
+````
+
+**Invalid:**
+
+- ❌ Missing punctuation.
+
+  ```js
+  // This is a comment without punctuation
+  // Comment with unmatched backticks ```
+  ```
+
+**Options:**
+
+- `exclusionPrefixes` - An array of strings. Comments starting with these prefixes (after `//`) are excluded from the rule:
+
+  ```js
+  'uphold-plugin/require-comment-punctuation': ['error', {
+    exclusionPrefixes: ['TODO:', 'FIXME:', 'NOTE:']
+  }]
+  ```
+
+  With this config, comments like `// TODO: implement this` will not require punctuation.
+
+- `additionalAllowedEndings` - An array of strings to extend the default allowed endings (`.`, `:`, `;`, `?`, `!`, `` ``` ``):
+
+  ```js
+  'uphold-plugin/require-comment-punctuation': ['error', {
+    additionalAllowedEndings: [')']
+  }]
+  ```
+
+  With this config, comments ending with `)` will also be considered valid.
 
 ### Test configs
 
