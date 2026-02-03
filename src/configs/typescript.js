@@ -56,6 +56,44 @@ const moduleTypeToGlobals = {
 };
 
 /**
+ * Build fallback config using ESLint only.
+ * @param {object} [options] - Additional options for the configuration.
+ * @param {import('eslint').Linter.LanguageOptions['ecmaVersion']} [options.ecmaVersion] - The ECMAScript version to use.
+ * @param {'commonjs' | 'module'} [options.moduleType='module'] - The module type, defaulting to ECMAScript modules, most common for TypeScript.
+ * @param {import('eslint').Linter.LanguageOptions['globals']} [options.nodeGlobals=globals.nodeBuiltin] - The globals to use for Node.js.
+ * @returns {import('eslint').Linter.Config[]} The fallback ESLint config for TypeScript.
+ */
+const buildFallbackConfig = ({
+  ecmaVersion = defaultEcmaVersion,
+  moduleType = 'module',
+  nodeGlobals = globals.nodeBuiltin
+} = {}) => {
+  return defineConfig([
+    {
+      extends: [
+        {
+          ...eslint.configs.recommended,
+          name: 'eslint/recommended'
+        }
+      ],
+      files: ['**/*.cts', '**/*.d.ts', '**/*.mts', '**/*.ts', '**/*.tsx'],
+      languageOptions: {
+        ecmaVersion,
+        globals: nodeGlobals,
+        parserOptions: {
+          ecmaFeatures: {
+            impliedStrict: true
+          }
+        }
+      },
+      name: `uphold/typescript-compat-${moduleType}`,
+      rules: eslintRules
+    },
+    ...commonConfigs
+  ]);
+};
+
+/**
  * Create Uphold TypeScript ESLint config.
  * @param {'commonjs' | 'module'} [moduleType='module'] - The module type, defaulting to ECMAScript modules, most common for TypeScript.
  * @param {object} [options] - Additional options for the configuration.
@@ -67,6 +105,10 @@ export async function createTypeScriptConfig(moduleType = 'module', { ecmaVersio
   const checkModule = utils?.isModuleAvailable ?? isModuleAvailable;
   const loadMod = utils?.loadModule ?? loadModule;
   const nodeGlobals = moduleTypeToGlobals[moduleType] || globals.nodeBuiltin;
+
+  if (!checkModule('typescript')) {
+    return buildFallbackConfig({ ecmaVersion, moduleType, nodeGlobals });
+  }
 
   if (checkModule('typescript-eslint')) {
     /** @type {import('typescript-eslint').default} */
@@ -107,27 +149,5 @@ export async function createTypeScriptConfig(moduleType = 'module', { ecmaVersio
 
   console.warn('`typescript-eslint` not installed. Falling back to ESLint for TypeScript linting');
 
-  return defineConfig([
-    {
-      extends: [
-        {
-          ...eslint.configs.recommended,
-          name: 'eslint/recommended'
-        }
-      ],
-      files: ['**/*.cts', '**/*.d.ts', '**/*.mts', '**/*.ts', '**/*.tsx'],
-      languageOptions: {
-        ecmaVersion,
-        globals: nodeGlobals,
-        parserOptions: {
-          ecmaFeatures: {
-            impliedStrict: true
-          }
-        }
-      },
-      name: `uphold/typescript-compat-${moduleType}`,
-      rules: eslintRules
-    },
-    ...commonConfigs
-  ]);
+  return buildFallbackConfig({ ecmaVersion, moduleType, nodeGlobals });
 }
