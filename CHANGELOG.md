@@ -1,5 +1,9 @@
 # Changelog
 
+## [v6.12.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.12.0) (2026-02-04)
+
+- Add `require-comment-punctuation` rule [\#124](https://github.com/uphold/eslint-config-uphold/pull/124) ([risantos](https://github.com/risantos))
+
 ## [v6.11.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.11.0) (2026-02-03)
 
 - Remove redundant `typescript-eslint` warning [\#125](https://github.com/uphold/eslint-config-uphold/pull/125) ([risantos](https://github.com/risantos))
