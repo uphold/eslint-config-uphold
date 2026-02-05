@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 
+import { defineConfig } from 'eslint/config';
 import { isModuleAvailable, loadModule } from '../utils/load-module.js';
 import globals from 'globals';
 
@@ -14,7 +15,7 @@ import globals from 'globals';
 /**
  * Create Vitest ESLint config.
  * @param {LoaderUtils} [utils] - Optional utilities for dependency injection (for testing).
- * @returns {Promise<import('@eslint/config-helpers').ConfigWithExtends>} The Vitest ESLint config.
+ * @returns {Promise<import('eslint').Linter.Config[]>} The Vitest ESLint config.
  */
 export async function createVitestConfig(utils) {
   const checkModule = utils?.isModuleAvailable ?? isModuleAvailable;
@@ -26,10 +27,10 @@ export async function createVitestConfig(utils) {
   if (isVitestPluginAvailable && isVitestAvailable) {
     const vitestPlugin = await loadMod('@vitest/eslint-plugin');
 
-    return {
+    return defineConfig({
       extends: [vitestPlugin.configs.recommended],
       languageOptions: vitestPlugin.configs.env.languageOptions,
-      name: 'uphold/vitest-plugin-config',
+      name: 'uphold/vitest',
       rules: {
         'vitest/no-commented-out-tests': 'warn',
         'vitest/no-disabled-tests': 'warn',
@@ -41,28 +42,22 @@ export async function createVitestConfig(utils) {
         'vitest/prefer-expect-resolves': 'warn',
         'vitest/prefer-to-have-length': 'warn'
       }
-    };
+    });
   }
 
   if (isVitestAvailable) {
     console.warn('`@vitest/eslint-plugin` is not installed, Vitest linting will be disabled');
 
-    return {
+    return defineConfig({
       languageOptions: {
         globals: globals.vitest
       },
-      name: 'uphold/vitest-globals'
-    };
+      name: 'uphold/vitest'
+    });
   }
 
   // Vitest not installed, exporting an empty config.
-  return {
-    name: 'uphold/vitest-empty'
-  };
+  return defineConfig({
+    name: 'uphold/vitest'
+  });
 }
-
-/**
- * Export the default configuration (evaluated at module load time).
- */
-
-export default await createVitestConfig();

@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 
+import { defineConfig } from 'eslint/config';
 import { isModuleAvailable, loadModule } from '../utils/load-module.js';
 import globals from 'globals';
 
@@ -14,7 +15,7 @@ import globals from 'globals';
 /**
  * Create Mocha ESLint config.
  * @param {LoaderUtils} [utils] - Optional utilities for dependency injection (for testing).
- * @returns {Promise<import('@eslint/config-helpers').ConfigWithExtends>} The Mocha ESLint config.
+ * @returns {Promise<import('eslint').Linter.Config[]>} The Mocha ESLint config.
  */
 export async function createMochaConfig(utils) {
   const checkModule = utils?.isModuleAvailable ?? isModuleAvailable;
@@ -28,37 +29,31 @@ export async function createMochaConfig(utils) {
       /** @type {{ configs: { recommended: import('@eslint/config-helpers').Config } }} */
       (await loadMod('eslint-plugin-mocha'));
 
-    return {
+    return defineConfig({
       extends: [pluginMocha.configs.recommended],
-      name: 'uphold/mocha-plugin-config',
+      name: 'uphold/mocha',
       rules: {
         'mocha/no-exclusive-tests': 'error',
         'mocha/no-identical-title': 'error',
         'mocha/no-nested-tests': 'error',
         'mocha/no-sibling-hooks': 'error'
       }
-    };
+    });
   }
 
   if (isMochaAvailable) {
     console.warn('`eslint-plugin-mocha` is not installed, Mocha linting will be disabled');
 
-    return {
+    return defineConfig({
       languageOptions: {
         globals: globals.mocha
       },
-      name: 'uphold/mocha-globals'
-    };
+      name: 'uphold/mocha'
+    });
   }
 
   // Mocha not installed, exporting an empty config.
-  return {
-    name: 'uphold/mocha-empty'
-  };
+  return defineConfig({
+    name: 'uphold/mocha'
+  });
 }
-
-/**
- * Export the default configuration (evaluated at module load time).
- */
-
-export default await createMochaConfig();

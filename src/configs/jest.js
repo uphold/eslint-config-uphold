@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 
+import { defineConfig } from 'eslint/config';
 import { isModuleAvailable, loadModule } from '../utils/load-module.js';
 import globals from 'globals';
 
@@ -14,7 +15,7 @@ import globals from 'globals';
 /**
  * Create Jest ESLint config.
  * @param {LoaderUtils} [utils] - Optional utilities for dependency injection (for testing).
- * @returns {Promise<import('@eslint/config-helpers').ConfigWithExtends>} The Jest ESLint config.
+ * @returns {Promise<import('eslint').Linter.Config[]>} The Jest ESLint config.
  */
 export async function createJestConfig(utils) {
   const checkModule = utils?.isModuleAvailable ?? isModuleAvailable;
@@ -28,9 +29,9 @@ export async function createJestConfig(utils) {
       /** @type {{ configs: Record<string, import('@eslint/config-helpers').Config> }} */
       (await loadMod('eslint-plugin-jest'));
 
-    return {
+    return defineConfig({
       extends: [{ ...jestPlugin.configs['flat/recommended'], name: 'jest/recommended' }],
-      name: 'uphold/jest-plugin-config',
+      name: 'uphold/jest',
       rules: {
         'jest/padding-around-describe-blocks': 'warn',
         'jest/padding-around-expect-groups': 'warn',
@@ -42,28 +43,22 @@ export async function createJestConfig(utils) {
         'jest/prefer-to-have-length': 'warn',
         'jest/prefer-todo': 'warn'
       }
-    };
+    });
   }
 
   if (isJestAvailable) {
     console.warn('`eslint-plugin-jest` is not installed, Jest linting will be disabled');
 
-    return {
+    return defineConfig({
       languageOptions: {
         globals: globals.jest
       },
-      name: 'uphold/jest-globals'
-    };
+      name: 'uphold/jest'
+    });
   }
 
   // Jest not installed, exporting an empty config.
-  return {
-    name: 'uphold/jest-empty'
-  };
+  return defineConfig({
+    name: 'uphold/jest'
+  });
 }
-
-/**
- * Export the default configuration (evaluated at module load time).
- */
-
-export default await createJestConfig();

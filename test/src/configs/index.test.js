@@ -13,7 +13,6 @@ describe('Test configs', () => {
   it('should export all configs', async () => {
     const configs = await import('../../../src/configs/index.js');
 
-    assert.ok(configs.default, '`default export` should exist');
     assert.ok(configs.javascript, '`javascript` config should be exported');
     assert.ok(configs.jest, '`jest` config should be exported');
     assert.ok(configs.mocha, '`mocha` config should be exported');
@@ -21,14 +20,11 @@ describe('Test configs', () => {
     assert.ok(configs.vitest, '`vitest` config should be exported');
   });
 
-  it('should support default import', async () => {
+  it('should export factory functions', async () => {
     const configs = await import('../../../src/configs/index.js');
 
-    assert.ok(configs.default.javascript, '`default export` should have `javascript`');
-    assert.ok(configs.default.jest, '`default export` should have `jest`');
-    assert.ok(configs.default.mocha, '`default export` should have `mocha`');
-    assert.ok(configs.default.typescript, '`default export` should have `typescript`');
-    assert.ok(configs.default.vitest, '`default export` should have `vitest`');
+    assert.strictEqual(typeof configs.createJavaScriptConfig, 'function', 'createJavaScriptConfig should be exported');
+    assert.strictEqual(typeof configs.createTypeScriptConfig, 'function', 'createTypeScriptConfig should be exported');
   });
 
   for (const configName of ['javascript', 'jest', 'mocha', 'typescript', 'vitest']) {

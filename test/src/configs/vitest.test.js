@@ -11,52 +11,31 @@ import assert from 'node:assert';
  */
 
 describe('Vitest config', () => {
-  describe('default export', () => {
-    it('should export a valid ESLint config object', async () => {
-      const vitestConfig = await import('../../../src/configs/vitest.js');
-
-      assert.ok(vitestConfig.default, 'Should have default export');
-      assert.ok(vitestConfig.default.name, 'Config should have a name');
-      assert.ok(typeof vitestConfig.default === 'object', 'Config should be an object');
-    });
-
-    it('should have correct name prefix', async () => {
-      const vitestConfig = await import('../../../src/configs/vitest.js');
-
-      assert.ok(vitestConfig.default.name, 'Config should have a name');
-      assert.ok(
-        vitestConfig.default.name.startsWith('uphold/vitest'),
-        `Config name should start with 'uphold/vitest', got: ${vitestConfig.default.name}`
-      );
-    });
-  });
-
   describe('createVitestConfig()', () => {
-    it('should export an empty config when Vitest is not installed', async () => {
-      const config = await createVitestConfig({
+    it('should return a config array when Vitest is not installed', async () => {
+      const configs = await createVitestConfig({
         isModuleAvailable: () => false
       });
 
-      assert.strictEqual(config.name, 'uphold/vitest-empty', 'Should have empty config name');
-      assert.ok(!config.languageOptions, 'Empty config should not have `languageOptions`');
-      assert.ok(!config.extends, 'Empty config should not have `extends`');
-      assert.ok(!config.rules, 'Empty config should not have `rules`');
+      assert.ok(Array.isArray(configs), 'Should return an array');
+      assert.strictEqual(configs.length, 1, 'Should have one config');
+      assert.strictEqual(configs[0].name, 'uphold/vitest', 'Should have correct config name');
+      assert.ok(!configs[0].languageOptions, 'Empty config should not have `languageOptions`');
+      assert.ok(!configs[0].rules, 'Empty config should not have `rules`');
     });
 
-    it('should export globals config when Vitest is installed but plugin is not', async context => {
+    it('should return globals config when Vitest is installed but plugin is not', async context => {
       const warnMock = context.mock.method(console, 'warn');
 
-      const config = await createVitestConfig({
+      const configs = await createVitestConfig({
         isModuleAvailable: moduleName => moduleName === 'vitest'
       });
 
-      assert.strictEqual(
-        config.name,
-        'uphold/vitest-globals',
-        'Should have globals config name when plugin not installed'
-      );
-      assert.ok(config.languageOptions, 'Should have `languageOptions`');
-      assert.ok(config.languageOptions.globals, 'Should have Vitest globals defined');
+      assert.ok(Array.isArray(configs), 'Should return an array');
+      assert.strictEqual(configs.length, 1, 'Should have one config');
+      assert.strictEqual(configs[0].name, 'uphold/vitest', 'Should have correct config name');
+      assert.ok(configs[0].languageOptions, 'Should have `languageOptions`');
+      assert.ok(configs[0].languageOptions.globals, 'Should have Vitest globals defined');
 
       // Verify warning was logged.
       assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have logged a warning');
@@ -66,11 +45,11 @@ describe('Vitest config', () => {
       );
     });
 
-    it('should export full plugin config when Vitest and plugin are installed', async () => {
-      const mockRecommendedConfig = { rules: { 'vitest/expect-expect': 'error' } };
+    it('should return full plugin config when Vitest and plugin are installed', async () => {
+      const mockRecommendedConfig = { name: 'vitest/recommended', rules: { 'vitest/expect-expect': 'error' } };
       const mockLanguageOptions = { globals: { vi: true } };
 
-      const config = await createVitestConfig({
+      const configs = await createVitestConfig({
         isModuleAvailable: moduleName => moduleName === 'vitest' || moduleName === '@vitest/eslint-plugin',
         loadModule: moduleName => {
           if (moduleName === '@vitest/eslint-plugin') {
@@ -86,22 +65,31 @@ describe('Vitest config', () => {
         }
       });
 
-      assert.strictEqual(config.name, 'uphold/vitest-plugin-config', 'Should have plugin config name');
-      assert.ok(config.extends, 'Should have `extends`');
-      assert.ok(Array.isArray(config.extends), '`extends` should be an array');
-      assert.strictEqual(config.extends.length, 1, '`extends` should have one config');
-      assert.ok(config.languageOptions, 'Should have `languageOptions`');
-      assert.ok(config.rules, 'Should have `rules`');
-      assert.strictEqual(Object.keys(config.rules).length, 9);
-      assert.strictEqual(config.rules['vitest/no-commented-out-tests'], 'warn');
-      assert.strictEqual(config.rules['vitest/no-disabled-tests'], 'warn');
-      assert.strictEqual(config.rules['vitest/no-focused-tests'], 'error');
-      assert.strictEqual(config.rules['vitest/no-interpolation-in-snapshots'], 'error');
-      assert.strictEqual(config.rules['vitest/no-mocks-import'], 'error');
-      assert.strictEqual(config.rules['vitest/no-standalone-expect'], 'error');
-      assert.strictEqual(config.rules['vitest/no-test-prefixes'], 'error');
-      assert.strictEqual(config.rules['vitest/prefer-expect-resolves'], 'warn');
-      assert.strictEqual(config.rules['vitest/prefer-to-have-length'], 'warn');
+      assert.ok(Array.isArray(configs), 'Should return an array');
+      // defineConfig flattens extends, so we have 2 configs: vitest/recommended + uphold/vitest.
+      assert.strictEqual(configs.length, 2, 'Should have two configs (extended + main)');
+
+      // First config is the extended vitest/recommended (prefixed by defineConfig).
+      assert.strictEqual(
+        configs[0].name,
+        'uphold/vitest > vitest/recommended',
+        'First config should be prefixed vitest/recommended'
+      );
+
+      // Second config is our uphold/vitest config with rules.
+      assert.strictEqual(configs[1].name, 'uphold/vitest', 'Second config should be uphold/vitest');
+      assert.ok(configs[1].languageOptions, 'Should have `languageOptions`');
+      assert.ok(configs[1].rules, 'Should have `rules`');
+      assert.strictEqual(Object.keys(configs[1].rules).length, 9);
+      assert.strictEqual(configs[1].rules['vitest/no-commented-out-tests'], 'warn');
+      assert.strictEqual(configs[1].rules['vitest/no-disabled-tests'], 'warn');
+      assert.strictEqual(configs[1].rules['vitest/no-focused-tests'], 'error');
+      assert.strictEqual(configs[1].rules['vitest/no-interpolation-in-snapshots'], 'error');
+      assert.strictEqual(configs[1].rules['vitest/no-mocks-import'], 'error');
+      assert.strictEqual(configs[1].rules['vitest/no-standalone-expect'], 'error');
+      assert.strictEqual(configs[1].rules['vitest/no-test-prefixes'], 'error');
+      assert.strictEqual(configs[1].rules['vitest/prefer-expect-resolves'], 'warn');
+      assert.strictEqual(configs[1].rules['vitest/prefer-to-have-length'], 'warn');
     });
   });
 });
