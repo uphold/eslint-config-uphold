@@ -112,10 +112,21 @@ const uphold = defineConfig([
 ]);
 
 /**
- * Export the configuration.
- *
- * @see https://nodejs.org/docs/latest-v22.x/api/modules.html#loading-ecmascript-modules-using-require
+ * Re-export all configs from src/configs/index.js.
  */
 
-export { uphold as 'module.exports' };
+export {
+  createJavaScriptConfig,
+  createTypeScriptConfig,
+  javascript,
+  jest,
+  mocha,
+  typescript,
+  vitest
+} from './configs/index.js';
+
+/**
+ * Export the default configuration.
+ */
+
 export default uphold;

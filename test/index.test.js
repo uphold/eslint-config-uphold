@@ -101,4 +101,30 @@ describe('eslint-config-uphold', () => {
     assert.equal(result1.messages.length, 0);
     assert.equal(result2.messages.length, 0);
   });
+
+  it('should re-export configs from eslint-config-uphold/configs', async () => {
+    const rootExports = await import('../src/index.js');
+
+    // Verify all configs are re-exported at root level.
+    assert.ok(rootExports.javascript, 'javascript config should be exported');
+    assert.ok(rootExports.jest, 'jest config should be exported');
+    assert.ok(rootExports.mocha, 'mocha config should be exported');
+    assert.ok(rootExports.typescript, 'typescript config should be exported');
+    assert.ok(rootExports.vitest, 'vitest config should be exported');
+
+    // Verify factory functions are re-exported.
+    assert.strictEqual(
+      typeof rootExports.createJavaScriptConfig,
+      'function',
+      'createJavaScriptConfig should be exported'
+    );
+    assert.strictEqual(
+      typeof rootExports.createTypeScriptConfig,
+      'function',
+      'createTypeScriptConfig should be exported'
+    );
+
+    // Verify default export is still the uphold config array.
+    assert.ok(Array.isArray(rootExports.default), 'default export should be an array');
+  });
 });

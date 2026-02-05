@@ -16,8 +16,7 @@
   "author": "Uphold",
   "main": "./src/index.js",
   "exports": {
-    ".": "./src/index.js",
-    "./configs": "./src/configs/index.js"
+    ".": "./src/index.js"
   },
   "repository": {
     "type": "git",

@@ -77,13 +77,13 @@ npm run lint --fix
 
 ### TypeScript
 
-A TypeScript-specific config using `typescript-eslint` is available under `eslint-config-uphold/configs/`.
+A TypeScript-specific config using `typescript-eslint` is available.
 
 It can be used like this, on a `eslint.config.mjs` file:
 
 ```js
 import { defineConfig, globalIgnores } from 'eslint/config';
-import { typescript as upholdTypescriptConfig } from 'eslint-config-uphold/configs';
+import { typescript as upholdTypescriptConfig } from 'eslint-config-uphold';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig([
@@ -101,7 +101,7 @@ export default defineConfig([
 It's also possible to use the config without `typescript-eslint`. Minimal setup would look like the following:
 
 ```js
-import { typescript as upholdTypescriptConfig } from 'eslint-config-uphold/configs';
+import { typescript as upholdTypescriptConfig } from 'eslint-config-uphold';
 
 export default upholdTypescriptConfig;
 ```
@@ -111,18 +111,18 @@ If your project uses CJS, you can create a custom config using the `createTypeSc
 This can also be used to specify a `ecmaVersion` other than the default `2024`.
 
 ```js
-import { createTypeScriptConfig } from 'eslint-config-uphold/configs';
+import { createTypeScriptConfig } from 'eslint-config-uphold';
 
 export default await createTypeScriptConfig('commonjs', { ecmaVersion: 2025 }); // 'module' for ESM, 'commonjs' for CJS.
 ```
 
 ### JavaScript
 
-Likewise, a JavaScript-specific config is exported under `eslint-config-uphold/configs/`. The usage is similar to TypeScript's config:
+Likewise, a JavaScript-specific config is exported. The usage is similar to TypeScript's config:
 
 ```js
 import { defineConfig, globalIgnores } from 'eslint/config';
-import { javascript as upholdJavascriptConfig } from 'eslint-config-uphold/configs';
+import { javascript as upholdJavascriptConfig } from 'eslint-config-uphold';
 
 export default defineConfig([upholdJavascriptConfig, globalIgnores(['coverage'])]);
 ```
@@ -130,7 +130,7 @@ export default defineConfig([upholdJavascriptConfig, globalIgnores(['coverage'])
 If not wanting to extend the config, it could even be used like the following:
 
 ```js
-import { javascript as upholdJavascriptConfig } from 'eslint-config-uphold/configs';
+import { javascript as upholdJavascriptConfig } from 'eslint-config-uphold';
 
 export default upholdJavascriptConfig;
 ```
@@ -140,7 +140,7 @@ If your project uses ESM, you can create a custom config using the `createJavaSc
 This can also be used to specify a `ecmaVersion` other than the default `2024`.
 
 ```js
-import { createJavaScriptConfig } from 'eslint-config-uphold/configs';
+import { createJavaScriptConfig } from 'eslint-config-uphold';
 
 export default createJavaScriptConfig('module', { ecmaVersion: 2025 }); // 'module' for ESM, 'commonjs' for CJS.
 ```
@@ -278,7 +278,7 @@ To use them, import the config directly in your `eslint.config.mjs` file:
 
 ```js
 import { defineConfig } from 'eslint/config';
-import { mocha as upholdMochaConfig } from 'eslint-config-uphold/configs';
+import { mocha as upholdMochaConfig } from 'eslint-config-uphold';
 import upholdConfig from 'eslint-config-uphold';
 
 export default defineConfig([
@@ -294,10 +294,10 @@ export default defineConfig([
 ]);
 ```
 
-Those can be imported from `eslint-config-uphold/configs`:
+All configs can be imported from `eslint-config-uphold`:
 
 ```js
-import { jest, mocha, vitest } from 'eslint-config-uphold/configs';
+import { javascript, jest, mocha, typescript, vitest } from 'eslint-config-uphold';
 ```
 
 > [!NOTE]

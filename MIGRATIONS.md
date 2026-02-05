@@ -46,11 +46,12 @@ Ensure you have it installed in your project if you use the Mocha test framework
 
 The package is now ESM-only. Your ESLint configuration must use ESM syntax (e.g. `eslint.config.mjs` on a CommonJS project).
 
-### `eslint-config-uphold/configs`
+### Unified imports, removing `eslint-config-uphold/configs`
 
-If you're using `eslint-config-uphold/configs` to import test framework configs, update the import to `eslint-config-uphold` directly instead, as the `configs` entry point has been removed.
+The `eslint-config-uphold/configs` entry point is removed.
+All configs are now exported directly from `eslint-config-uphold`.
 
-So instead of:
+Instead of:
 
 ```js
 import { defineConfig } from 'eslint/config';
@@ -63,6 +64,27 @@ Use:
 ```js
 import { defineConfig } from 'eslint/config';
 import { javascript as upholdJavascriptConfig, jest as upholdJestConfig } from 'eslint-config-uphold';
+```
+
+### `explicit-sinon-use-fake-timers` behavioral difference
+
+The default export always enables `uphold-plugin/explicit-sinon-use-fake-timers` as `'error'`, while the individual `javascript` and `typescript` named exports only enable it conditionally when `sinon` is detected as an installed dependency.
+
+If you are switching from the default export to the `javascript` or `typescript` named exports and your project uses `sinon`, ensure `sinon` is listed in your `package.json` so the rule is automatically enabled. Alternatively, you can enable it manually:
+
+```js
+import { defineConfig } from 'eslint/config';
+import { javascript as upholdJavascriptConfig } from 'eslint-config-uphold';
+
+export default defineConfig([
+  {
+    extends: [upholdJavascriptConfig],
+    files: ['**/*.js'],
+    rules: {
+      'uphold-plugin/explicit-sinon-use-fake-timers': 'error'
+    }
+  }
+]);
 ```
 
 ## v5 to v6
