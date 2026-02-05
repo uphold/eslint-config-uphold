@@ -172,12 +172,6 @@ describe('TypeScript config', () => {
         const configWithLangOptions = config.find(cfg => cfg.languageOptions?.globals);
 
         assert.ok(configWithLangOptions, 'Should have config with `languageOptions`');
-        assert.ok(configWithLangOptions.files, 'Should have files pattern');
-        assert.ok(Array.isArray(configWithLangOptions.files), 'files should be an array');
-        assert.ok(
-          configWithLangOptions.files.includes('**/*.ts') && configWithLangOptions.files.includes('**/*.tsx'),
-          'Should include TypeScript file patterns'
-        );
         assert.strictEqual(
           // @ts-expect-error configWithLangOptions could be undefined from `config.find`.
           configWithLangOptions.languageOptions.globals,

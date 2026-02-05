@@ -89,6 +89,7 @@ import tseslint from 'typescript-eslint';
 export default defineConfig([
   {
     extends: [upholdTypescriptConfig],
+    files: ['**/*.{ts,tsx}'],
     name: 'project-name/uphold-typescript',
     rules: {
       'jsdoc/no-types': 'warn'
@@ -101,9 +102,15 @@ export default defineConfig([
 It's also possible to use the config without `typescript-eslint`. Minimal setup would look like the following:
 
 ```js
+import { defineConfig } from 'eslint/config';
 import { typescript as upholdTypescriptConfig } from 'eslint-config-uphold';
 
-export default upholdTypescriptConfig;
+export default defineConfig([
+  {
+    extends: [upholdTypescriptConfig],
+    files: ['**/*.{ts,tsx}']
+  }
+]);
 ```
 
 The TypeScript config assumes ESM by default.
@@ -111,9 +118,15 @@ If your project uses CJS, you can create a custom config using the `createTypeSc
 This can also be used to specify a `ecmaVersion` other than the default `2024`.
 
 ```js
+import { defineConfig } from 'eslint/config';
 import { createTypeScriptConfig } from 'eslint-config-uphold';
 
-export default await createTypeScriptConfig('commonjs', { ecmaVersion: 2025 }); // 'module' for ESM, 'commonjs' for CJS.
+export default defineConfig([
+  {
+    extends: [await createTypeScriptConfig('commonjs', { ecmaVersion: 2025 })], // 'module' for ESM, 'commonjs' for CJS.
+    files: ['**/*.{ts,cts,tsx}']
+  }
+]);
 ```
 
 ### JavaScript
@@ -124,15 +137,13 @@ Likewise, a JavaScript-specific config is exported. The usage is similar to Type
 import { defineConfig, globalIgnores } from 'eslint/config';
 import { javascript as upholdJavascriptConfig } from 'eslint-config-uphold';
 
-export default defineConfig([upholdJavascriptConfig, globalIgnores(['coverage'])]);
-```
-
-If not wanting to extend the config, it could even be used like the following:
-
-```js
-import { javascript as upholdJavascriptConfig } from 'eslint-config-uphold';
-
-export default upholdJavascriptConfig;
+export default defineConfig([
+  {
+    extends: [upholdJavascriptConfig],
+    files: ['**/*.{js,jsx}']
+  },
+  globalIgnores(['coverage'])
+]);
 ```
 
 The JavaScript config assumes CJS by default.
@@ -140,9 +151,15 @@ If your project uses ESM, you can create a custom config using the `createJavaSc
 This can also be used to specify a `ecmaVersion` other than the default `2024`.
 
 ```js
+import { defineConfig } from 'eslint/config';
 import { createJavaScriptConfig } from 'eslint-config-uphold';
 
-export default createJavaScriptConfig('module', { ecmaVersion: 2025 }); // 'module' for ESM, 'commonjs' for CJS.
+export default defineConfig([
+  {
+    extends: [createJavaScriptConfig('module', { ecmaVersion: 2025 })], // 'module' for ESM, 'commonjs' for CJS.
+    files: ['**/*.{js,mjs,jsx}']
+  }
+]);
 ```
 
 ### Custom rules

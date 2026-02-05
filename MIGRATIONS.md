@@ -66,6 +66,24 @@ import { defineConfig } from 'eslint/config';
 import { javascript as upholdJavascriptConfig, jest as upholdJestConfig } from 'eslint-config-uphold';
 ```
 
+### Language configs no longer include `files`
+
+The `javascript` and `typescript` configs no longer include a `files` property. You must specify which files each config applies to, unless you want them to apply to all files:
+
+```js
+import { defineConfig } from 'eslint/config';
+import { javascript as upholdJavascriptConfig } from 'eslint-config-uphold';
+
+export default defineConfig([
+  {
+    extends: [upholdJavascriptConfig],
+    files: ['**/*.js', '**/*.jsx'] // You must specify this.
+  }
+]);
+```
+
+This gives you full control over file targeting and avoids conflicts with file extensions that have fixed module types (`.cjs`/`.mjs` for JavaScript, `.cts`/`.mts` for TypeScript), while also allowing for more flexibility in mixed codebases and if using ESLint for other languages, such as `@eslint/json` or `@eslint/markdown`.
+
 ### `explicit-sinon-use-fake-timers` behavioral difference
 
 The default export always enables `uphold-plugin/explicit-sinon-use-fake-timers` as `'error'`, while the individual `javascript` and `typescript` named exports only enable it conditionally when `sinon` is detected as an installed dependency.

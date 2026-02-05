@@ -42,7 +42,6 @@ export function createJavaScriptConfig(moduleType = 'commonjs', { ecmaVersion = 
   return defineConfig([
     {
       extends: [js.configs.recommended],
-      files: ['**/*.{js,cjs,mjs,jsx}'],
       languageOptions: {
         ecmaVersion,
         globals: nodeGlobals,

@@ -71,7 +71,6 @@ const buildFallbackConfig = ({
   return defineConfig([
     {
       extends: [js.configs.recommended],
-      files: ['**/*.cts', '**/*.d.ts', '**/*.mts', '**/*.ts', '**/*.tsx'],
       languageOptions: {
         ecmaVersion,
         globals: nodeGlobals,
@@ -112,7 +111,6 @@ export async function createTypeScriptConfig(moduleType = 'module', { ecmaVersio
     return defineConfig([
       {
         extends: [js.configs.recommended, tseslint.configs.recommended],
-        files: ['**/*.cts', '**/*.d.ts', '**/*.mts', '**/*.ts', '**/*.tsx'],
         languageOptions: {
           ecmaVersion,
           globals: nodeGlobals,
