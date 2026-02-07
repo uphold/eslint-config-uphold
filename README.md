@@ -75,6 +75,10 @@ To automatically fix all lint issues, use the `--fix` option:
 npm run lint --fix
 ```
 
+The default configuration uses CommonJS with ECMAScript 2024.
+
+The `javascript` and `typescript` named exports also use ECMAScript 2024.
+
 ### TypeScript
 
 A TypeScript-specific config using `typescript-eslint` is available.
@@ -166,12 +170,12 @@ export default defineConfig([
 
 This config includes custom Uphold-specific rules, under `uphold-plugin`.
 
-| Rule                                                                        | Enabled in default config? | Fix?  |
-| --------------------------------------------------------------------------- | -------------------------- | ----- |
-| [`database-migration-filename-format`](#database-migration-filename-format) | False                      | False |
-| [`explicit-sinon-use-fake-timers`](#explicit-sinon-use-fake-timers)         | True                       | False |
-| [`no-trailing-period-in-log-messages`](#no-trailing-period-in-log-messages) | True                       | True  |
-| [`require-comment-punctuation`](#require-comment-punctuation)               | True                       | True  |
+| Rule                                                                        | Enabled in default config?       | Fix?  |
+| --------------------------------------------------------------------------- | -------------------------------- | ----- |
+| [`database-migration-filename-format`](#database-migration-filename-format) | False                            | False |
+| [`explicit-sinon-use-fake-timers`](#explicit-sinon-use-fake-timers)         | True (when `sinon` is installed) | False |
+| [`no-trailing-period-in-log-messages`](#no-trailing-period-in-log-messages) | True                             | True  |
+| [`require-comment-punctuation`](#require-comment-punctuation)               | True                             | True  |
 
 #### `database-migration-filename-format`
 
@@ -196,6 +200,8 @@ export default defineConfig([
 #### `explicit-sinon-use-fake-timers`
 
 Enforces explicit configuration when using Sinon's `useFakeTimers()` by requiring the `toFake` option to be specified. This ensures that only the intended timer functions are faked, reducing the risk of unintended side effects in tests.
+
+This rule is automatically enabled when `sinon` is detected as an installed dependency. The default export (`upholdConfig`) always enables this rule, while the individual `javascript` and `typescript` configs only enable it conditionally.
 
 **Valid:**
 

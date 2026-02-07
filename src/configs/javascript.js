@@ -65,6 +65,13 @@ export function createJavaScriptConfig(moduleType = 'commonjs', { ecmaVersion = 
     upholdPluginConfig,
     upholdScriptsBinConfig,
     // Prettier must be the last config to disable conflicting rules.
-    eslintPluginPrettierRecommended
+    eslintPluginPrettierRecommended,
+    // Overrides for Prettier to re-enable `curly`, which is disabled by Prettier's recommended config.
+    {
+      name: 'uphold/prettier-overrides',
+      rules: {
+        curly: 'error'
+      }
+    }
   ]);
 }
