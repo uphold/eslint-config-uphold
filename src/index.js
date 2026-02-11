@@ -14,6 +14,7 @@ import {
   sqlTemplateConfig,
   stylisticConfig
 } from './configs/common.js';
+import { fixupPluginRules } from '@eslint/compat';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
 import js from '@eslint/js';
@@ -63,12 +64,10 @@ const upholdBaseConfig = defineConfig([
       n: nodePlugin,
       // @ts-expect-error Outdated types for `eslint-plugin-promise`.
       promise,
-      // @ts-expect-error Outdated types for `eslint-plugin-sort-destructure-keys`.
-      'sort-destructure-keys': sortDestructureKeys,
-      'sort-imports-requires': sortImportsRequires,
-      'sort-keys-fix': sortKeysFix,
-      // @ts-expect-error Outdated types for `eslint-plugin-sql-template`.
-      'sql-template': sqlTemplate,
+      'sort-destructure-keys': fixupPluginRules(sortDestructureKeys),
+      'sort-imports-requires': fixupPluginRules(sortImportsRequires),
+      'sort-keys-fix': fixupPluginRules(sortKeysFix),
+      'sql-template': fixupPluginRules(sqlTemplate),
       'uphold-plugin': { rules }
     },
     rules: {

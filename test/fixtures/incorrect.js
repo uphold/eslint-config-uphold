@@ -47,7 +47,7 @@ const dotNotation = {};
 
 dotNotation['foo'] = 'bar';
 
-// `id-match`.
+// `id-match`, `no-unassigned-vars`.
 let id_mátch;
 
 noop(id_mátch);
