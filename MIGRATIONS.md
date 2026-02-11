@@ -4,6 +4,11 @@ This file contains migration guides for major versions of `eslint-config-uphold`
 
 ## v6 to v7
 
+### ESLint v9 to v10 migration
+
+ESLint v10 introduces some breaking changes. See the [ESLint v9 to v10 migration guide](https://eslint.org/docs/latest/use/migrating-to-v10) for more details.
+To deal with plugins that haven't been updated to support ESLint v9 nor v10, it may be possible to use `@eslint/compat`'s helper functions.
+
 ### `eslint-plugin-n` renaming
 
 The plugin `eslint-plugin-n` got renamed from `node-plugin` to `n` to align with the official naming.

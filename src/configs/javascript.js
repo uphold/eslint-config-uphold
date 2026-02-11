@@ -17,9 +17,9 @@ import {
   upholdScriptsBinConfig
 } from './common.js';
 import { defineConfig } from 'eslint/config';
-import eslint from '@eslint/js';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
+import js from '@eslint/js';
 
 /**
  * Module type to globals mapping.
@@ -41,12 +41,7 @@ export function createJavaScriptConfig(moduleType = 'commonjs', { ecmaVersion = 
 
   return defineConfig([
     {
-      extends: [
-        {
-          ...eslint.configs.recommended,
-          name: 'eslint/recommended'
-        }
-      ],
+      extends: [js.configs.recommended],
       files: ['**/*.{js,cjs,mjs,jsx}'],
       languageOptions: {
         ecmaVersion,

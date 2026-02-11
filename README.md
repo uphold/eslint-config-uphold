@@ -18,7 +18,7 @@ npm install eslint eslint-config-uphold prettier --save-dev
 ```
 
 > [!WARNING]
-> Node.js minimum versions are `v23.0.0`, `v22.12.0` and `v20.19.0`, as `@stylistic/eslint-plugin-js` depends on the `require('esm')` module from `v4.0.0`.
+> Node.js minimum versions are `v24.0.0`, `v22.12.0` and `v20.19.0`, as `@stylistic/eslint-plugin-js` depends on the `require('esm')` module from `v4.0.0`.
 
 ## Usage
 
@@ -224,7 +224,7 @@ logger.error('An error occurred.'); // ❌ Remove the trailing period.
 
 #### `require-comment-punctuation`
 
-Requires `//` comment blocks to end with punctuation on the last line. Valid endings are `.`, `:`, `;`, `?`, `!`, or paired triple backticks (`` ``` ``). This helps maintain consistency in code comments.
+Requires `//` comment blocks to end with punctuation on the last line. Valid endings are `.`, `:`, `;`, `?`, `!`, or paired triple backticks (` ``` `). This helps maintain consistency in code comments.
 
 **Valid:**
 
@@ -239,10 +239,10 @@ Requires `//` comment blocks to end with punctuation on the last line. Valid end
 
 - ❌ Missing punctuation.
 
-  ```js
+  ````js
   // This is a comment without punctuation
   // Comment with unmatched backticks ```
-  ```
+  ````
 
 **Options:**
 
@@ -256,7 +256,7 @@ Requires `//` comment blocks to end with punctuation on the last line. Valid end
 
   With this config, comments like `// TODO: implement this` will not require punctuation.
 
-- `additionalAllowedEndings` - An array of strings to extend the default allowed endings (`.`, `:`, `;`, `?`, `!`, `` ``` ``):
+- `additionalAllowedEndings` - An array of strings to extend the default allowed endings (`.`, `:`, `;`, `?`, `!`, ` ``` `):
 
   ```js
   'uphold-plugin/require-comment-punctuation': ['error', {
