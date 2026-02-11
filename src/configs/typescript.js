@@ -18,9 +18,9 @@ import {
 } from './common.js';
 import { defineConfig } from 'eslint/config';
 import { isModuleAvailable, loadModule } from '../utils/load-module.js';
-import eslint from '@eslint/js';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
+import js from '@eslint/js';
 
 /**
  * @typedef {object} LoaderUtils
@@ -72,7 +72,7 @@ const buildFallbackConfig = ({
     {
       extends: [
         {
-          ...eslint.configs.recommended,
+          ...js.configs.recommended,
           name: 'eslint/recommended'
         }
       ],
@@ -118,7 +118,7 @@ export async function createTypeScriptConfig(moduleType = 'module', { ecmaVersio
       {
         extends: [
           {
-            ...eslint.configs.recommended,
+            ...js.configs.recommended,
             name: 'eslint/recommended'
           },
           tseslint.configs.recommended
