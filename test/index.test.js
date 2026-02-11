@@ -15,6 +15,7 @@ const dirname = resolve(import.meta.dirname);
 
 /**
  * Tests for `eslint-config-uphold`.
+ * @todo Refactor test using ESLint's RuleTester for valid/invalid cases instead of relying on fixtures.
  */
 
 describe('eslint-config-uphold', () => {
@@ -41,13 +42,16 @@ describe('eslint-config-uphold', () => {
       'no-console',
       'consistent-this',
       'curly',
+      'no-useless-assignment',
       'dot-notation',
+      'no-unassigned-vars',
       'id-match',
       'jsdoc/require-description-complete-sentence',
       'jsdoc/require-description-complete-sentence',
       'no-new',
       'new-cap',
       'no-class-assign',
+      'no-useless-assignment',
       'no-const-assign',
       'no-constant-condition',
       'no-dupe-class-members',
@@ -84,7 +88,8 @@ describe('eslint-config-uphold', () => {
       'uphold-plugin/no-trailing-period-in-log-messages',
       'no-console',
       'uphold-plugin/no-trailing-period-in-log-messages',
-      'yoda'
+      'yoda',
+      'no-useless-assignment'
     ]);
   });
 
