@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 
+import { fixupPluginRules } from '@eslint/compat';
 import { isModuleAvailable } from '../utils/load-module.js';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import nodePlugin from 'eslint-plugin-n';
@@ -255,7 +256,7 @@ export const sortDestructureKeysConfig = {
   name: 'uphold/sort-destructure-keys',
   plugins: {
     // @ts-expect-error Outdated types for `eslint-plugin-sort-destructure-keys`.
-    'sort-destructure-keys': sortDestructureKeysPlugin
+    'sort-destructure-keys': fixupPluginRules(sortDestructureKeysPlugin)
   },
   rules: {
     'sort-destructure-keys/sort-destructure-keys': 'error'
@@ -297,7 +298,7 @@ export const sortImportsRequiresConfig = {
 export const sortKeysFixConfig = {
   name: 'uphold/sort-keys-fix',
   plugins: {
-    'sort-keys-fix': sortKeysFixPlugin
+    'sort-keys-fix': fixupPluginRules(sortKeysFixPlugin)
   },
   rules: {
     'sort-keys-fix/sort-keys-fix': [
@@ -317,7 +318,6 @@ export const sortKeysFixConfig = {
 export const sqlTemplateConfig = {
   name: 'uphold/sql-template',
   plugins: {
-    // @ts-expect-error Outdated types for `eslint-plugin-sql-template`.
     'sql-template': sqlTemplatePlugin
   },
   rules: {
