@@ -31,9 +31,12 @@ function isModuleAvailable(moduleName) {
  * @typedef {{
  *  "@vitest/eslint-plugin": import('@vitest/eslint-plugin'),
  *  "eslint-plugin-jest": import('eslint-plugin-jest'),
+ *  "eslint-plugin-react": import('eslint-plugin-react'),
+ *  "eslint-plugin-react-hooks": import('eslint-plugin-react-hooks'),
  *  "eslint-plugin-mocha": import('eslint-plugin-mocha'),
  *  "jest": import('jest'),
  *  "mocha": import('mocha'),
+ *  "react": import('react')
  *  "typescript": import('typescript'),
  *  "typescript-eslint": import('typescript-eslint'),
  *  "vitest": import('vitest')
