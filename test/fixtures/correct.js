@@ -46,12 +46,14 @@ if (mixedRules) {
   mixedRules = true;
 }
 
+noop(mixedRules);
+
 // `dot-notation`.
 const dotNotation = {};
 
 dotNotation.foo = 'bar';
 
-// `id-match`.
+// `id-match`, `no-unassigned-vars`.
 let idmatch;
 let idMatch;
 let IdMatch;
@@ -59,6 +61,14 @@ let IDMatch;
 let IDMATCH;
 let ID_MATCH;
 let ID_M_ATCH;
+
+idmatch = 'assigned';
+idMatch = 'assigned';
+IdMatch = 'assigned';
+IDMatch = 'assigned';
+IDMATCH = 'assigned';
+ID_MATCH = 'assigned';
+ID_M_ATCH = 'assigned';
 
 noop(idmatch);
 noop(idMatch);
@@ -69,6 +79,23 @@ noop(ID_MATCH);
 noop(ID_M_ATCH);
 noop(__dirname);
 noop(`${__dirname}`);
+
+// `no-useless-assignment`.
+idmatch = 're-assigned';
+idMatch = 're-assigned';
+IdMatch = 're-assigned';
+IDMatch = 're-assigned';
+IDMATCH = 're-assigned';
+ID_MATCH = 're-assigned';
+ID_M_ATCH = 're-assigned';
+
+noop(idmatch);
+noop(idMatch);
+noop(IdMatch);
+noop(IDMatch);
+noop(IDMATCH);
+noop(ID_MATCH);
+noop(ID_M_ATCH);
 
 /**
  * Testing `jsdoc/require-description-complete-sentence`.
@@ -88,6 +115,8 @@ noop(NoClassAssign);
 
 // `no-const-assign`.
 let noConstAssign = true;
+
+noop(noConstAssign);
 
 noConstAssign = false;
 
@@ -153,6 +182,10 @@ bar.baz = bar.biz;
 bar = biz.bar;
 biz = baz[0];
 baz = bar;
+
+// Using them to avoid `no-useless-assignment`.
+noop(biz);
+noop(baz);
 
 // `prettier/prettier`.
 const singleQuote = 'true';
@@ -260,6 +293,8 @@ let yoda = true;
 if (yoda === true) {
   yoda = false;
 }
+
+noop(yoda);
 
 (async () => {
   const foobar = ['a', 'b', 'c'];
