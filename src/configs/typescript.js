@@ -138,6 +138,7 @@ export async function createTypeScriptConfig(moduleType = 'module', { ecmaVersio
         },
         rules: {
           ...eslintRules,
+          '@typescript-eslint/array-type': ['error', { default: 'array-simple', readonly: 'array-simple' }],
           '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_.+' }],
           'no-unused-expressions': 'off',
           'no-unused-vars': 'off'

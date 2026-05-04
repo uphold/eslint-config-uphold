@@ -77,6 +77,15 @@ describe('TypeScript config', () => {
         );
 
         assert.ok(hasTypescriptRules, 'Should have TypeScript rule overrides');
+
+        const configWithArrayType = config.find(cfg => cfg.rules?.['@typescript-eslint/array-type']);
+
+        assert.ok(configWithArrayType, 'Should have `@typescript-eslint/array-type` rule');
+        assert.deepStrictEqual(
+          configWithArrayType.rules?.['@typescript-eslint/array-type'],
+          ['error', { default: 'array-simple', readonly: 'array-simple' }],
+          'Should use `array-simple` option'
+        );
       });
 
       it('should return config with `typescript-eslint` for `commonjs` type', async () => {
