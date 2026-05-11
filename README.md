@@ -18,7 +18,7 @@ npm install eslint eslint-config-uphold prettier --save-dev
 ```
 
 > [!WARNING]
-> Node.js minimum versions are `v24.0.0`, `v22.12.0` and `v20.19.0`, as `@stylistic/eslint-plugin-js` depends on the `require('esm')` module from `v4.0.0`.
+> The minimum Node.js versions are `v22.12.0`, `v24.0.0`, as certain plugins depend on `require('esm')`, while matching the minimum versions supported by ESLint v10.
 
 ## Usage
 
@@ -108,12 +108,12 @@ export default upholdTypescriptConfig;
 
 The TypeScript config assumes ESM by default.
 If your project uses CJS, you can create a custom config using the `createTypeScriptConfig` factory.
-This can also be used to specify a `ecmaVersion` other than the default `2022`.
+This can also be used to specify a `ecmaVersion` other than the default `2024`.
 
 ```js
 import { createTypeScriptConfig } from 'eslint-config-uphold/configs';
 
-export default await createTypeScriptConfig('commonjs', { ecmaVersion: 2024 }); // 'module' for ESM, 'commonjs' for CJS.
+export default await createTypeScriptConfig('commonjs', { ecmaVersion: 2025 }); // 'module' for ESM, 'commonjs' for CJS.
 ```
 
 ### JavaScript
@@ -137,12 +137,12 @@ export default upholdJavascriptConfig;
 
 The JavaScript config assumes CJS by default.
 If your project uses ESM, you can create a custom config using the `createJavaScriptConfig` factory.
-This can also be used to specify a `ecmaVersion` other than the default `2022`.
+This can also be used to specify a `ecmaVersion` other than the default `2024`.
 
 ```js
 import { createJavaScriptConfig } from 'eslint-config-uphold/configs';
 
-export default createJavaScriptConfig('module', { ecmaVersion: 2024 }); // 'module' for ESM, 'commonjs' for CJS.
+export default createJavaScriptConfig('module', { ecmaVersion: 2025 }); // 'module' for ESM, 'commonjs' for CJS.
 ```
 
 ### Custom rules

@@ -24,7 +24,7 @@ const isSinonAvailable = isModuleAvailable('sinon');
  * Default ECMAScript version for configs.
  * @type {import('eslint').Linter.LanguageOptions['ecmaVersion']}
  */
-export const defaultEcmaVersion = 2022;
+export const defaultEcmaVersion = 2024;
 
 /**
  * ESLint base rules.

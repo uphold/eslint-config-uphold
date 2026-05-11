@@ -9,6 +9,10 @@ This file contains migration guides for major versions of `eslint-config-uphold`
 ESLint v10 introduces some breaking changes. See the [ESLint v9 to v10 migration guide](https://eslint.org/docs/latest/use/migrating-to-v10) for more details.
 To deal with plugins that haven't been updated to support ESLint v9 nor v10, it may be possible to use `@eslint/compat`'s helper functions.
 
+## Dropped support for Node.js v20
+
+Node.js >= v22.12.0 is required, as it uses `require('esm')` to support ESM from certain plugins, dropping support for Node.js v20, which has reached its end-of-life.
+
 ### `eslint-plugin-n` renaming
 
 The plugin `eslint-plugin-n` got renamed from `node-plugin` to `n` to align with the official naming.

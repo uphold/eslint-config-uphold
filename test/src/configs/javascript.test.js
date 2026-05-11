@@ -13,7 +13,7 @@ import globals from 'globals';
 
 describe('JavaScript config', () => {
   describe('createJavaScriptConfig()', () => {
-    it('should return config with `commonjs` and `ecmaVersion` 2022 by default', () => {
+    it('should return config with `commonjs` and `ecmaVersion` 2024 by default', () => {
       const config = createJavaScriptConfig();
 
       assert.ok(Array.isArray(config), 'Should return an array');
@@ -37,8 +37,8 @@ describe('JavaScript config', () => {
       assert.strictEqual(
         // @ts-expect-error configWithLangOptions could be undefined from `config.find`.
         configWithLangOptions.languageOptions.ecmaVersion,
-        2022,
-        'Should use 2022 `ecmaVersion` by default'
+        2024,
+        'Should use 2024 `ecmaVersion` by default'
       );
       assert.ok(
         // @ts-expect-error Incomplete typing for `parserOptions`.
@@ -70,8 +70,8 @@ describe('JavaScript config', () => {
       );
     });
 
-    it('should return config with `module` type and `ecmaVersion` 2024', () => {
-      const config = createJavaScriptConfig('module', { ecmaVersion: 2024 });
+    it('should return config with `module` type and `ecmaVersion` 2025', () => {
+      const config = createJavaScriptConfig('module', { ecmaVersion: 2025 });
 
       assert.ok(Array.isArray(config), 'Should return an array');
       assert.ok(config.length > 0, 'Config array should not be empty');
@@ -90,7 +90,7 @@ describe('JavaScript config', () => {
         'Should use `globals.nodeBuiltin` for module'
       );
       // @ts-expect-error configWithLangOptions could be undefined from `config.find`.
-      assert.strictEqual(configWithLangOptions.languageOptions.ecmaVersion, 2024, 'Should use `ecmaVersion` 2024');
+      assert.strictEqual(configWithLangOptions.languageOptions.ecmaVersion, 2025, 'Should use `ecmaVersion` 2025');
       assert.ok(
         // @ts-expect-error Incomplete typing for `parserOptions`.
         configWithLangOptions.languageOptions.parserOptions?.ecmaFeatures?.impliedStrict,
