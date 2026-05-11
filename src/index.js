@@ -36,7 +36,7 @@ import stylistic from '@stylistic/eslint-plugin';
  */
 
 const languageOptions = {
-  ecmaVersion: 2022,
+  ecmaVersion: 2024,
   globals: globals.node,
   sourceType: 'module'
 };
