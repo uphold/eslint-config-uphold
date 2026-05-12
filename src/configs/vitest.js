@@ -25,7 +25,10 @@ export async function createVitestConfig(utils) {
   const isVitestAvailable = checkModule('vitest');
 
   if (isVitestPluginAvailable && isVitestAvailable) {
-    const vitestPlugin = await loadMod('@vitest/eslint-plugin');
+    /** @type {{ configs: { recommended: import('eslint').Linter.Config, env: { languageOptions: import('eslint').Linter.LanguageOptions } } }} */
+    const vitestPlugin =
+      /** @type {never} */
+      (await loadMod('@vitest/eslint-plugin'));
 
     return defineConfig({
       extends: [vitestPlugin.configs.recommended],
@@ -46,7 +49,10 @@ export async function createVitestConfig(utils) {
   }
 
   if (isVitestAvailable) {
-    console.warn('`@vitest/eslint-plugin` is not installed, Vitest linting will be disabled');
+    process.emitWarning('`@vitest/eslint-plugin` is not installed, Vitest linting will be disabled', {
+      code: 'UPHOLD_ESLINT_VITEST_PLUGIN_MISSING',
+      type: 'UpholdEslintWarning'
+    });
 
     return defineConfig({
       languageOptions: {

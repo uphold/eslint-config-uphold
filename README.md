@@ -326,6 +326,9 @@ import { javascript, jest, mocha, typescript, vitest } from 'eslint-config-uphol
 > [!NOTE]
 > Test configs use top-level `await` for dynamic module detection and are **ESM-only**. If your project uses CommonJS, your `eslint.config.mjs` still supports `import()` and top-level `await`.
 
+> [!NOTE]
+> Missing optional plugin dependencies emit a `process.emitWarning()` notice (type `UpholdEslintWarning`) instead of writing to `console.warn`. These warnings are deduplicated by Node.js and can be suppressed with `--no-warnings` or `NODE_NO_WARNINGS=1`.
+
 ### Custom parsers
 
 From [ESLint's docs > Configure a Parser](https://eslint.org/docs/latest/use/configure/parser):

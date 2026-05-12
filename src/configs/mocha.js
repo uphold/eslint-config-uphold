@@ -42,7 +42,10 @@ export async function createMochaConfig(utils) {
   }
 
   if (isMochaAvailable) {
-    console.warn('`eslint-plugin-mocha` is not installed, Mocha linting will be disabled');
+    process.emitWarning('`eslint-plugin-mocha` is not installed, Mocha linting will be disabled', {
+      code: 'UPHOLD_ESLINT_MOCHA_PLUGIN_MISSING',
+      type: 'UpholdEslintWarning'
+    });
 
     return defineConfig({
       languageOptions: {

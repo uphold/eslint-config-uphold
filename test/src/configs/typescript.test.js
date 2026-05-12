@@ -158,7 +158,7 @@ describe('TypeScript config', () => {
 
     describe('without `typescript-eslint` (fallback mode)', () => {
       it('should return fallback config for `module` when `typescript` is not installed (no warning)', async context => {
-        const warnMock = context.mock.method(console, 'warn');
+        const warnMock = context.mock.method(process, 'emitWarning');
 
         const config = await createTypeScriptConfig('module', {}, { isModuleAvailable: () => false });
 
@@ -184,11 +184,11 @@ describe('TypeScript config', () => {
           !configWithLangOptions.plugins || !configWithLangOptions.plugins['@typescript-eslint'],
           'Should not have `typescript-eslint` plugin'
         );
-        assert.strictEqual(warnMock.mock.callCount(), 0, 'Should not log a warning when `typescript` is missing');
+        assert.strictEqual(warnMock.mock.callCount(), 0, 'Should not emit a warning when `typescript` is missing');
       });
 
       it('should warn and return fallback config when `typescript` is present but `typescript-eslint` is missing', async context => {
-        const warnMock = context.mock.method(console, 'warn');
+        const warnMock = context.mock.method(process, 'emitWarning');
 
         const config = await createTypeScriptConfig(
           'module',
@@ -205,15 +205,19 @@ describe('TypeScript config', () => {
 
         assert.ok(mainConfig, 'Should have fallback module name');
 
-        assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have logged a warning');
+        assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have emitted a warning');
         assert.strictEqual(
           warnMock.mock.calls[0].arguments[0],
           '`typescript-eslint` not installed. Falling back to ESLint for TypeScript linting'
         );
+        assert.deepStrictEqual(warnMock.mock.calls[0].arguments[1], {
+          code: 'UPHOLD_ESLINT_TYPESCRIPT_ESLINT_MISSING',
+          type: 'UpholdEslintWarning'
+        });
       });
 
       it('should return fallback config for `commonjs` type when `typescript-eslint` not available', async context => {
-        const warnMock = context.mock.method(console, 'warn');
+        const warnMock = context.mock.method(process, 'emitWarning');
 
         const config = await createTypeScriptConfig(
           'commonjs',
@@ -236,11 +240,15 @@ describe('TypeScript config', () => {
           globals.node,
           'Should use `globals.node` for CommonJS'
         );
-        assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have logged a warning');
+        assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have emitted a warning');
         assert.strictEqual(
           warnMock.mock.calls[0].arguments[0],
           '`typescript-eslint` not installed. Falling back to ESLint for TypeScript linting'
         );
+        assert.deepStrictEqual(warnMock.mock.calls[0].arguments[1], {
+          code: 'UPHOLD_ESLINT_TYPESCRIPT_ESLINT_MISSING',
+          type: 'UpholdEslintWarning'
+        });
       });
 
       it('should include all common configs in fallback mode', async () => {

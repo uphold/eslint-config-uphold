@@ -25,7 +25,7 @@ describe('Vitest config', () => {
     });
 
     it('should return globals config when Vitest is installed but plugin is not', async context => {
-      const warnMock = context.mock.method(console, 'warn');
+      const warnMock = context.mock.method(process, 'emitWarning');
 
       const configs = await createVitestConfig({
         isModuleAvailable: moduleName => moduleName === 'vitest'
@@ -37,12 +37,16 @@ describe('Vitest config', () => {
       assert.ok(configs[0].languageOptions, 'Should have `languageOptions`');
       assert.ok(configs[0].languageOptions.globals, 'Should have Vitest globals defined');
 
-      // Verify warning was logged.
-      assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have logged a warning');
+      // Verify warning was emitted.
+      assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have emitted a warning');
       assert.strictEqual(
         warnMock.mock.calls[0].arguments[0],
         '`@vitest/eslint-plugin` is not installed, Vitest linting will be disabled'
       );
+      assert.deepStrictEqual(warnMock.mock.calls[0].arguments[1], {
+        code: 'UPHOLD_ESLINT_VITEST_PLUGIN_MISSING',
+        type: 'UpholdEslintWarning'
+      });
     });
 
     it('should return full plugin config when Vitest and plugin are installed', async () => {

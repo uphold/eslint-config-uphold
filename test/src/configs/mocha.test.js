@@ -25,7 +25,7 @@ describe('Mocha config', () => {
     });
 
     it('should return globals config when Mocha is installed but plugin is not', async context => {
-      const warnMock = context.mock.method(console, 'warn');
+      const warnMock = context.mock.method(process, 'emitWarning');
       const configs = await createMochaConfig({
         isModuleAvailable: moduleName => moduleName === 'mocha'
       });
@@ -37,12 +37,16 @@ describe('Mocha config', () => {
       assert.ok(configs[0].languageOptions.globals, 'Should have Mocha globals defined');
       assert.ok(!configs[0].rules, 'Globals config should not have rules');
 
-      // Verify warning was logged.
-      assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have logged a warning');
+      // Verify warning was emitted.
+      assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have emitted a warning');
       assert.strictEqual(
         warnMock.mock.calls[0].arguments[0],
         '`eslint-plugin-mocha` is not installed, Mocha linting will be disabled'
       );
+      assert.deepStrictEqual(warnMock.mock.calls[0].arguments[1], {
+        code: 'UPHOLD_ESLINT_MOCHA_PLUGIN_MISSING',
+        type: 'UpholdEslintWarning'
+      });
     });
 
     it('should return full plugin config when both Mocha and plugin are installed', async () => {

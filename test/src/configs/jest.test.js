@@ -26,7 +26,7 @@ describe('Jest config', () => {
     });
 
     it('should return globals config when Jest is installed but plugin is not', async context => {
-      const warnMock = context.mock.method(console, 'warn');
+      const warnMock = context.mock.method(process, 'emitWarning');
       const configs = await createJestConfig({
         isModuleAvailable: moduleName => moduleName === 'jest'
       });
@@ -38,12 +38,16 @@ describe('Jest config', () => {
       assert.ok(configs[0].languageOptions.globals, 'Should have Jest globals defined');
       assert.ok(!configs[0].rules, 'Globals config should not have rules');
 
-      // Verify warning was logged.
-      assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have logged a warning');
+      // Verify warning was emitted.
+      assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have emitted a warning');
       assert.strictEqual(
         warnMock.mock.calls[0].arguments[0],
         '`eslint-plugin-jest` is not installed, Jest linting will be disabled'
       );
+      assert.deepStrictEqual(warnMock.mock.calls[0].arguments[1], {
+        code: 'UPHOLD_ESLINT_JEST_PLUGIN_MISSING',
+        type: 'UpholdEslintWarning'
+      });
     });
 
     it('should return full plugin config when both Jest and plugin are installed', async () => {

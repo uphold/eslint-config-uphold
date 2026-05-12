@@ -135,7 +135,10 @@ export async function createTypeScriptConfig(moduleType = 'module', { ecmaVersio
     ]);
   }
 
-  console.warn('`typescript-eslint` not installed. Falling back to ESLint for TypeScript linting');
+  process.emitWarning('`typescript-eslint` not installed. Falling back to ESLint for TypeScript linting', {
+    code: 'UPHOLD_ESLINT_TYPESCRIPT_ESLINT_MISSING',
+    type: 'UpholdEslintWarning'
+  });
 
   return buildFallbackConfig({ ecmaVersion, moduleType, nodeGlobals });
 }

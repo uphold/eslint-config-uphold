@@ -17,7 +17,7 @@ function isModuleAvailable(moduleName) {
 
     return true;
   } catch (error) {
-    if (error?.code === 'MODULE_NOT_FOUND') {
+    if (error instanceof Error && 'code' in error && error.code === 'MODULE_NOT_FOUND') {
       return false;
     }
 
@@ -32,11 +32,9 @@ function isModuleAvailable(moduleName) {
  *  "@vitest/eslint-plugin": import('@vitest/eslint-plugin'),
  *  "eslint-plugin-jest": import('eslint-plugin-jest'),
  *  "eslint-plugin-mocha": import('eslint-plugin-mocha'),
- *  "jest": import('jest'),
- *  "mocha": import('mocha'),
+ *  "globals": import('globals'),
  *  "typescript": import('typescript'),
- *  "typescript-eslint": import('typescript-eslint'),
- *  "vitest": import('vitest')
+ *  "typescript-eslint": import('typescript-eslint')
  * }} ModuleMap
  */
 

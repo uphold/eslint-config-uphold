@@ -30,7 +30,14 @@ describe('Test configs', () => {
   for (const configName of ['javascript', 'jest', 'mocha', 'typescript', 'vitest']) {
     it(`should export \`${configName}\` config with correct structure`, async () => {
       const configs = await import('../../../src/configs/index.js');
-      const config = configs[configName];
+      const config =
+        /** @type {import('eslint').Linter.Config[]} */
+        (
+          configs[
+            /** @type {keyof typeof configs} */
+            (configName)
+          ]
+        );
 
       assert.ok(Array.isArray(config), `\`${configName}\` config should be an array`);
       assert.ok(config.length > 0, `\`${configName}\` config array should not be empty`);

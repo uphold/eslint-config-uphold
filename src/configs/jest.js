@@ -47,7 +47,10 @@ export async function createJestConfig(utils) {
   }
 
   if (isJestAvailable) {
-    console.warn('`eslint-plugin-jest` is not installed, Jest linting will be disabled');
+    process.emitWarning('`eslint-plugin-jest` is not installed, Jest linting will be disabled', {
+      code: 'UPHOLD_ESLINT_JEST_PLUGIN_MISSING',
+      type: 'UpholdEslintWarning'
+    });
 
     return defineConfig({
       languageOptions: {
