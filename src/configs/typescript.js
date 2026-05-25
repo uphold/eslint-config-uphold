@@ -13,6 +13,7 @@ import {
   sortKeysFixConfig,
   sqlTemplateConfig,
   stylisticConfig,
+  upholdConfigFilesConfig,
   upholdPluginConfig,
   upholdScriptsBinConfig
 } from './common.js';
@@ -42,6 +43,7 @@ const commonConfigs = [
   sqlTemplateConfig,
   stylisticConfig,
   upholdPluginConfig,
+  upholdConfigFilesConfig,
   upholdScriptsBinConfig,
   // Prettier must be the last config to disable conflicting rules.
   eslintPluginPrettierRecommended

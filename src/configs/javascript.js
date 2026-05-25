@@ -13,6 +13,7 @@ import {
   sortKeysFixConfig,
   sqlTemplateConfig,
   stylisticConfig,
+  upholdConfigFilesConfig,
   upholdPluginConfig,
   upholdScriptsBinConfig
 } from './common.js';
@@ -63,6 +64,7 @@ export function createJavaScriptConfig(moduleType = 'commonjs', { ecmaVersion = 
     sqlTemplateConfig,
     stylisticConfig,
     upholdPluginConfig,
+    upholdConfigFilesConfig,
     upholdScriptsBinConfig,
     // Prettier must be the last config to disable conflicting rules.
     eslintPluginPrettierRecommended,

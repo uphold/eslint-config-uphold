@@ -101,8 +101,8 @@ describe('JavaScript config', () => {
     it('should include all common configs', () => {
       const config = createJavaScriptConfig();
 
-      // Main config + 12 common configs + 1 from extends flattening = 14.
-      assert.strictEqual(config.length, 14, 'Should have 14 configs total after `defineConfig` flattening');
+      // Main config + 13 common configs + 1 from extends flattening = 15.
+      assert.strictEqual(config.length, 15, 'Should have 15 configs total after `defineConfig` flattening');
     });
 
     it('should have ESLint rules configured', () => {

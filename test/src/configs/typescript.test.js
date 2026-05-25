@@ -151,8 +151,8 @@ describe('TypeScript config', () => {
           }
         );
 
-        // Main config + 11 common configs + 2 from extends flattening = 14.
-        assert.strictEqual(config.length, 14, 'Should have 14 configs total after `defineConfig` flattening');
+        // Main config + 12 common configs + 2 from extends flattening = 15.
+        assert.strictEqual(config.length, 15, 'Should have 15 configs total after `defineConfig` flattening');
       });
     });
 
@@ -254,8 +254,8 @@ describe('TypeScript config', () => {
       it('should include all common configs in fallback mode', async () => {
         const config = await createTypeScriptConfig('module', {}, { isModuleAvailable: () => false });
 
-        // Main config + 11 common configs + 1 from extends flattening = 13.
-        assert.strictEqual(config.length, 13, 'Should have 13 configs total after `defineConfig` flattening');
+        // Main config + 12 common configs + 1 from extends flattening = 13.
+        assert.strictEqual(config.length, 14, 'Should have 14 configs total after `defineConfig` flattening');
       });
     });
   });

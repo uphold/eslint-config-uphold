@@ -387,6 +387,19 @@ export const upholdScriptsBinConfig = {
   name: 'uphold/scripts-bin',
   rules: {
     'n/no-process-exit': 'off',
+    'n/no-sync': 'off',
     'no-console': 'off'
+  }
+};
+
+/**
+ * Configuration for `config` files.
+ * @type {import('eslint').Linter.Config}
+ */
+export const upholdConfigFilesConfig = {
+  files: ['**/config/**'],
+  name: 'uphold/config-files',
+  rules: {
+    'n/no-sync': 'off'
   }
 };

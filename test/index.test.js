@@ -93,6 +93,13 @@ describe('eslint-config-uphold', () => {
     ]);
   });
 
+  it('should not generate any violation for correct code inside config folders', async () => {
+    const source = join(dirname, 'fixtures', 'config', 'correct.js');
+    const [result] = await linter.lintFiles([source]);
+
+    assert.equal(result.messages.length, 0);
+  });
+
   it('should not generate any violation for correct code inside bin & scripts folders', async () => {
     const source1 = join(dirname, 'fixtures', 'bin', 'correct.js');
     const source2 = join(dirname, 'fixtures', 'scripts', 'correct.js');
