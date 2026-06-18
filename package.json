@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/uphold/eslint-config-uphold.git"
+    "url": "git+https://github.com/uphold/eslint-config-uphold.git"
   },
   "files": [
     "src"
