@@ -1,0 +1,47 @@
+exports[`Node test config > createNodeTestConfig() > should return an empty config when eslint-node-test plugin is not installed 1`] = `
+[
+  {
+    "name": "uphold/empty-nodeTest"
+  }
+]
+`;
+
+exports[`Node test config > createNodeTestConfig() > should return full plugin config when eslint-node-test plugin is installed 1`] = `
+[
+  {
+    "name": "uphold/nodeTest > node-test/recommended",
+    "rules": {
+      "node-test/no-disabled-tests": "warn"
+    }
+  },
+  {
+    "name": "uphold/nodeTest",
+    "rules": {
+      "id-length": [
+        "error",
+        {
+          "exceptions": [
+            "t"
+          ]
+        }
+      ],
+      "no-inline-comments": "off",
+      "node-test/consistent-test-it": [
+        "error",
+        {
+          "fn": "it",
+          "withinDescribe": "it"
+        }
+      ],
+      "node-test/no-commented-tests": "error",
+      "node-test/no-skip-without-reason": "warn",
+      "node-test/no-sleep-in-test": "error",
+      "node-test/no-snapshot-in-loop": "error",
+      "node-test/no-todo-test": "warn",
+      "node-test/no-unneeded-async-rejects-callback": "error",
+      "node-test/prefer-diagnostic": "warn",
+      "node-test/require-top-level-describe": "error"
+    }
+  }
+]
+`;

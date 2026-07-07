@@ -18,6 +18,7 @@ describe('Test configs', () => {
     assert.ok(configs.mocha, '`mocha` config should be exported');
     assert.ok(configs.typescript, '`typescript` config should be exported');
     assert.ok(configs.vitest, '`vitest` config should be exported');
+    assert.ok(configs.nodeTest, '`nodeTest` config should be exported');
   });
 
   it('should export factory functions', async () => {
@@ -27,7 +28,7 @@ describe('Test configs', () => {
     assert.strictEqual(typeof configs.createTypeScriptConfig, 'function', 'createTypeScriptConfig should be exported');
   });
 
-  for (const configName of ['javascript', 'jest', 'mocha', 'typescript', 'vitest']) {
+  for (const configName of ['javascript', 'jest', 'mocha', 'typescript', 'vitest', 'nodeTest']) {
     it(`should export \`${configName}\` config with correct structure`, async () => {
       const configs = await import('../../../src/configs/index.js');
       const config =

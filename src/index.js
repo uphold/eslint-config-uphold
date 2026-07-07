@@ -29,6 +29,7 @@ export {
   javascript,
   jest,
   mocha,
+  nodeTest,
   typescript,
   vitest
 } from './configs/index.js';

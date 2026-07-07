@@ -855,6 +855,14 @@ eslint-config-prettier@^10.1.8:
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-10.1.8.tgz#15734ce4af8c2778cc32f0b01b37b0b5cd1ecb97"
   integrity sha512-82GZUjRS0p/jganf6q1rEO25VSoHH0hKPCTrgillPjdI/3bgBhAE1QzHrHTizjpRvy6pGAvKjDJtk2pF9NDq8w==
 
+eslint-node-test@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-node-test/-/eslint-node-test-0.3.0.tgz#35c4cba8ffce8253a68d557f13a250fba8aa496c"
+  integrity sha512-aV1YX7ydDH7VCDsBWNNuicISdujCaHiprs+vYSdechPAAS3HWR00HTHgDYTSnMqTlLJOnkvgi1jV1cB1TNV56Q==
+  dependencies:
+    "@eslint-community/eslint-utils" "^4.9.1"
+    quote-js-string "^0.1.0"
+
 eslint-plugin-es-x@^7.8.0:
   version "7.8.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-es-x/-/eslint-plugin-es-x-7.8.0.tgz#a207aa08da37a7923f2a9599e6d3eb73f3f92b74"
@@ -1768,6 +1776,11 @@ quickjs-wasi@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/quickjs-wasi/-/quickjs-wasi-0.0.1.tgz#a2087b982a76ac0eb3bdcb93d7e51f178457d0fb"
   integrity sha512-fBWNLTBkxkLAhe1AzF1hyXEvuA+N+vV1WMP2D6iiMUblvmOt8Pp5t8zUcgvz7aYA1ldUdxDlgUse15dmcKjkNg==
+
+quote-js-string@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/quote-js-string/-/quote-js-string-0.1.0.tgz#812aef957a2dfb31d32f0d9e9662fe558bc9842b"
+  integrity sha512-Y3NoRtprEEZQD8RfxMCfS0ZTqc4e+i18OrXEXAvpM6TfC/3y+0L5rNbZiSnbBBEkDfFzbpd8o+cE8q3/anjMGA==
 
 rc9@^2.1.2:
   version "2.1.2"

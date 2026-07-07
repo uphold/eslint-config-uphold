@@ -5,6 +5,7 @@
 import { createJavaScriptConfig } from './javascript.js';
 import { createJestConfig } from './jest.js';
 import { createMochaConfig } from './mocha.js';
+import { createNodeTestConfig } from './nodetest.js';
 import { createTypeScriptConfig } from './typescript.js';
 import { createVitestConfig } from './vitest.js';
 
@@ -17,6 +18,7 @@ export const jest = await createJestConfig();
 export const mocha = await createMochaConfig();
 export const typescript = await createTypeScriptConfig('module');
 export const vitest = await createVitestConfig();
+export const nodeTest = await createNodeTestConfig();
 
 /**
  * Export configuration factories.

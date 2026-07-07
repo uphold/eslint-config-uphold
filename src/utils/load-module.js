@@ -32,6 +32,7 @@ function isModuleAvailable(moduleName) {
  *  "@vitest/eslint-plugin": import('@vitest/eslint-plugin'),
  *  "eslint-plugin-jest": import('eslint-plugin-jest'),
  *  "eslint-plugin-mocha": import('eslint-plugin-mocha'),
+ *  "eslint-node-test": import('eslint-node-test'),
  *  "globals": import('globals'),
  *  "typescript": import('typescript'),
  *  "typescript-eslint": import('typescript-eslint')

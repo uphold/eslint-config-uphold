@@ -1,0 +1,105 @@
+exports[`rules index > should export all custom rules 1`] = `
+[
+  [
+    "database-migration-filename-format",
+    {
+      "meta": {
+        "docs": {
+          "description": "Database migration file names are in the format \`YYYYMMDDHHMMSS-<name>\`, where \`name\` must match the regex \`[a-z0-9-]+\`, the date/time is UTC and is not in the future, e.g. \`20251212173900-foo-bar-biz\`."
+        },
+        "messages": {
+          "dateTimeInTheFuture": "Date and time are valid but cannot be in the future",
+          "invalidFormat": "File name is not in the correct format. Expected format is YYYYMMDDHHMMSS-<name>, e.g. 20251212173900-foo-bar-biz",
+          "malFormedDateTime": "Date and/or time are malformed: {{dateTimeString}}. Expected format: YYYYMMDDHHMMSS"
+        },
+        "type": "layout"
+      }
+    }
+  ],
+  [
+    "explicit-sinon-use-fake-timers",
+    {
+      "meta": {
+        "docs": {
+          "description": "Calls to \`sinon.useFakeTimers()\` must provide a \`toFake\` configuration. (e.g. \`sinon.useFakeTimers({ toFake: [\\"Date\\"] })\`)"
+        },
+        "messages": {
+          "mustPassObject": "Must pass an object with \`toFake\` configuration",
+          "notAnObject": "Not an object",
+          "objectMustContainToFake": "Object must contain \`toFake\` configuration"
+        },
+        "type": "problem"
+      }
+    }
+  ],
+  [
+    "no-trailing-period-in-log-messages",
+    {
+      "meta": {
+        "docs": {
+          "description": "Disallow trailing periods in log messages (except for \\"...\\")"
+        },
+        "fixable": "code",
+        "messages": {
+          "noTrailingPeriod": "Log messages should not end with a period, except for \\"...\\"."
+        },
+        "schema": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "additionalMethods": {
+                "description": "Additional method names to check (e.g., [\\"verbose\\", \\"success\\"])",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "type": "suggestion"
+      }
+    }
+  ],
+  [
+    "require-comment-punctuation",
+    {
+      "meta": {
+        "docs": {
+          "description": "Require \`//\` comment blocks to end with punctuation on the last line."
+        },
+        "fixable": "code",
+        "messages": {
+          "missingPunctuation": "Line comment must end with one of: {{allowedEndings}}.",
+          "unpairedBackticks": "Line comment ends with unpaired triple backticks (\`\`\`)."
+        },
+        "schema": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "additionalAllowedEndings": {
+                "description": "Additional endings to allow beyond the defaults (., :, ;, ?, !, \`\`\`).",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "exclusionPrefixes": {
+                "description": "Comments starting with these strings (after \`//\`) are excluded from the rule.",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "type": "suggestion"
+      }
+    }
+  ]
+]
+`;

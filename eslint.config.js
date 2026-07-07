@@ -3,7 +3,7 @@
  */
 
 import { defineConfig, globalIgnores } from 'eslint/config';
-import uphold from './src/index.js';
+import uphold, { nodeTest } from './src/index.js';
 
 /**
  * `ESLint` configuration.
@@ -17,6 +17,11 @@ export default defineConfig([
     rules: {
       'no-console': 'off'
     }
+  },
+  {
+    extends: [nodeTest],
+    files: ['test/**/*.js'],
+    name: 'tests'
   },
   globalIgnores(['test/fixtures'])
 ]);
