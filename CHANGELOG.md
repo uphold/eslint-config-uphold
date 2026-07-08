@@ -1,5 +1,25 @@
 # Changelog
 
+## [v7.0.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v7.0.0) (2026-07-08)
+
+- Update `eslint@v10.6.0` and all dependencies [\#140](https://github.com/uphold/eslint-config-uphold/pull/140) ([risantos](https://github.com/risantos))
+- Unify config entry points and refactor config architecture [\#138](https://github.com/uphold/eslint-config-uphold/pull/138) ([risantos](https://github.com/risantos))
+- Drop support for Node v20 and set ECMAScript 2024 as default [\#137](https://github.com/uphold/eslint-config-uphold/pull/137) ([risantos](https://github.com/risantos))
+- Upgrade ESLint to v10 [\#127](https://github.com/uphold/eslint-config-uphold/pull/127) ([risantos](https://github.com/risantos))
+- Add `@typescript-eslint/array-type` rule [\#135](https://github.com/uphold/eslint-config-uphold/pull/135) ([josecarlosbrandao](https://github.com/josecarlosbrandao))
+- Bump basic-ftp from 5.2.1 to 5.2.2 [\#134](https://github.com/uphold/eslint-config-uphold/pull/134) ([dependabot](https://github.com/apps/dependabot))
+- Bump lodash from 4.17.23 to 4.18.1 [\#133](https://github.com/uphold/eslint-config-uphold/pull/133) ([dependabot](https://github.com/apps/dependabot))
+- Bump defu from 6.1.4 to 6.1.6 [\#131](https://github.com/uphold/eslint-config-uphold/pull/131) ([dependabot](https://github.com/apps/dependabot))
+- Bump basic-ftp from 5.2.0 to 5.2.1 [\#132](https://github.com/uphold/eslint-config-uphold/pull/132) ([dependabot](https://github.com/apps/dependabot))
+- Bump picomatch from 4.0.3 to 4.0.4 [\#130](https://github.com/uphold/eslint-config-uphold/pull/130) ([dependabot](https://github.com/apps/dependabot))
+- Bump flatted from 3.3.3 to 3.4.2 [\#129](https://github.com/uphold/eslint-config-uphold/pull/129) ([dependabot](https://github.com/apps/dependabot))
+- Bump basic-ftp from 5.1.0 to 5.2.0 [\#128](https://github.com/uphold/eslint-config-uphold/pull/128) ([dependabot](https://github.com/apps/dependabot))
+- Update all dependencies to fix vulnerabilities [\#126](https://github.com/uphold/eslint-config-uphold/pull/126) ([risantos](https://github.com/risantos))
+- Remove test-specific rules and env variables from default config [\#120](https://github.com/uphold/eslint-config-uphold/pull/120) ([risantos](https://github.com/risantos))
+- Add migration steps to `MIGRATIONS.md` [\#121](https://github.com/uphold/eslint-config-uphold/pull/121) ([risantos](https://github.com/risantos))
+- Rename `eslint-plugin-n` from `node-plugin` to `n` [\#119](https://github.com/uphold/eslint-config-uphold/pull/119) ([risantos](https://github.com/risantos))
+- Remove `@babel/eslint-parser` and bump `ecmaVersion` to 2022 [\#118](https://github.com/uphold/eslint-config-uphold/pull/118) ([risantos](https://github.com/risantos))
+
 ## [v6.12.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v6.12.0) (2026-02-04)
 
 - Add `require-comment-punctuation` rule [\#124](https://github.com/uphold/eslint-config-uphold/pull/124) ([risantos](https://github.com/risantos))
