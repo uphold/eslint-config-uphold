@@ -39,8 +39,8 @@
     "@stylistic/eslint-plugin": "^5.10.0",
     "dayjs": "^1.11.21",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-jsdoc": "^63.0.12",
-    "eslint-plugin-n": "^18.2.1",
+    "eslint-plugin-jsdoc": "^63.0.13",
+    "eslint-plugin-n": "^18.2.2",
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-promise": "^7.3.0",
     "eslint-plugin-sort-destructure-keys": "^3.0.0",
@@ -53,23 +53,23 @@
     "@fastify/pre-commit": "^2.2.1",
     "@types/node": "^24",
     "@uphold/github-changelog-generator": "^4.0.2",
-    "@vitest/eslint-plugin": "^1.6.21",
-    "eslint": "~10.6.0",
+    "@vitest/eslint-plugin": "^1.6.23",
+    "eslint": "~10.7.0",
     "eslint-plugin-jest": "^29.15.4",
     "eslint-plugin-mocha": "^11.3.0",
-    "prettier": "^3.9.4",
+    "prettier": "^3.9.5",
     "release-it": "^20.2.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.63.0"
+    "typescript-eslint": "^8.64.0"
   },
   "peerDependencies": {
-    "@vitest/eslint-plugin": "^1.6.21",
-    "eslint": "~10.6.0",
+    "@vitest/eslint-plugin": "^1.6.23",
+    "eslint": "~10.7.0",
     "eslint-plugin-jest": "^29.15.4",
     "eslint-plugin-mocha": "^11.3.0",
-    "prettier": "^3.9.4",
-    "typescript": ">4.8.4 <7.0.0",
-    "typescript-eslint": "^8.63.0"
+    "prettier": "^3.9.5",
+    "typescript": "^4.8.4 || ^5.0.0 || ^6.0.0 || ^7.0.0",
+    "typescript-eslint": "^8.64.0"
   },
   "peerDependenciesMeta": {
     "@vitest/eslint-plugin": {
