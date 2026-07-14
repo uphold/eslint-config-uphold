@@ -31,7 +31,9 @@
   "scripts": {
     "lint": "eslint",
     "release": "release-it",
-    "test": "node --test $(find test -name '*.test.js')"
+    "test": "node --test '**/*.test.js'",
+    "test:snapshot": "node --test --test-update-snapshots '**/*.test.js'",
+    "test:watch": "node --test --watch '**/*.test.js'"
   },
   "dependencies": {
     "@eslint/compat": "^2.1.0",
