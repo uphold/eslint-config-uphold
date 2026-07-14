@@ -1,0 +1,69 @@
+exports[`database-migration-filename-format > should generate violations for incorrect database migration file names 1`] = `
+[
+  {
+    "filePath": "fixtures/incorrect/20251212-missing-time-and-name.js",
+    "ruleIds": [
+      "uphold-plugin/database-migration-filename-format"
+    ]
+  },
+  {
+    "filePath": "fixtures/incorrect/20251212175000-Malformed-Name.js",
+    "ruleIds": [
+      "uphold-plugin/database-migration-filename-format"
+    ]
+  },
+  {
+    "filePath": "fixtures/incorrect/20251212175000-malformed_name.js",
+    "ruleIds": [
+      "uphold-plugin/database-migration-filename-format"
+    ]
+  },
+  {
+    "filePath": "fixtures/incorrect/202512121838-.js",
+    "ruleIds": [
+      "uphold-plugin/database-migration-filename-format"
+    ]
+  },
+  {
+    "filePath": "fixtures/incorrect/202512121838-malformed-time.js",
+    "ruleIds": [
+      "uphold-plugin/database-migration-filename-format"
+    ]
+  },
+  {
+    "filePath": "fixtures/incorrect/202512121838.js",
+    "ruleIds": [
+      "uphold-plugin/database-migration-filename-format"
+    ]
+  },
+  {
+    "filePath": "fixtures/incorrect/202513341838-malformed-date.js",
+    "ruleIds": [
+      "uphold-plugin/database-migration-filename-format"
+    ]
+  },
+  {
+    "filePath": "fixtures/incorrect/21001212183800-future-date-time.js",
+    "ruleIds": [
+      "uphold-plugin/database-migration-filename-format"
+    ]
+  },
+  {
+    "filePath": "fixtures/incorrect/ignored.js",
+    "ruleIds": []
+  }
+]
+`;
+
+exports[`database-migration-filename-format > should not generate any violation for correct database migration file names 1`] = `
+[
+  {
+    "filePath": "fixtures/correct/20251212175000-foo-bar-123.js",
+    "ruleIds": []
+  },
+  {
+    "filePath": "fixtures/correct/ignored.js",
+    "ruleIds": []
+  }
+]
+`;

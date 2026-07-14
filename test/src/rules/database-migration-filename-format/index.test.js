@@ -5,7 +5,6 @@
 import { ESLint } from 'eslint';
 import { describe, it } from 'node:test';
 import { join, relative, resolve } from 'node:path';
-import assert from 'node:assert/strict';
 
 /**
  * Constants.
@@ -27,7 +26,7 @@ describe('database-migration-filename-format', () => {
     overrideConfigFile: join(process.cwd(), 'src', 'index.js')
   });
 
-  it('should not generate any violation for correct database migration file names', async () => {
+  it('should not generate any violation for correct database migration file names', async (/** @type {import('node:test').TestContext} */ t) => {
     const source = join(dirname, 'fixtures', 'correct', '*.js');
     const results = await linter.lintFiles([source]);
     const rules = results.map(({ filePath, messages }) => ({
@@ -35,7 +34,8 @@ describe('database-migration-filename-format', () => {
       ruleIds: messages.map(violation => violation.ruleId)
     }));
 
-    assert.deepEqual(rules, [
+    t.assert.snapshot(rules);
+    t.assert.deepStrictEqual(rules, [
       {
         filePath: 'fixtures/correct/20251212175000-foo-bar-123.js',
         ruleIds: []
@@ -47,7 +47,7 @@ describe('database-migration-filename-format', () => {
     ]);
   });
 
-  it('should generate violations for incorrect database migration file names', async () => {
+  it('should generate violations for incorrect database migration file names', async (/** @type {import('node:test').TestContext} */ t) => {
     const source = join(dirname, 'fixtures', 'incorrect', '*.js');
     const results = await linter.lintFiles([source]);
     const rules = results.map(({ filePath, messages }) => ({
@@ -55,7 +55,8 @@ describe('database-migration-filename-format', () => {
       ruleIds: messages.map(violation => violation.ruleId)
     }));
 
-    assert.deepEqual(rules, [
+    t.assert.snapshot(rules);
+    t.assert.deepStrictEqual(rules, [
       {
         filePath: 'fixtures/incorrect/20251212-missing-time-and-name.js',
         ruleIds: ['uphold-plugin/database-migration-filename-format']

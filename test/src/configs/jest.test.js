@@ -4,7 +4,6 @@
 
 import { createJestConfig } from '../../../src/configs/jest.js';
 import { describe, it } from 'node:test';
-import assert from 'node:assert/strict';
 
 /**
  * Test suite for Jest config.
@@ -12,45 +11,34 @@ import assert from 'node:assert/strict';
 
 describe('Jest config', () => {
   describe('createJestConfig()', () => {
-    it('should return a config array when Jest is not installed', async () => {
+    it('should return a config array when Jest is not installed', async (/** @type {import('node:test').TestContext} */ t) => {
       const configs = await createJestConfig({
         isModuleAvailable: () => false,
         loadModule: () => Promise.resolve({})
       });
 
-      assert.ok(Array.isArray(configs), 'Should return an array');
-      assert.strictEqual(configs.length, 1, 'Should have one config');
-      assert.strictEqual(configs[0].name, 'uphold/jest', 'Should have correct config name');
-      assert.ok(!configs[0].rules, 'Empty config should not have rules');
-      assert.ok(!configs[0].languageOptions, 'Empty config should not have `languageOptions`');
+      t.assert.snapshot(configs);
     });
 
-    it('should return globals config when Jest is installed but plugin is not', async context => {
-      const warnMock = context.mock.method(process, 'emitWarning');
+    it('should return globals config when Jest is installed but plugin is not', async (/** @type {import('node:test').TestContext} */ t) => {
+      const warnMock = t.mock.method(process, 'emitWarning');
       const configs = await createJestConfig({
         isModuleAvailable: moduleName => moduleName === 'jest'
       });
 
-      assert.ok(Array.isArray(configs), 'Should return an array');
-      assert.strictEqual(configs.length, 1, 'Should have one config');
-      assert.strictEqual(configs[0].name, 'uphold/jest', 'Should have correct config name');
-      assert.ok(configs[0].languageOptions, 'Should have `languageOptions`');
-      assert.ok(configs[0].languageOptions.globals, 'Should have Jest globals defined');
-      assert.ok(!configs[0].rules, 'Globals config should not have rules');
-
-      // Verify warning was emitted.
-      assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have emitted a warning');
-      assert.strictEqual(
+      t.assert.snapshot(configs);
+      t.assert.strictEqual(warnMock.mock.callCount(), 1, 'Should have emitted a warning');
+      t.assert.strictEqual(
         warnMock.mock.calls[0].arguments[0],
         '`eslint-plugin-jest` is not installed, Jest linting will be disabled'
       );
-      assert.deepStrictEqual(warnMock.mock.calls[0].arguments[1], {
+      t.assert.deepStrictEqual(warnMock.mock.calls[0].arguments[1], {
         code: 'UPHOLD_ESLINT_JEST_PLUGIN_MISSING',
         type: 'UpholdEslintWarning'
       });
     });
 
-    it('should return full plugin config when both Jest and plugin are installed', async () => {
+    it('should return full plugin config when both Jest and plugin are installed', async (/** @type {import('node:test').TestContext} */ t) => {
       const mockRecommendedConfig = { name: 'jest/recommended', rules: { 'jest/no-disabled-tests': 'warn' } };
 
       const configs = await createJestConfig({
@@ -64,32 +52,7 @@ describe('Jest config', () => {
         }
       });
 
-      assert.ok(Array.isArray(configs), 'Should return an array');
-      // defineConfig flattens extends, so we have 2 configs: jest/recommended + uphold/jest.
-      assert.strictEqual(configs.length, 2, 'Should have two configs (extended + main)');
-
-      // First config is the extended jest/recommended (prefixed by defineConfig).
-      assert.strictEqual(
-        configs[0].name,
-        'uphold/jest > jest/recommended',
-        'First config should be prefixed jest/recommended'
-      );
-
-      // Second config is our uphold/jest config with rules.
-      assert.strictEqual(configs[1].name, 'uphold/jest', 'Second config should be uphold/jest');
-      assert.ok(configs[1].rules, 'Should have rules');
-      assert.equal(Object.keys(configs[1].rules).length, 9);
-      assert.strictEqual(configs[1].rules['jest/padding-around-describe-blocks'], 'warn');
-      assert.strictEqual(configs[1].rules['jest/padding-around-expect-groups'], 'warn');
-      assert.strictEqual(configs[1].rules['jest/prefer-equality-matcher'], 'warn');
-      assert.strictEqual(configs[1].rules['jest/prefer-to-be'], 'warn');
-      assert.strictEqual(configs[1].rules['jest/prefer-to-contain'], 'warn');
-      assert.strictEqual(configs[1].rules['jest/prefer-to-have-been-called'], 'warn');
-      assert.strictEqual(configs[1].rules['jest/prefer-to-have-been-called-times'], 'warn');
-      assert.strictEqual(configs[1].rules['jest/prefer-to-have-length'], 'warn');
-      assert.strictEqual(configs[1].rules['jest/prefer-todo'], 'warn');
-
-      assert.ok(!configs[1].languageOptions, 'Plugin config should not have `languageOptions`');
+      t.assert.snapshot(configs);
     });
   });
 });
