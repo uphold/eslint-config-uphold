@@ -9,7 +9,7 @@ import globals from 'globals';
 /**
  * @typedef {object} LoaderUtils
  * @property {(moduleName: string) => boolean} isModuleAvailable - Check if a module is available.
- * @property {(moduleName: string) => Promise<unknown>} [loadModule] - Dynamically load a module.
+ * @property {typeof loadModule} [loadModule] - Dynamically load a module.
  */
 
 /**
@@ -25,10 +25,7 @@ export async function createVitestConfig(utils) {
   const isVitestAvailable = checkModule('vitest');
 
   if (isVitestPluginAvailable && isVitestAvailable) {
-    /** @type {{ configs: { recommended: import('eslint').Linter.Config, env: { languageOptions: import('eslint').Linter.LanguageOptions } } }} */
-    const vitestPlugin =
-      /** @type {never} */
-      (await loadMod('@vitest/eslint-plugin'));
+    const vitestPlugin = await loadMod('@vitest/eslint-plugin');
 
     return defineConfig({
       extends: [vitestPlugin.configs.recommended],

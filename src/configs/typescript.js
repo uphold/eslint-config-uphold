@@ -26,7 +26,7 @@ import js from '@eslint/js';
 /**
  * @typedef {object} LoaderUtils
  * @property {(moduleName: string) => boolean} isModuleAvailable - Check if a module is available.
- * @property {(moduleName: string) => Promise<unknown>} [loadModule] - Dynamically load a module.
+ * @property {typeof loadModule} [loadModule] - Dynamically load a module.
  */
 
 /**
@@ -107,7 +107,6 @@ export async function createTypeScriptConfig(moduleType = 'module', { ecmaVersio
   }
 
   if (checkModule('typescript-eslint')) {
-    /** @type {import('typescript-eslint').default} */
     const tseslint = await loadMod('typescript-eslint');
 
     return defineConfig([

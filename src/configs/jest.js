@@ -9,7 +9,7 @@ import globals from 'globals';
 /**
  * @typedef {object} LoaderUtils
  * @property {(moduleName: string) => boolean} isModuleAvailable - Check if a module is available.
- * @property {(moduleName: string) => Promise<unknown>} [loadModule] - Dynamically load a module.
+ * @property {typeof loadModule} [loadModule] - Dynamically load a module.
  */
 
 /**
@@ -25,9 +25,7 @@ export async function createJestConfig(utils) {
   const isJestAvailable = checkModule('jest');
 
   if (isJestPluginAvailable && isJestAvailable) {
-    const jestPlugin =
-      /** @type {{ configs: Record<string, import('@eslint/config-helpers').Config> }} */
-      (await loadMod('eslint-plugin-jest'));
+    const jestPlugin = await loadMod('eslint-plugin-jest');
 
     return defineConfig({
       extends: [{ ...jestPlugin.configs['flat/recommended'], name: 'jest/recommended' }],
