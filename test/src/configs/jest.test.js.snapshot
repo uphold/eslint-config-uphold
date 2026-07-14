@@ -1,0 +1,57 @@
+exports[`Jest config > createJestConfig() > should return a config array when Jest is not installed 1`] = `
+[
+  {
+    "name": "uphold/jest"
+  }
+]
+`;
+
+exports[`Jest config > createJestConfig() > should return full plugin config when both Jest and plugin are installed 1`] = `
+[
+  {
+    "name": "uphold/jest > jest/recommended",
+    "rules": {
+      "jest/no-disabled-tests": "warn"
+    }
+  },
+  {
+    "name": "uphold/jest",
+    "rules": {
+      "jest/padding-around-describe-blocks": "warn",
+      "jest/padding-around-expect-groups": "warn",
+      "jest/prefer-equality-matcher": "warn",
+      "jest/prefer-to-be": "warn",
+      "jest/prefer-to-contain": "warn",
+      "jest/prefer-to-have-been-called": "warn",
+      "jest/prefer-to-have-been-called-times": "warn",
+      "jest/prefer-to-have-length": "warn",
+      "jest/prefer-todo": "warn"
+    }
+  }
+]
+`;
+
+exports[`Jest config > createJestConfig() > should return globals config when Jest is installed but plugin is not 1`] = `
+[
+  {
+    "languageOptions": {
+      "globals": {
+        "afterAll": false,
+        "afterEach": false,
+        "beforeAll": false,
+        "beforeEach": false,
+        "describe": false,
+        "expect": false,
+        "fit": false,
+        "it": false,
+        "jest": false,
+        "test": false,
+        "xdescribe": false,
+        "xit": false,
+        "xtest": false
+      }
+    },
+    "name": "uphold/jest"
+  }
+]
+`;

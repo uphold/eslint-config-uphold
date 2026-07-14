@@ -1,0 +1,12 @@
+exports[`Test configs > should export factory functions 1`] = `
+[
+  "createJavaScriptConfig",
+  "createTypeScriptConfig",
+  "javascript",
+  "jest",
+  "mocha",
+  "nodeTest",
+  "typescript",
+  "vitest"
+]
+`;

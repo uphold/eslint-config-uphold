@@ -295,9 +295,10 @@ This package includes individual exported configs for multiple test frameworks:
 
 - [Jest](https://jestjs.io/), depending on `eslint-plugin-jest`.
 - [Mocha](https://mochajs.org/), depending on `eslint-plugin-mocha`.
+- [Node.js built-in test runner (`node:test`)](https://nodejs.org/api/test.html), depending on `eslint-node-test`
 - [Vitest](https://vitest.dev/), depending on `@vitest/eslint-plugin` and `typescript`.
 
-To use them, import the config directly in your `eslint.config.mjs` file:
+To use them, import the config directly in your `eslint.config.mjs` file (example for Mocha):
 
 ```js
 import { defineConfig } from 'eslint/config';
@@ -320,7 +321,7 @@ export default defineConfig([
 All configs can be imported from `eslint-config-uphold`:
 
 ```js
-import { javascript, jest, mocha, typescript, vitest } from 'eslint-config-uphold';
+import { javascript, jest, mocha, nodeTest, typescript, vitest } from 'eslint-config-uphold';
 ```
 
 > [!NOTE]

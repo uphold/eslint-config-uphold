@@ -9,7 +9,7 @@ import globals from 'globals';
 /**
  * @typedef {object} LoaderUtils
  * @property {(moduleName: string) => boolean} isModuleAvailable - Check if a module is available.
- * @property {(moduleName: string) => Promise<unknown>} [loadModule] - Dynamically load a module.
+ * @property {typeof loadModule} [loadModule] - Dynamically load a module.
  */
 
 /**
@@ -25,9 +25,7 @@ export async function createMochaConfig(utils) {
   const isMochaAvailable = checkModule('mocha');
 
   if (isMochaPluginAvailable && isMochaAvailable) {
-    const pluginMocha =
-      /** @type {{ configs: { recommended: import('@eslint/config-helpers').Config } }} */
-      (await loadMod('eslint-plugin-mocha'));
+    const pluginMocha = await loadMod('eslint-plugin-mocha');
 
     return defineConfig({
       extends: [pluginMocha.configs.recommended],

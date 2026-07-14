@@ -1,0 +1,59 @@
+exports[`Mocha config > createMochaConfig() > should return a config array when Mocha is not installed 1`] = `
+[
+  {
+    "name": "uphold/mocha"
+  }
+]
+`;
+
+exports[`Mocha config > createMochaConfig() > should return full plugin config when both Mocha and plugin are installed 1`] = `
+[
+  {
+    "name": "uphold/mocha > mocha/recommended",
+    "rules": {
+      "mocha/no-exclusive-tests": "error"
+    }
+  },
+  {
+    "name": "uphold/mocha",
+    "rules": {
+      "mocha/no-exclusive-tests": "error",
+      "mocha/no-identical-title": "error",
+      "mocha/no-nested-tests": "error",
+      "mocha/no-sibling-hooks": "error"
+    }
+  }
+]
+`;
+
+exports[`Mocha config > createMochaConfig() > should return globals config when Mocha is installed but plugin is not 1`] = `
+[
+  {
+    "languageOptions": {
+      "globals": {
+        "after": false,
+        "afterEach": false,
+        "before": false,
+        "beforeEach": false,
+        "context": false,
+        "describe": false,
+        "it": false,
+        "mocha": false,
+        "run": false,
+        "setup": false,
+        "specify": false,
+        "suite": false,
+        "suiteSetup": false,
+        "suiteTeardown": false,
+        "teardown": false,
+        "test": false,
+        "xcontext": false,
+        "xdescribe": false,
+        "xit": false,
+        "xspecify": false
+      }
+    },
+    "name": "uphold/mocha"
+  }
+]
+`;

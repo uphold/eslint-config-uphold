@@ -1,0 +1,66 @@
+exports[`Vitest config > createVitestConfig() > should return a config array when Vitest is not installed 1`] = `
+[
+  {
+    "name": "uphold/vitest"
+  }
+]
+`;
+
+exports[`Vitest config > createVitestConfig() > should return full plugin config when Vitest and plugin are installed 1`] = `
+[
+  {
+    "name": "uphold/vitest > vitest/recommended",
+    "rules": {
+      "vitest/expect-expect": "error"
+    }
+  },
+  {
+    "languageOptions": {
+      "globals": {
+        "vi": true
+      }
+    },
+    "name": "uphold/vitest",
+    "rules": {
+      "vitest/no-commented-out-tests": "warn",
+      "vitest/no-disabled-tests": "warn",
+      "vitest/no-focused-tests": "error",
+      "vitest/no-interpolation-in-snapshots": "error",
+      "vitest/no-mocks-import": "error",
+      "vitest/no-standalone-expect": "error",
+      "vitest/no-test-prefixes": "error",
+      "vitest/prefer-expect-resolves": "warn",
+      "vitest/prefer-to-have-length": "warn"
+    }
+  }
+]
+`;
+
+exports[`Vitest config > createVitestConfig() > should return globals config when Vitest is installed but plugin is not 1`] = `
+[
+  {
+    "languageOptions": {
+      "globals": {
+        "afterAll": false,
+        "afterEach": false,
+        "assert": false,
+        "assertType": false,
+        "beforeAll": false,
+        "beforeEach": false,
+        "chai": false,
+        "describe": false,
+        "expect": false,
+        "expectTypeOf": false,
+        "it": false,
+        "onTestFailed": false,
+        "onTestFinished": false,
+        "suite": false,
+        "test": false,
+        "vi": false,
+        "vitest": false
+      }
+    },
+    "name": "uphold/vitest"
+  }
+]
+`;

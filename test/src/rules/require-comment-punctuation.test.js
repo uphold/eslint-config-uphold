@@ -13,7 +13,7 @@ import requireCommentPunctuation from '../../../src/rules/require-comment-punctu
 describe('require-comment-punctuation', () => {
   const ruleTester = new RuleTester();
 
-  it('should validate single-line comments with proper punctuation', () => {
+  it('should validate single-line comments with proper punctuation', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -43,9 +43,11 @@ describe('require-comment-punctuation', () => {
         { code: '\t// Tab-indented comment with period.' }
       ]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should validate multi-line comment blocks', () => {
+  it('should validate multi-line comment blocks', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -93,9 +95,11 @@ describe('require-comment-punctuation', () => {
         }
       ]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should handle empty comment lines in blocks', () => {
+  it('should handle empty comment lines in blocks', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -130,9 +134,11 @@ describe('require-comment-punctuation', () => {
         }
       ]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should ignore directive comments', () => {
+  it('should ignore directive comments', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [],
       valid: [
@@ -150,9 +156,11 @@ describe('require-comment-punctuation', () => {
         { code: '// global window, document' }
       ]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should handle directives breaking comment blocks', () => {
+  it('should handle directives breaking comment blocks', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -195,9 +203,11 @@ describe('require-comment-punctuation', () => {
         }
       ]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should validate inline comments individually', () => {
+  it('should validate inline comments individually', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -216,9 +226,11 @@ describe('require-comment-punctuation', () => {
         { code: 'function foo() {} // function comment.' }
       ]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should not group full-line and inline comments together', () => {
+  it('should not group full-line and inline comments together', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -239,9 +251,11 @@ describe('require-comment-punctuation', () => {
         }
       ]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should handle comments with trailing whitespace', () => {
+  it('should handle comments with trailing whitespace', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -257,9 +271,11 @@ describe('require-comment-punctuation', () => {
       ],
       valid: [{ code: '// Comment with punctuation.   ' }, { code: '// Comment with punctuation.\t' }]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should handle all allowed punctuation marks', () => {
+  it('should handle all allowed punctuation marks', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -292,9 +308,11 @@ describe('require-comment-punctuation', () => {
         { code: '// Multiple paired ``` const foo=1 ``` triple backticks ``` const bar=2```' }
       ]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should handle non-adjacent full-line comments as separate blocks', () => {
+  it('should handle non-adjacent full-line comments as separate blocks', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -329,9 +347,10 @@ describe('require-comment-punctuation', () => {
         }
       ]
     });
+    t.assert.ok(ruleTester);
   });
 
-  it('should handle comments ending with different punctuation', () => {
+  it('should handle comments ending with different punctuation', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -342,9 +361,10 @@ describe('require-comment-punctuation', () => {
       ],
       valid: [{ code: '// This ends with a colon:' }]
     });
+    t.assert.ok(ruleTester);
   });
 
-  it('should handle real-world comment scenarios', () => {
+  it('should handle real-world comment scenarios', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -388,9 +408,10 @@ describe('require-comment-punctuation', () => {
         }
       ]
     });
+    t.assert.ok(ruleTester);
   });
 
-  it('should handle edge cases', () => {
+  it('should handle edge cases', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -406,9 +427,10 @@ describe('require-comment-punctuation', () => {
       ],
       valid: [{ code: '//' }, { code: '//   ' }, { code: '// .' }, { code: '// ?' }, { code: '// !' }, { code: '// ;' }]
     });
+    t.assert.ok(ruleTester);
   });
 
-  it('should handle comments in code contexts', () => {
+  it('should handle comments in code contexts', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -438,9 +460,10 @@ describe('require-comment-punctuation', () => {
         }
       ]
     });
+    t.assert.ok(ruleTester);
   });
 
-  it('should support `exclusionPrefixes` option', () => {
+  it('should support `exclusionPrefixes` option', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -471,9 +494,10 @@ describe('require-comment-punctuation', () => {
         }
       ]
     });
+    t.assert.ok(ruleTester);
   });
 
-  it('should handle `exclusionPrefixes` breaking comment blocks', () => {
+  it('should handle `exclusionPrefixes` breaking comment blocks', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -496,9 +520,10 @@ describe('require-comment-punctuation', () => {
         }
       ]
     });
+    t.assert.ok(ruleTester);
   });
 
-  it('should support `additionalAllowedEndings` option', () => {
+  it('should support `additionalAllowedEndings` option', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -527,9 +552,10 @@ describe('require-comment-punctuation', () => {
         }
       ]
     });
+    t.assert.ok(ruleTester);
   });
 
-  it('should support both options together', () => {
+  it('should support both options together', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('require-comment-punctuation', requireCommentPunctuation, {
       invalid: [
         {
@@ -554,5 +580,6 @@ describe('require-comment-punctuation', () => {
         }
       ]
     });
+    t.assert.ok(ruleTester);
   });
 });

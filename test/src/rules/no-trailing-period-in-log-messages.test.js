@@ -13,7 +13,7 @@ import noTrailingPeriodInLogMessages from '../../../src/rules/no-trailing-period
 describe('no-trailing-period-in-log-messages', () => {
   const ruleTester = new RuleTester();
 
-  it('should validate standard log messages', () => {
+  it('should validate standard log messages', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('no-trailing-period-in-log-messages', noTrailingPeriodInLogMessages, {
       invalid: [
         {
@@ -40,9 +40,11 @@ describe('no-trailing-period-in-log-messages', () => {
         { code: 'console.log(123)' }
       ]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should validate template literals', () => {
+  it('should validate template literals', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('no-trailing-period-in-log-messages', noTrailingPeriodInLogMessages, {
       invalid: [
         {
@@ -63,9 +65,11 @@ describe('no-trailing-period-in-log-messages', () => {
       ],
       valid: [{ code: 'console.log(`Hello ${name}`)' }, { code: 'console.log(`Processing ${item}...`)' }]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should support custom methods', () => {
+  it('should support custom methods', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('no-trailing-period-in-log-messages', noTrailingPeriodInLogMessages, {
       invalid: [
         {
@@ -86,9 +90,11 @@ describe('no-trailing-period-in-log-messages', () => {
         }
       ]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should support bracket notation', () => {
+  it('should support bracket notation', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('no-trailing-period-in-log-messages', noTrailingPeriodInLogMessages, {
       invalid: [
         {
@@ -107,9 +113,11 @@ describe('no-trailing-period-in-log-messages', () => {
         { code: "const method = 'log'; logger[method]('Hello world')" }
       ]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should support destructured methods', () => {
+  it('should support destructured methods', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('no-trailing-period-in-log-messages', noTrailingPeriodInLogMessages, {
       invalid: [
         {
@@ -128,9 +136,11 @@ describe('no-trailing-period-in-log-messages', () => {
         { code: "const { error: errorFn } = logger; errorFn('Failed')" }
       ]
     });
+
+    t.assert.ok(ruleTester);
   });
 
-  it('should support second argument messages', () => {
+  it('should support second argument messages', (/** @type {import('node:test').TestContext} */ t) => {
     ruleTester.run('no-trailing-period-in-log-messages', noTrailingPeriodInLogMessages, {
       invalid: [
         {
@@ -141,5 +151,7 @@ describe('no-trailing-period-in-log-messages', () => {
       ],
       valid: [{ code: "logger.info({ context: 'value' }, 'Processing complete')" }]
     });
+
+    t.assert.ok(ruleTester);
   });
 });
