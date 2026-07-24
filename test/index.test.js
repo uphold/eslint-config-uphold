@@ -78,6 +78,8 @@ describe('eslint-config-uphold', () => {
       'sort-destructure-keys/sort-destructure-keys',
       'sort-destructure-keys/sort-destructure-keys',
       'sort-destructure-keys/sort-destructure-keys',
+      'sort-exports/sort-exports',
+      'sort-exports/sort-exports',
       'sort-imports-requires/sort-imports',
       'no-duplicate-imports',
       'no-duplicate-imports',
