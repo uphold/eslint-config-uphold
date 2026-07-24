@@ -9,6 +9,7 @@ import nodePlugin from 'eslint-plugin-n';
 import promisePlugin from 'eslint-plugin-promise';
 import rules from '../rules/index.js';
 import sortDestructureKeysPlugin from 'eslint-plugin-sort-destructure-keys';
+import sortExportsPlugin from 'eslint-plugin-sort-exports';
 import sortImportsRequiresPlugin from 'eslint-plugin-sort-imports-requires';
 import sortKeysFixPlugin from 'eslint-plugin-sort-keys-fix';
 import sqlTemplatePlugin from 'eslint-plugin-sql-template';
@@ -263,6 +264,19 @@ export const sortDestructureKeysConfig = {
 };
 
 /**
+ * Configuration for `eslint-plugin-sort-exports`.
+ * @type {import('eslint').Linter.Config}
+ */
+export const sortExportsConfig = {
+  name: 'uphold/sort-exports',
+  plugins: {
+    // @ts-expect-error Outdated types for `eslint-plugin-sort-exports`.
+    'sort-exports': fixupPluginRules(sortExportsPlugin)
+  },
+  rules: { 'sort-exports/sort-exports': ['error', { sortDir: 'asc' }] }
+};
+
+/**
  * Configuration for `eslint-plugin-sort-imports-requires`.
  * @type {import('eslint').Linter.Config}
  */
@@ -363,6 +377,16 @@ export const stylisticConfig = {
 };
 
 /**
+ * Configuration for `config` files.
+ * @type {import('eslint').Linter.Config}
+ */
+export const upholdConfigFilesConfig = {
+  files: ['**/config/**'],
+  name: 'uphold/config-files',
+  rules: { 'n/no-sync': 'off' }
+};
+
+/**
  * Configuration for `uphold-plugin`, our custom rules.
  * @type {import('eslint').Linter.Config}
  */
@@ -389,17 +413,5 @@ export const upholdScriptsBinConfig = {
     'n/no-process-exit': 'off',
     'n/no-sync': 'off',
     'no-console': 'off'
-  }
-};
-
-/**
- * Configuration for `config` files.
- * @type {import('eslint').Linter.Config}
- */
-export const upholdConfigFilesConfig = {
-  files: ['**/config/**'],
-  name: 'uphold/config-files',
-  rules: {
-    'n/no-sync': 'off'
   }
 };
