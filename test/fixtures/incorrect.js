@@ -181,6 +181,15 @@ noop(delta);
 noop(Echo);
 noop(FOXTROT);
 
+// `sort-exports/sort-exports`.
+export const zebra = 1;
+export const apple = 2;
+
+const date = 3;
+const cherry = 4;
+
+export { date, cherry };
+
 // `sort-imports-requires/sort-imports`.
 import import1 from 'import-1';
 import { import2 } from 'import-2';

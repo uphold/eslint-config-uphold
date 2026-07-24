@@ -233,6 +233,15 @@ noop(delta);
 noop(Echo);
 noop(FOXTROT);
 
+// `sort-exports/sort-exports`.
+export const apple = 1;
+export const banana = 2;
+
+const cherry = 3;
+const date = 4;
+
+export { cherry, date };
+
 // `sort-imports`.
 import 'import-1';
 import * as Import6 from 'import-2';
