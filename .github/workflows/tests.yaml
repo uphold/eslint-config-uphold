@@ -10,20 +10,27 @@ jobs:
         node: [22, 24, 26]
 
     steps:
+    - parallel:
       - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js version
-        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version: ${{ matrix.node }}
-          cache: 'yarn'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+    - name: Install NPM 12
+      run: npm install -g npm@12
 
-      - name: Run lint
-        run: yarn lint
+    - name: Install dependencies
+      run: npm ci
 
-      - name: Run tests
-        run: yarn test
+    - name: Run lint
+      run: npm run lint
+
+    - name: Run tests
+      run: npm test
