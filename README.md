@@ -10,6 +10,7 @@ that allow the [Prettier](https://prettier.io) pretty-printer to reformat the co
 ## Status
 
 [![npm version][npm-image]][npm-url]
+[![tests status][ci-tests-image]][ci-tests-url]
 
 ## Installation
 
@@ -369,3 +370,5 @@ MIT
 
 [npm-image]: https://img.shields.io/npm/v/eslint-config-uphold.svg
 [npm-url]: https://www.npmjs.com/package/eslint-config-uphold
+[ci-tests-image]: https://github.com/uphold/eslint-config-uphold/actions/workflows/tests.yaml/badge.svg?branch=master
+[ci-tests-url]: https://github.com/uphold/eslint-config-uphold/actions/workflows/tests.yaml

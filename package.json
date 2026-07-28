@@ -33,6 +33,9 @@
     "release": "release-it",
     "test": "node --test $(find test -name '*.test.js')"
   },
+  "allowScripts": {
+    "@fastify/pre-commit@2.2.1": true
+  },
   "dependencies": {
     "@eslint/compat": "^2.1.0",
     "@eslint/js": "^10.0.1",
@@ -98,11 +101,17 @@
     "node": "^22.12.0 || >=24"
   },
   "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "onFail": "download",
+      "version": "12"
+    },
     "runtime": {
       "name": "node",
       "version": "24",
       "onFail": "ignore"
     }
   },
-  "type": "module"
+  "type": "module",
+  "install-strategy": "linked"
 }
