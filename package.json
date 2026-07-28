@@ -103,7 +103,7 @@
   "devEngines": {
     "packageManager": {
       "name": "npm",
-      "onFail": "ignore",
+      "onFail": "download",
       "version": "12"
     },
     "runtime": {
