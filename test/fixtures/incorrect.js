@@ -153,6 +153,14 @@ const maximumLineLength = 'prettier dictates that lines of code must not exceed 
 
 noop(maximumLineLength);
 
+// `prettier/prettier` - Objects within the print width must collapse.
+const objectCollapse = {
+  enabled: true,
+  retries: 3
+};
+
+noop(objectCollapse);
+
 // promise/prefer-await-to-then
 ((foo = {}) => {
   foo.then({});

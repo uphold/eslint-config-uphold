@@ -111,6 +111,19 @@ describe('JavaScript config', () => {
       // First config should have the main config with rules.
       assert.ok(config[0].rules, 'Should have rules');
       assert.ok(Object.keys(config[0].rules).length > 0, 'Should have some rules defined');
+      const configWithPrettierRule = config.find(cfg => cfg.rules?.['prettier/prettier']);
+
+      assert.ok(configWithPrettierRule, 'Should configure `prettier/prettier`');
+      assert.deepStrictEqual(configWithPrettierRule.rules?.['prettier/prettier'], [
+        'error',
+        {
+          arrowParens: 'avoid',
+          objectWrap: 'collapse',
+          printWidth: 120,
+          singleQuote: true,
+          trailingComma: 'none'
+        }
+      ]);
     });
 
     it('should have correct structure for all module types', () => {

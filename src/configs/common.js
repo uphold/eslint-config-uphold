@@ -151,6 +151,7 @@ export const eslintRules = {
     'error',
     {
       arrowParens: 'avoid',
+      objectWrap: 'collapse',
       printWidth: 120,
       singleQuote: true,
       trailingComma: 'none'

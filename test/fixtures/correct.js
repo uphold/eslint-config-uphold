@@ -196,6 +196,14 @@ const maximumLineLength = '120';
 
 noop(maximumLineLength);
 
+// `prettier/prettier` - Objects exceeding the print width remain wrapped.
+const objectWrap = {
+  primaryLabel: 'A descriptive label for the primary action shown to users',
+  secondaryLabel: 'A descriptive label for the secondary action shown to users'
+};
+
+noop(objectWrap);
+
 // `promise/prefer-await-to-then`.
 (async (foo = {}) => {
   await foo;
@@ -214,13 +222,7 @@ noop(maximumLineLength);
 })();
 
 // `sort-destructure-keys/sort-destructure-keys`.
-const foobject = {
-  FOXTROT: 0,
-  alpha: 1,
-  beta: 2,
-  charlie: 3,
-  delta: 4
-};
+const foobject = { FOXTROT: 0, alpha: 1, beta: 2, charlie: 3, delta: 4 };
 
 const { alpha, beta } = foobject;
 const { FOXTROT, delta } = foobject;
@@ -256,18 +258,12 @@ noop(import3);
 noop(import4);
 
 // `sort-keys`.
-const sortObjectProps = {
-  var1: 'foo',
-  var9: 'bar',
-  var10: 'biz'
-};
+const sortObjectProps = { var1: 'foo', var9: 'bar', var10: 'biz' };
 
 noop(sortObjectProps);
 
 // `sql-template/no-unsafe-query`.
-const db = {
-  query: noop()
-};
+const db = { query: noop() };
 const foo = 'foo';
 const sql = 'sql-tag';
 
@@ -280,9 +276,7 @@ const sinon = {};
 sinon.useFakeTimers({ toFake: ['Date'] });
 
 // `uphold-plugin/no-trailing-period-in-log-messages`.
-const logger = {
-  log: noop
-};
+const logger = { log: noop };
 
 logger.log(`Valid log message without trailing period`);
 logger.log(`Loading...`);
