@@ -27,6 +27,17 @@ const isSinonAvailable = isModuleAvailable('sinon');
 export const defaultEcmaVersion = 2024;
 
 /**
+ * Prettier options used by the `prettier/prettier` rule.
+ * @type {import('prettier').Options}
+ */
+export const prettierOptions = {
+  arrowParens: 'avoid',
+  printWidth: 120,
+  singleQuote: true,
+  trailingComma: 'none'
+};
+
+/**
  * ESLint base rules.
  * @type {import('eslint').Linter.RulesRecord}
  */
@@ -147,15 +158,7 @@ export const eslintRules = {
   ],
   'prefer-spread': 'error',
   'prefer-template': 'error',
-  'prettier/prettier': [
-    'error',
-    {
-      arrowParens: 'avoid',
-      printWidth: 120,
-      singleQuote: true,
-      trailingComma: 'none'
-    }
-  ],
+  'prettier/prettier': ['error', prettierOptions],
   radix: 'error',
   'require-atomic-updates': 'off',
   'require-await': 'error',

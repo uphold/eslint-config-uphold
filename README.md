@@ -166,6 +166,16 @@ export default defineConfig([
 ]);
 ```
 
+### Prettier options
+
+The options used by the `prettier/prettier` rule are exported as `prettierOptions`, so a `prettier` config can share them with ESLint.
+
+```js
+import { prettierOptions } from 'eslint-config-uphold';
+
+export default prettierOptions;
+```
+
 ### Custom rules
 
 This config includes custom Uphold-specific rules, under `uphold-plugin`.

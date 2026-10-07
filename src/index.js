@@ -32,3 +32,9 @@ export {
   typescript,
   vitest
 } from './configs/index.js';
+
+/**
+ * Export the Prettier options used by the `prettier/prettier` rule.
+ */
+
+export { prettierOptions } from './configs/common.js';
