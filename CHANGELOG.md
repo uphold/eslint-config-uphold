@@ -1,5 +1,10 @@
 # Changelog
 
+## [v7.1.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v7.1.0) (2026-10-09)
+
+- Export Prettier options [\#146](https://github.com/uphold/eslint-config-uphold/pull/146) ([josecarlosbrandao](https://github.com/josecarlosbrandao))
+- Update `eslint@10.8.0` and all dependencies [\#142](https://github.com/uphold/eslint-config-uphold/pull/142) ([risantos](https://github.com/risantos))
+
 ## [v7.0.0](https://github.com/uphold/eslint-config-uphold/releases/tag/v7.0.0) (2026-07-08)
 
 - Update `eslint@v10.6.0` and all dependencies [\#140](https://github.com/uphold/eslint-config-uphold/pull/140) ([risantos](https://github.com/risantos))
