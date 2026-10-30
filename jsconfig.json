@@ -1,15 +1,11 @@
 {
+  "extends": "@tsconfig/node26/tsconfig.json",
   "compilerOptions": {
     "checkJs": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["ES2024"],
-    "module": "NodeNext",
-    "moduleResolution": "nodenext",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "types": ["node"]
+    "strict": true
   },
   "exclude": ["node_modules"],
   "typeAcquisition": {
