@@ -77,12 +77,25 @@ describe('Mocha config', () => {
       // Second config is our uphold/mocha config with rules.
       assert.strictEqual(configs[1].name, 'uphold/mocha', 'Second config should be uphold/mocha');
       assert.ok(configs[1].rules, 'Should have rules');
-      assert.strictEqual(Object.keys(configs[1].rules).length, 4);
+      assert.strictEqual(Object.keys(configs[1].rules).length, 3);
       assert.strictEqual(configs[1].rules['mocha/no-exclusive-tests'], 'error');
       assert.strictEqual(configs[1].rules['mocha/no-identical-title'], 'error');
       assert.strictEqual(configs[1].rules['mocha/no-nested-tests'], 'error');
-      assert.strictEqual(configs[1].rules['mocha/no-sibling-hooks'], 'error');
       assert.ok(!configs[1].languageOptions, 'Plugin config should not have `languageOptions`');
+    });
+
+    it('should only configure rules that exist in the installed plugin', async () => {
+      const { default: plugin } = await import('eslint-plugin-mocha');
+      const configs = await createMochaConfig({
+        isModuleAvailable: () => true
+      });
+
+      /** @type {Record<string, unknown>} */
+      const pluginRules = plugin.rules;
+
+      for (const rule of Object.keys(configs[1].rules ?? {})) {
+        assert.ok(pluginRules[rule.replace('mocha/', '')], `Rule \`${rule}\` should exist in \`eslint-plugin-mocha\``);
+      }
     });
   });
 });

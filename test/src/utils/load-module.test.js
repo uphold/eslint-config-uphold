@@ -21,6 +21,12 @@ describe('load-module utilities', () => {
       assert.strictEqual(isModuleAvailable('globals'), true, 'Should detect installed dependencies');
     });
 
+    it('should return true for ESM-only modules', async () => {
+      const { isModuleAvailable } = await import('../../../src/utils/load-module.js');
+
+      assert.strictEqual(isModuleAvailable('eslint-plugin-mocha'), true, 'Should detect ESM-only dependencies');
+    });
+
     it('should return false for non-existent modules', async () => {
       const { isModuleAvailable } = await import('../../../src/utils/load-module.js');
 

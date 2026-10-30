@@ -1,23 +1,15 @@
 /**
- * Module dependencies.
- */
-
-import { createRequire } from 'node:module';
-
-const require = createRequire(import.meta.url);
-
-/**
  * Check if a module is available.
  * @param {string} moduleName - Name of module to check.
  * @returns {boolean} Whether the module is available.
  */
 function isModuleAvailable(moduleName) {
   try {
-    require.resolve(moduleName);
+    import.meta.resolve(moduleName);
 
     return true;
   } catch (error) {
-    if (error instanceof Error && 'code' in error && error.code === 'MODULE_NOT_FOUND') {
+    if (error instanceof Error && 'code' in error && error.code === 'ERR_MODULE_NOT_FOUND') {
       return false;
     }
 

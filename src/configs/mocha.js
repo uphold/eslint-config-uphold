@@ -35,8 +35,7 @@ export async function createMochaConfig(utils) {
       rules: {
         'mocha/no-exclusive-tests': 'error',
         'mocha/no-identical-title': 'error',
-        'mocha/no-nested-tests': 'error',
-        'mocha/no-sibling-hooks': 'error'
+        'mocha/no-nested-tests': 'error'
       }
     });
   }
