@@ -1,51 +1,141 @@
 name: Release
 
 on:
+  push:
+    tags:
+      - 'v*'
   workflow_dispatch:
     inputs:
-      VERSION_BUMP:
-        description: 'The version bump'
-        type: choice
-        options:
-        - major
-        - minor
-        - patch
-        default: minor
+      tag:
+        description: Release tag to publish again, for example v1.2.3
         required: true
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+env:
+  TAG: ${{ inputs.tag || github.ref_name }}
 
 jobs:
   release:
+    # A tag deletion is also a push event. Do nothing for it.
+    if: ${{ !github.event.deleted }}
     runs-on: ubuntu-latest
-    concurrency:
-      group: release-${{ github.repository }}-${{ github.ref_name }}
-      cancel-in-progress: false
+    # The npm trusted publisher accepts this environment and this workflow file (release.yaml).
     environment: release
     permissions:
       contents: write
       id-token: write
+      # release-it comments on the issues and pull requests in the release.
+      issues: write
+      pull-requests: write
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v6
-      with:
-        persist-credentials: false
+      # Setup Node does not read the repository (no dependency cache), so it runs while the checkout runs.
+      - parallel:
+          - name: Checkout tag
+            uses: actions/checkout@v7.0.1
+            with:
+              ref: refs/tags/${{ env.TAG }}
+              fetch-depth: 0
+              # Only the Release step gets git credentials, so the install scripts cannot use the write token.
+              persist-credentials: false
 
-    - name: Set up Node.js version
-      uses: actions/setup-node@v6
-      with:
-        node-version: 26
-        registry-url: 'https://registry.npmjs.org/'
+          - name: Setup Node
+            uses: actions/setup-node@v7.1.0
+            with:
+              node-version: 26
+              # No dependency cache in a job with an OIDC token and a write token (cache poisoning).
+              package-manager-cache: false
+              registry-url: 'https://registry.npmjs.org'
 
-    - name: Install dependencies
-      run: yarn install --frozen-lockfile
+      # The checks run before any dependency is installed.
+      - name: Check tag
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          # Stable versions only: pre-releases are off for now.
+          if [[ ! "$TAG" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            echo "::error title=Invalid tag::$TAG is not v<major>.<minor>.<patch>"
+            exit 1
+          fi
 
-    - name: Configure git
-      run: |
-        git config user.name "Uphold"
-        git config user.email "bot@uphold.com"
-        git config --global url.https://${{ secrets.RELEASE_GITHUB_TOKEN }}@github.com/.insteadOf https://github.com/
+          if ! git merge-base --is-ancestor HEAD "origin/$DEFAULT_BRANCH"; then
+            echo "::error title=Tag not on $DEFAULT_BRANCH::The commit of $TAG is not on $DEFAULT_BRANCH"
+            exit 1
+          fi
 
-    - name: Generate release
-      env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
-      run: npm run release -- --increment "${{ github.event.inputs.VERSION_BUMP }}" -V
+          version=$(jq -r .version package.json)
+
+          if [[ "$version" != "${TAG#v}" ]]; then
+            echo "::error title=Version mismatch::package.json has $version, but the tag is $TAG"
+            exit 1
+          fi
+
+      # The registry and GitHub checks do not depend on each other.
+      - parallel:
+          - name: Check npm registry
+            id: registry
+            run: |
+              name=$(jq -r .name package.json)
+              version=$(jq -r .version package.json)
+
+              if [[ "$(npm view "$name@$version" version 2> /dev/null)" == "$version" ]]; then
+                echo "::notice title=Already on npm::$name@$version is already published"
+                echo "published=true" >> "$GITHUB_OUTPUT"
+              fi
+
+          - name: Check GitHub release
+            id: github
+            env:
+              GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            run: |
+              if gh release view "$TAG" > /dev/null 2>&1; then
+                echo "::notice title=Already on GitHub::Release $TAG already exists"
+                echo "exists=true" >> "$GITHUB_OUTPUT"
+              fi
+
+      - name: Plan release
+        id: plan
+        env:
+          EXISTS: ${{ steps.github.outputs.exists }}
+          PUBLISHED: ${{ steps.registry.outputs.published }}
+        run: |
+          echo "npm=$([[ "$PUBLISHED" == "true" ]] && echo false || echo true)" >> "$GITHUB_OUTPUT"
+          echo "github=$([[ "$EXISTS" == "true" ]] && echo false || echo true)" >> "$GITHUB_OUTPUT"
+
+      - name: Install dependencies
+        if: steps.plan.outputs.npm == 'true' || steps.plan.outputs.github == 'true'
+        run: yarn install --frozen-lockfile
+
+      # One release-it run publishes to npm first, then creates the GitHub release if npm succeeded.
+      # `.release-it.js` turns npm publish off by default; `--npm.publish` turns it on here.
+      # `--no-git` and `--no-hooks` skip the commit, tag and changelog steps of the prepare run.
+      # release-it takes the version from the checked-out tag, so the release always uses that tag.
+      - name: Release
+        if: steps.plan.outputs.npm == 'true' || steps.plan.outputs.github == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PLAN_GITHUB: ${{ steps.plan.outputs.github }}
+          PLAN_NPM: ${{ steps.plan.outputs.npm }}
+        run: |
+          # release-it fetches from the remote, even with `--no-git`.
+          gh auth setup-git --hostname github.com
+
+          args=(--ci --no-increment --no-git --no-hooks)
+
+          if [[ "$PLAN_NPM" == "true" ]]; then
+            args+=(--npm.publish)
+          else
+            args+=(--no-npm)
+          fi
+
+          if [[ "$PLAN_GITHUB" != "true" ]]; then
+            args+=(--no-github)
+          fi
+
+          npx release-it "${args[@]}"

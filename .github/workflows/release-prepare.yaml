@@ -1,0 +1,126 @@
+name: Release Prepare
+
+on:
+  workflow_dispatch:
+    inputs:
+      VERSION_BUMP:
+        description: Version increment
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+permissions: {}
+
+concurrency:
+  group: release-prepare
+  cancel-in-progress: false
+
+env:
+  VERSION_BUMP: ${{ inputs.VERSION_BUMP }}
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      # Setup Node does not read the repository (no dependency cache), so it runs while the checkout runs.
+      - parallel:
+          - name: Checkout default branch
+            uses: actions/checkout@v7.0.1
+            with:
+              ref: ${{ github.event.repository.default_branch }}
+              fetch-depth: 0
+
+          - name: Setup Node
+            uses: actions/setup-node@v7.1.0
+            with:
+              node-version: 26
+              # No dependency cache in a job with a write token (cache poisoning).
+              package-manager-cache: false
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Get release version
+        id: version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          version=$(yarn --silent release --ci --no-github --increment="$VERSION_BUMP" --release-version)
+
+          if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error title=Unexpected version::release-it returned '$version'"
+            exit 1
+          fi
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "branch=release/v$version" >> "$GITHUB_OUTPUT"
+
+      - name: Check for an active release
+        id: active
+        env:
+          BASE: ${{ github.event.repository.default_branch }}
+          BRANCH: ${{ steps.version.outputs.branch }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          url=$(gh pr list --base "$BASE" --head "$BRANCH" --state open --json url --jq '.[0].url // empty')
+
+          if [[ -n "$url" ]]; then
+            echo "::notice title=Release PR is open::$url"
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          number=$(gh pr list --base "$BASE" --state open --limit 100 --json number,headRefName \
+            --jq 'map(select(.headRefName | startswith("release/v")))[0].number // empty')
+
+          if [[ -n "$number" ]]; then
+            echo "::error title=Release PR is open::Handle PR #$number first"
+            exit 1
+          fi
+
+          if git ls-remote --exit-code origin "refs/heads/$BRANCH" > /dev/null; then
+            echo "::error title=Release branch exists::Branch $BRANCH exists without an open PR"
+            exit 1
+          fi
+
+          if git ls-remote --exit-code origin "refs/tags/v$VERSION" > /dev/null; then
+            echo "::error title=Release tag exists::Tag v$VERSION already exists"
+            exit 1
+          fi
+
+      - name: Create release commit
+        if: steps.active.outputs.exists != 'true'
+        env:
+          BRANCH: ${{ steps.version.outputs.branch }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git switch --create "$BRANCH"
+          yarn release --ci --no-github --increment="$VERSION"
+
+      # GitHub holds the `pull_request` runs of a PR made with GITHUB_TOKEN: a person approves CI on the PR.
+      - name: Open release PR
+        if: steps.active.outputs.exists != 'true'
+        env:
+          BASE: ${{ github.event.repository.default_branch }}
+          BRANCH: ${{ steps.version.outputs.branch }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git push origin "HEAD:refs/heads/$BRANCH"
+
+          # The PR body is the CHANGELOG.md section of this version.
+          awk '/^## \[/ { n++ } n == 1' CHANGELOG.md > "$RUNNER_TEMP/body.md"
+
+          url=$(gh pr create --base "$BASE" --head "$BRANCH" --title "Release \`v$VERSION\`" --body-file "$RUNNER_TEMP/body.md")
+          echo "::notice title=Release PR opened::$url"
