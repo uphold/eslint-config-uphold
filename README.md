@@ -370,8 +370,20 @@ See the [MIGRATIONS.md](MIGRATIONS.md) file for migration guides between version
 
 ## Release process
 
-The release of a version is automated via the [release](https://github.com/uphold/eslint-config-uphold/.github/workflows/release.yml) GitHub workflow.
-Run it by clicking the "Run workflow" button.
+A release has three steps. The first two need a person. The third is automatic.
+
+1. **Prepare.** Run the [Release Prepare](.github/workflows/release-prepare.yaml) workflow with the "Run workflow" button and choose `patch`, `minor` or `major`. The workflow bumps the version, updates `CHANGELOG.md` and opens a pull request named ``Release `vX.Y.Z` ``. Only one release pull request can be open at a time.
+2. **Tag.** Review and merge the release pull request. Then, on an up-to-date `master`, create and push the signed tag. This needs a configured signing key:
+
+   ```sh
+   git switch master && git pull
+   git tag -s vX.Y.Z -m "Release \`vX.Y.Z\`"
+   git push origin vX.Y.Z
+   ```
+
+3. **Publish.** The tag starts the [Release](.github/workflows/release.yaml) workflow. It checks that the tag is `vX.Y.Z`, is on `master` and matches the version in `package.json`. It then publishes the package to npm and creates the GitHub release. The `release` environment can require an approval before the npm publish.
+
+To publish again after a failed run, run the [Release](.github/workflows/release.yaml) workflow by hand and enter the tag. Versions that are already on npm or on GitHub are skipped.
 
 ## License
 
